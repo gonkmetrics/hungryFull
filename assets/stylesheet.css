@@ -42,8 +42,50 @@
     padding: 20px;
 }
 
+#rankContents{
+  margin-top: 160px;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+#rankTitle{
+
+}
+
+#rankPost{
+  padding-top: 100px;
+}
+
+#recipeBody{
+  margin-top: 75px;
+
+}
+
+#recipeDetail{
+  margin-top:40px;
+  background-color: white;
+  box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+
 #footerPrimary{
-    
+  margin-top: 60px;
+  background-color: #2C2C2C;
+  position: absolute;
+  left: 0px;
+  right: 0px;
+}
+
+#logoWhite{
+  padding-top: 20px;
+  padding-left: 20px;
+  width: 10%;
+  height:auto;
+}
+
+#footerInfo{
+  padding-top: 20px;
+  text-align: center;
+  color: white;
 }
 
 
