@@ -38,7 +38,7 @@ public class ComUpdate extends HttpServlet {
 		ComDAO dao = ComDAO.getInstance();
 		dao.ComUpdate(author, content, commentID);
 		// 리다이렉트(commentID번 detail페이지로 이동.)
-		response.sendRedirect("http://localhost:8181/MyFirstWeb/ComDetail?commentID=" + commentID);
+		response.sendRedirect("http://localhost:8181/HFprj/ComDetail?commentID=" + commentID);
 	}
 
 }

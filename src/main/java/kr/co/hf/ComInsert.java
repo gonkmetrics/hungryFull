@@ -31,19 +31,19 @@ public class ComInsert extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		String commentAuthor = request.getParameter("commentAuthor");
 		String commentContent = request.getParameter("commentContent");
-		String commentid = request.getParameter("commentID");
-		String postid = request.getParameter("postID");
+		//String commentid = request.getParameter("commentID");
+		String postid = "1";
 		
-		int commentID = Integer.parseInt(commentid); 
+		//int commentID = Integer.parseInt(commentid); 
 		int postID = Integer.parseInt(postid); 
-			
-		System.out.println(commentAuthor + "," + commentContent + "," + commentID + "," + postID);
+	  
+		System.out.println(commentAuthor + "," + commentContent + "," + postID);
 		
 		ComDAO dao = ComDAO.getInstance();
-		dao.ComInsert(commentAuthor, commentContent, commentID, postID);
+		dao.ComInsert(commentAuthor, commentContent, postID);
 		
 		// /boardList로 리다이렉트(서블릿 주소로 리다이렉트시 파일이름 노출 안됨)
-		response.sendRedirect("http://localhost:8181/MyFirstWeb/ComList");
+		response.sendRedirect("http://localhost:8181/HFprj/ComList");
 		// 포워딩을하려면 디비 한번더 호출해야하기 때문에 이번엔 리다이렉트 사용
 	}
 
