@@ -1,5 +1,7 @@
 package kr.co.hf;
 
+
+
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
@@ -11,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import kr.co.hf.domain.BoardDAO;
 import kr.co.hf.domain.BoardVO;
+
 
 /**
  * Servlet implementation class BoardDetail
@@ -36,9 +39,11 @@ public class BoardDetail extends HttpServlet {
 			BoardDAO dao = BoardDAO.getInstance();
 			BoardVO board = dao.getBoardDetail(Integer.parseInt(postID));
 			
+			dao.updateViewCnt(Integer.parseInt(postID));
+			
 			request.setAttribute("board", board);
 			
-			RequestDispatcher dp = request.getRequestDispatcher("/");
+			RequestDispatcher dp = request.getRequestDispatcher("/board/boardDetail.jsp");
 			
 			dp.forward(request, response);
 			

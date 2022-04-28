@@ -29,7 +29,7 @@
 			<tr>
 				<td>${board.postID}</td>
 				<td>${board.postAuthor}</td>
-				<td>${board.postTitle}</td>
+				<td><a href="http://localhost:8181/HFprj/boardDetail?postID=${board.postID}"/>${board.postTitle}</td>
 				<td>${board.postContent}</td>
 				<td>${board.postTime}</td>
 				<td>${board.postLastModified}</td>

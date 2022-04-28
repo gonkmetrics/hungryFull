@@ -1,5 +1,6 @@
 package kr.co.hf.domain;
 
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -247,6 +248,7 @@ public class BoardDAO {
 		try {
 			
 			con = ds.getConnection();
+
 			String sql = "UPDATE board SET viewcount = viewcount + 1 where postID=?";
 			pstmt =  con.prepareStatement(sql);
 			
@@ -265,6 +267,8 @@ public class BoardDAO {
 			}
 			
 		}
-	}
+	} // updateViewCnt END;
 	
-}
+	
+	
+} // BoardDAO END;

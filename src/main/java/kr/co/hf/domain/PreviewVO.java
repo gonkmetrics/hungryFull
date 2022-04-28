@@ -1,5 +1,6 @@
 package kr.co.hf.domain;
 
+
 public class PreviewVO {
 	private int previewID;
 	private int postID;

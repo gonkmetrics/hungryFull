@@ -3,7 +3,7 @@ package kr.co.hf.domain;
 import java.sql.Date;
 
 public class BoardVO {
-
+	
     private int postID;
     private int postAuthor;
     private String postTitle;
@@ -66,5 +66,4 @@ public class BoardVO {
 				+ ", postLastModified=" + postLastModified + ", postTime=" + postTime + ", postContent=" + postContent
 				+ ", viewCount=" + viewCount + ", postType=" + postType + "]";
 	}
-    
 }
