@@ -39,6 +39,8 @@ public class BoardDetail extends HttpServlet {
 			BoardDAO dao = BoardDAO.getInstance();
 			BoardVO board = dao.getBoardDetail(Integer.parseInt(postID));
 			
+			
+			
 			dao.updateViewCnt(Integer.parseInt(postID));
 			
 			request.setAttribute("board", board);
@@ -48,6 +50,7 @@ public class BoardDetail extends HttpServlet {
 			dp.forward(request, response);
 			
 	}
+	
 
 
 }
