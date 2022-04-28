@@ -1,5 +1,5 @@
-<%@page import="kr.co.HF.domain.UserVO"%>
-<%@page import="kr.co.HF.domain.UserDAO"%>
+<%@page import="kr.co.hf.domain.UserVO"%>
+<%@page import="kr.co.hf.domain.UserDAO"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.Connection"%>
@@ -8,11 +8,11 @@
     pageEncoding="UTF-8"%>
 <%
 
-	String userId = request.getParameter("userNum");
-
+	String struserNum = request.getParameter("userNum");
+	int userNum = Integer.parseInt(struserNum);
 	UserDAO dao = UserDAO.getInstance();
 
-	UserVO user = dao.getUserInfo(userId);
+	UserVO user = dao.getUserInfo(userNum);
 
 %>
     

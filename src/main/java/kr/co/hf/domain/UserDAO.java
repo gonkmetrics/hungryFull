@@ -1,4 +1,4 @@
-package kr.co.HF.domain;
+package kr.co.hf.domain;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -14,7 +14,6 @@ import javax.sql.DataSource;
 public class UserDAO {
 
 	private DataSource ds=null;
-
 
 	private static UserDAO dao = new UserDAO();
 
@@ -80,7 +79,7 @@ public class UserDAO {
 	}// getAllUserList() 끝나는 지점.
 	
 
-	public UserVO getUserInfo(String userNum) {
+	public UserVO getUserInfo(int userNum) {
 
 		Connection con = null;
 		ResultSet rs = null;
@@ -95,7 +94,7 @@ public class UserDAO {
 			
 			pstmt = con.prepareStatement(sql);
 
-			pstmt.setString(1, userNum);
+			pstmt.setInt(1, userNum);
 			rs = pstmt.executeQuery();
 	
 			if(rs.next()) {

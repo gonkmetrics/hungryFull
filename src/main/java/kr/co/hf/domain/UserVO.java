@@ -1,4 +1,4 @@
-package kr.co.HF.domain;
+package kr.co.hf.domain;
 
 public class UserVO {
 	// VO클래스는 일반적으로 특정 테이블의 자료를 한 row단위로 저장할수있도록
