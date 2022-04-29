@@ -19,4 +19,7 @@
 
 .settings/
 bin/
+.metadata/
+bulid/
+assets/
 
