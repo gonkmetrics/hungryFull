@@ -16,7 +16,7 @@ import kr.co.hf.domain.BoardVO;
 /**
  * Servlet implementation class BoardController
  */
-@WebServlet("/dqwodwqjdowqjd")
+@WebServlet("/dqwdwdwd")
 public class BoardController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -55,7 +55,7 @@ public class BoardController extends HttpServlet {
 		
 		
 		if(uri.equals("/HFprj/boardList.do")) {
-			// boardList.do를 이용해 글 목록 페이지로 넘어가도록 로직을 작성해주세요.
+			
 			List<BoardVO> boardList = dao.getBoardList();
 			
 			request.setAttribute("boardList", boardList);
