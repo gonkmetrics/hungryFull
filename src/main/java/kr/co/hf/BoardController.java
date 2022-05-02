@@ -12,6 +12,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import kr.co.hf.domain.BoardDAO;
 import kr.co.hf.domain.BoardVO;
+import kr.co.hf.service.BoardDetailService;
+import kr.co.hf.service.BoardInsertService;
+import kr.co.hf.service.BoardListService;
+import kr.co.hf.service.IBoardService;
 
 /**
  * Servlet implementation class BoardController
@@ -53,24 +57,23 @@ public class BoardController extends HttpServlet {
 		
 		BoardDAO dao = BoardDAO.getInstance();
 		
+		IBoardService sv = null;
 		
 		if(uri.equals("/HFprj/boardList.do")) {
 			
-			List<BoardVO> boardList = dao.getBoardList();
+			sv = new BoardListService();
 			
-			request.setAttribute("boardList", boardList);
-			
+			sv.execute(request, response);
+
 			ui = "/board/boardList.jsp";
 			
 			
 			
 		} else if (uri.equals("/HFprj/boardDetail.do")) {
 			
-			String postID = request.getParameter("board_num");
+			sv = new BoardDetailService();
 			
-			BoardVO board = dao.getBoardDetail(Integer.parseInt(postID));
-			
-			request.setAttribute("board", board);
+			sv.execute(request, response);
 			
 			ui = "/board/boardDetail.jsp";
 			
@@ -80,15 +83,9 @@ public class BoardController extends HttpServlet {
 			
 		} else if (uri.equals("/HFprj/boardInsert.do")) {
 			
-			request.setCharacterEncoding("UTF-8");
+			sv = new BoardInsertService();
 			
-			String postTitle = request.getParameter("postTitle");
-			String postAuthor = request.getParameter("postAuthor");
-			String postContent = request.getParameter("postContent");
-			String postType = request.getParameter("postType");
-			
-			
-			dao.boardInsert(Integer.parseInt(postAuthor), postTitle, postContent, Integer.parseInt(postType));
+			sv.execute(request, response);
 			
 			ui = "/boardList.do";
 			
