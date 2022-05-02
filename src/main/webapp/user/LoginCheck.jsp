@@ -7,7 +7,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-
 	String formId = request.getParameter("formId");
 	String formPw = request.getParameter("formPw");
 	
@@ -30,7 +29,6 @@
 	} else {
 		response.sendRedirect("IdFail.jsp");
 	}
-
 %>
 <!DOCTYPE html>
 <html>

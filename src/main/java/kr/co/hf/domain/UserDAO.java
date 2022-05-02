@@ -15,6 +15,7 @@ public class UserDAO {
 
 	private DataSource ds=null;
 
+
 	private static UserDAO dao = new UserDAO();
 
 	private UserDAO() {
@@ -151,7 +152,6 @@ public class UserDAO {
 		PreparedStatement pstmt=null;
 		
 		try {
-			
 			con = ds.getConnection();
 			String sql = "INSERT INTO user VALUES(?, ?, ?, ?, ?, ?,?)";
 			pstmt = con.prepareStatement(sql);

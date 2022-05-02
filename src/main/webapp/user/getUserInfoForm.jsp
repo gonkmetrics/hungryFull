@@ -8,7 +8,7 @@
 </head>
 <body>
 	<form action="getUserInfo.jsp" method="post">
-		조회할 아이디 : <input type="text" name="userNum"><br/>
+		조회할 회원번호 : <input type="text" name="userNum"><br/>
 		<input type="submit" value="조회하기">
 	</form>
 </body>
