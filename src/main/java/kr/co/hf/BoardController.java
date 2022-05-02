@@ -16,7 +16,7 @@ import kr.co.hf.domain.BoardVO;
 /**
  * Servlet implementation class BoardController
  */
-@WebServlet("/dqwdwdwd")
+@WebServlet("*.do")
 public class BoardController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -65,6 +65,7 @@ public class BoardController extends HttpServlet {
 			
 			
 		} else if (uri.equals("/HFprj/boardDetail.do")) {
+			
 			String postID = request.getParameter("board_num");
 			
 			BoardVO board = dao.getBoardDetail(Integer.parseInt(postID));
@@ -89,11 +90,8 @@ public class BoardController extends HttpServlet {
 			
 			dao.boardInsert(Integer.parseInt(postAuthor), postTitle, postContent, Integer.parseInt(postType));
 			
-			List<BoardVO> boardList = dao.getBoardList();
+			ui = "/boardList.do";
 			
-			request.setAttribute("boardList", boardList);
-			
-			ui = "/board/boardList.jsp";
 		}
 		
 		RequestDispatcher dp = request.getRequestDispatcher(ui);
