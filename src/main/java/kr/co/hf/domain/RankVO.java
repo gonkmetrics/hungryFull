@@ -1,7 +1,7 @@
 package kr.co.hf.domain;
 
 
-public class PreviewVO {
+public class RankVO {
 	private int rankID;
 	private int postID;
     private int rankPosition;
@@ -33,12 +33,12 @@ public class PreviewVO {
 	}
 
 
-	public String getRankID() {
+	public int getRankID() {
 		return rankID;
 	}
 
 
-	public void setRankID(String rankID) {
+	public void setRankID(int rankID) {
 		this.rankID = rankID;
 	}
 }
