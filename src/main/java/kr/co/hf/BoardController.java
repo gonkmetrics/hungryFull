@@ -25,7 +25,11 @@ import kr.co.hf.service.RecipeDetailService;
 /**
  * Servlet implementation class BoardController
  */
+<<<<<<< HEAD
+@WebServlet("/BoardController")
+=======
 @WebServlet("*.do")
+>>>>>>> 6a97b9a62a27a642aadada0c45c00e70c61fd789
 public class BoardController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
