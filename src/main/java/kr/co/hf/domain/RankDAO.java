@@ -40,7 +40,7 @@ public class RankDAO {
 	
 	
 	
-	public List<PreviewVO> getRankOrderedList(int postID){
+	public List<RankVO> getRankOrderedList(int postID){
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -50,7 +50,7 @@ public class RankDAO {
 		
 		try {
 			con = ds.getConnection();
-			String s = "SELECT * FROM rank ORDER BY rankPosition DESC";
+			String s = "SELECT * FROM ranking ORDER BY rankPosition ASC LIMIT 3";
 			pstmt = con.prepareStatement(s);
 			pstmt.setInt(1, postID);
 			rs = pstmt.executeQuery();

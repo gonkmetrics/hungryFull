@@ -34,21 +34,21 @@ public class LikeVO {
 	}
 
 
-	public String getLikeType() {
+	public int getLikeType() {
 		return likeType;
 	}
 
 
-	public void setLikeType(String likeType) {
+	public void setLikeType(int likeType) {
 		this.likeType = likeType;
 	}
 
-    public String getLikeID() {
+    public int getLikeID() {
 		return likeID;
 	}
 
 
-	public void setLikeID(String rankID) {
+	public void setLikeID(int rankID) {
 		this.likeID = likeID;
 	}
 }
