@@ -16,7 +16,7 @@ import kr.co.hf.domain.BoardVO;
 /**
  * Servlet implementation class BoardController
  */
-@WebServlet("/dqwdwdwd")
+@WebServlet("/BoardController")
 public class BoardController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
