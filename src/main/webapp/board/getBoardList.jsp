@@ -11,7 +11,6 @@
 </head>
 <body>
 <table class = "table table-primary">
-
 	<thead>
 		<tr>
 			<th>postID</th>
@@ -29,7 +28,7 @@
 			<tr>
 				<td>${board.postID}</td>
 				<td>${board.postAuthor}</td>
-				<td><a href="http://localhost:8181/HFprj/boardDetail?postID=${board.postID}"/>${board.postTitle}</td>
+				<td><a href="/HFprj/recipeDetail.do?postID=${board.postID}"/>${board.postTitle}</td>
 				<td>${board.postContent}</td>
 				<td>${board.postTime}</td>
 				<td>${board.postLastModified}</td>
@@ -37,10 +36,9 @@
 				<td>${board.postType}</td>
 			</tr>
 		</c:forEach>
-		<a href="http://localhost:8181/HFprj/boardInsertForm.do">글쓰기</a>
 		</tbody>
 </table>
 
-
+<a href="/HFprj/boardInsertForm.do">글쓰기</a>
 </body>
 </html>

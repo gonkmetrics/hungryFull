@@ -12,10 +12,15 @@ import javax.servlet.http.HttpServletResponse;
 
 import kr.co.hf.domain.BoardDAO;
 import kr.co.hf.domain.BoardVO;
+import kr.co.hf.service.BoardDeleteService;
 import kr.co.hf.service.BoardDetailService;
 import kr.co.hf.service.BoardInsertService;
 import kr.co.hf.service.BoardListService;
+import kr.co.hf.service.BoardUpdateFormService;
+import kr.co.hf.service.BoardUpdateService;
 import kr.co.hf.service.IBoardService;
+import kr.co.hf.service.IRecipeService;
+import kr.co.hf.service.RecipeDetailService;
 
 /**
  * Servlet implementation class BoardController
@@ -59,13 +64,15 @@ public class BoardController extends HttpServlet {
 		
 		IBoardService sv = null;
 		
+		IRecipeService IRsv = null;
+		
 		if(uri.equals("/HFprj/boardList.do")) {
 			
 			sv = new BoardListService();
 			
 			sv.execute(request, response);
 
-			ui = "/board/boardList.jsp";
+			ui = "/board/getBoardList.jsp";
 			
 			
 			
@@ -88,6 +95,37 @@ public class BoardController extends HttpServlet {
 			sv.execute(request, response);
 			
 			ui = "/boardList.do";
+			
+		} else if (uri.equals("/HFprj/boardUpdate.do")) {
+			
+			sv = new BoardUpdateService();
+			
+			sv.execute(request, response);
+			
+			ui = "/boardList.do";
+			
+		} else if (uri.equals("/HFprj/boardUpdateForm.do")) {
+			
+			sv = new BoardUpdateFormService();
+			
+			sv.execute(request, response);
+			
+			ui = "/board/boardUpdateForm.jsp";
+		
+		} else if (uri.equals("/HFprj/boardDelete.do")) {
+			
+			sv = new BoardDeleteService();
+			
+			sv.execute(request, response);
+			
+			ui = "/boardList.do";
+		} else if (uri.equals("/HFprj/recipeDetail.do")) {
+			
+			IRsv = new RecipeDetailService();
+			
+			IRsv.execute(request, response);
+			
+			ui = "recipe/recipeDetail.jsp";
 			
 		}
 		

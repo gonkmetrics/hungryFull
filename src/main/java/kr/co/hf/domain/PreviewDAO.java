@@ -66,13 +66,13 @@ public class PreviewDAO {
 					preview.setPreviewContent(rs.getString(3));
 					preview.setPreviewLink(rs.getString(4));
 					
-					System.out.println("µ¥ÀÌÅÍ µð¹ö±ë : " + preview);
+					System.out.println("previewê°’ ë””ë²„ê¹… : " + preview);
 					previewList.add(preview);
 					
 				}
 			}
 			
-			System.out.println("¸®½ºÆ®¿¡ ½×ÀÎ ÀÚ·á Ã¼Å© : " + previewList);
+			System.out.println("previeList ê°’ ë””ë²„ê¹… : " + previewList);
 			
 		} catch(Exception e) {
 			e.printStackTrace();

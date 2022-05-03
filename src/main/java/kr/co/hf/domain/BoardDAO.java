@@ -17,7 +17,6 @@ public class BoardDAO {
 	
 	public static BoardDAO dao = new BoardDAO();
 	
-	
 	private BoardDAO() {
 		try {
 			Context ct = new InitialContext();
@@ -50,7 +49,7 @@ public class BoardDAO {
 		
 		try {
 			
-			BoardVO board = new BoardVO();
+			
 			con = ds.getConnection();
 			String sql = "SELECT * FROM board ORDER BY postTime DESC";
 			pstmt = con.prepareStatement(sql);
@@ -59,7 +58,7 @@ public class BoardDAO {
 			
 			
 				while(rs.next()) {
-					
+					BoardVO board = new BoardVO();
 					
 					board.setPostID(rs.getInt(1));
 					board.setPostAuthor(rs.getInt(2));
@@ -71,13 +70,13 @@ public class BoardDAO {
 					board.setPostType(rs.getInt(8));
 					
 					
-					System.out.println("데이터 디버깅 : " + board);
+					System.out.println("board 값 데이터 디버깅 : " + board);
 					boardList.add(board);
 					
 				}
 			
 			
-			System.out.println("데이터 디버깅 : " + boardList);
+			System.out.println("boardList 값 데이터 디버깅 : " + boardList);
 			
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -123,7 +122,7 @@ public class BoardDAO {
 				
 				System.out.println("BoardVO 체크 : " + board);
 			} else {
-				System.out.println("일치하는 데이터 없음");
+				System.out.println("일치하는 데이터 (postID)가 없음");
 			}
 			
 			
@@ -219,8 +218,8 @@ public class BoardDAO {
 			
 			pstmt.setString(1, postTitle);
 			pstmt.setString(2, postContent);
-			pstmt.setInt(3, postID);
-			pstmt.setInt(4, postType);
+			pstmt.setInt(3, postType);
+			pstmt.setInt(4, postID);
 			
 			pstmt.executeUpdate();
 			
@@ -241,6 +240,7 @@ public class BoardDAO {
 	public void updateViewCnt(int postID) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		
 		try {
 			
 			con = ds.getConnection();

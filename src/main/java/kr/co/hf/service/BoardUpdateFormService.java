@@ -9,10 +9,12 @@ import javax.servlet.http.HttpServletResponse;
 import kr.co.hf.domain.BoardDAO;
 import kr.co.hf.domain.BoardVO;
 
-public class BoardDetailService implements IBoardService{
+public class BoardUpdateFormService implements IBoardService{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		request.setCharacterEncoding("UTF-8");
 		
 		String postID = request.getParameter("postID");
 		
@@ -21,7 +23,6 @@ public class BoardDetailService implements IBoardService{
 		BoardVO board = dao.getBoardDetail(Integer.parseInt(postID));
 		
 		request.setAttribute("board", board);
-		
 	}
 
 }
