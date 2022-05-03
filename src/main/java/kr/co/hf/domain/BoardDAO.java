@@ -71,13 +71,13 @@ public class BoardDAO {
 					board.setPostType(rs.getInt(8));
 					
 					
-					System.out.println("µ¥ÀÌÅÍ µğ¹ö±ë : " + board);
+					System.out.println("ë°ì´í„° ë””ë²„ê¹… : " + board);
 					boardList.add(board);
 					
 				}
 			
 			
-			System.out.println("¸®½ºÆ®¿¡ ½×ÀÎ ÀÚ·á Ã¼Å© : " + boardList);
+			System.out.println("ë°ì´í„° ë””ë²„ê¹… : " + boardList);
 			
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -121,9 +121,9 @@ public class BoardDAO {
 				board.setViewCount(rs.getInt(7));
 				board.setPostType(rs.getInt(8));
 				
-				System.out.println("µ¥ÀÌÅÍ µğ¹ö±ë : " + board);
+				System.out.println("BoardVO ì²´í¬ : " + board);
 			} else {
-				System.out.println("ÇØ´ç °èÁ¤ÀÌ ¾ø½À´Ï´Ù.");
+				System.out.println("ì¼ì¹˜í•˜ëŠ” ë°ì´í„° ì—†ìŒ");
 			}
 			
 			
@@ -161,10 +161,8 @@ public class BoardDAO {
 			pstmt.setString(3, postContent);
 			pstmt.setInt(4, postType);
 			
-			
-			System.out.println("µ¥ÀÌÅÍ µğ¹ö±ë : " + sql);
+		
 			pstmt.executeUpdate();
-			System.out.println("boardInsert ¾÷µ¥ÀÌÆ® ¼öÇà ¿Ï·á");
 			
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -223,8 +221,6 @@ public class BoardDAO {
 			pstmt.setString(2, postContent);
 			pstmt.setInt(3, postID);
 			pstmt.setInt(4, postType);
-			
-			System.out.println("µ¥ÀÌÅÍ µğ¹ö±ë : " + sql);
 			
 			pstmt.executeUpdate();
 			

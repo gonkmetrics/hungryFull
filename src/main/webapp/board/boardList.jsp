@@ -37,6 +37,7 @@
 				<td>${board.postType}</td>
 			</tr>
 		</c:forEach>
+		<a href="http://localhost:8181/HFprj/boardInsertForm.do">글쓰기</a>
 		</tbody>
 </table>
 
