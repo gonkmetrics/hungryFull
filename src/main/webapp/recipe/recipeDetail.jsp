@@ -19,7 +19,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
 제목 : ${board.postTitle}
 <br/>
 postID : ${board.postID}
@@ -75,13 +74,13 @@ postAuthor : ${board.postAuthor}
                 <td><a href="http://localhost:8181/HFprj/ComDetail?commentID=${Com.commentID}">${Com.commentID }</td>
                  <td>${Com.getCommentAuthor()}</td>
                  <td>${Com.getCommentContent()}<form action="http://localhost:8181/HFprj/ComDelete" method="post">
-				        <input type="hidden" name="commentID" value="${com.commentID}">
+				        <input type="hidden" name="commentID" value="${Com.commentID}">
 				        <input type="submit" value="삭제" >
 				       </form>
-				       <form action="http://localhost:8181/HFprj/ComUpdateForm" method="post">
-					   <input type="hidden" name="commentID" value="${com.commentID }">
-					   <input type="hidden" name="commenContent" value="${com.content }">
-                       <input type="hidden" name="commentAuthor" value="${com.author }">
+				       <form action="http://localhost:8181/HFprj/ComUpdateForm.do" method="post">
+					   <input type="hidden" name="commentID" value="${Com.commentID }">
+					   <input type="hidden" name="commenContent" value="${Com.commentContent }">
+                       <input type="hidden" name="commentAuthor" value="${Com.commentAuthor }">
 					   <input type="submit" value="수정">
 					 </form>
 				  </td>
