@@ -73,8 +73,9 @@ postAuthor : ${board.postAuthor}
               <tr>
                 <td><a href="http://localhost:8181/HFprj/ComDetail?commentID=${com.commentID}">${com.commentID }</td>
                  <td>${com.getCommentAuthor()}</td>
-                 <td>${com.getCommentContent()}<form action="http://localhost:8181/HFprj/ComDelete" method="post">
+                 <td>${com.getCommentContent()}<form action="http://localhost:8181/HFprj/ComDelete.do" method="post">
 				        <input type="hidden" name="commentID" value="${com.commentID}">
+				        <input type="hidden" name="postID" value="${com.postID}">
 				        <input type="submit" value="삭제" >
 				       </form>
 				       <form action="http://localhost:8181/HFprj/ComUpdateForm.do" method="post">

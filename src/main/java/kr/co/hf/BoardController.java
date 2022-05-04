@@ -18,6 +18,7 @@ import kr.co.hf.service.BoardInsertService;
 import kr.co.hf.service.BoardListService;
 import kr.co.hf.service.BoardUpdateFormService;
 import kr.co.hf.service.BoardUpdateService;
+import kr.co.hf.service.ComDeleteService;
 import kr.co.hf.service.ComUpdateFormService;
 import kr.co.hf.service.ComUpdateService;
 import kr.co.hf.service.IBoardService;
@@ -146,6 +147,12 @@ public class BoardController extends HttpServlet {
 			IRsv.execute(request, response);
 			
 			ui = "/recipeDetail.do?postID=" + request.getParameter("postID");
+			
+		} else if(uri.equals("/HFprj/ComDelete.do")) {
+			IRsv = new ComDeleteService();
+			IRsv.execute(request, response);
+			ui = "/recipeDetail.do?postID=" + request.getParameter("postID");
+			
 		}
 		
 		RequestDispatcher dp = request.getRequestDispatcher(ui);
