@@ -19,6 +19,10 @@ public class ComUpdateService implements IRecipeService{
 		
 		String content = request.getParameter("commentContent");
 		String author = request.getParameter("commentAuthor");
+		
+		System.out.println("commentID");
+		System.out.println("content");
+		System.out.println("anuthor");
 	
 		dao.ComUpdate(content, author, commentID);
 	}

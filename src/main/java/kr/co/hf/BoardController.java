@@ -131,20 +131,21 @@ public class BoardController extends HttpServlet {
 			
 			ui = "recipe/recipeDetail.jsp";
 			
-		} else if(uri.equals("/HFprj/comUpdateForm.do")) {
+		} else if(uri.equals("/HFprj/ComUpdateForm.do")) {
 			
 			IRsv = new ComUpdateFormService();
 			
 			IRsv.execute(request, response);
 			
-			ui = "/com/comUpdateForm.jsp";
+			ui = "/Com/ComUpdateForm.jsp";
 		
-		} else if(uri.equals("/HFprj/comUpdate.do")) {
+		} else if(uri.equals("/HFprj/ComUpdate.do")) {
 			
 			IRsv = new ComUpdateService();
 			
 			IRsv.execute(request, response);
 			
+			ui = "/boardList.do";
 		}
 		
 		RequestDispatcher dp = request.getRequestDispatcher(ui);
