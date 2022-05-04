@@ -9,10 +9,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import kr.co.HF.domain.UserDAO;
-import kr.co.HF.service.UserService;
+import kr.co.hf.domain.UserDAO;
+import kr.co.hf.service.UserService;
 import kr.co.hf.service.userInfoService;
 import kr.co.hf.service.userJoinFormService;
+import kr.co.hf.service.userLoginService;
 
 /**
  * Servlet implementation class userController
@@ -43,6 +44,7 @@ public class userController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		doRequest(request,response);
+		
 	}
 	private void doRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
@@ -52,43 +54,23 @@ public class userController extends HttpServlet {
 		UserDAO dao = UserDAO.getInstance();
 		UserService sv = null;
 		
-		if(uri.equals("/HFprj/userList.do")) {
-			sv = new userInfoService();
+		if (uri.equals("/HFprj/userLogin.do")) {
+			ui = "user/LoginForm.jsp";
+		}		
+		else if(uri.equals("/HFprj/userLoginCheck.do")) {
+			sv = new userLoginService();
 			sv.execute(request,response);
-			ui = "/user/getUserInfo.jsp";
+			ui = "/user/LoginComplete.jsp";
 		} else if (uri.equals("/HFprj/userJoinForm.do")) {
+			ui = "/user/JoinFormlight.jsp";
+		} else if(uri.equals("/HFprj/userJoinCheck.do")) {
 			sv = new userJoinFormService();
 			sv.execute(request,response);
-			ui = "/user/userJoinForm.jsp";
-		}  else if (uri.equals("/MyFirstWeb/boardInsertForm.do")){
-			ui = "/board/boardInsertForm.jsp";
-		} else if(uri.equals("/MyFirstWeb/boardInsert.do")) {
-			sv = new BoardInsertService();
-			sv.execute(request,response);
-			ui = "/boardList.do";
-		} else if (uri.equals("/MyFirstWeb/boardDelete.do")) {
-			sv = new BoardDeleteService();
-			sv.execute(request,response);
-			ui = "/boardList.do";
-		} else if(uri.equals("/MyFirstWeb/boardUpdateForm.do")) {
-			sv = new BoardUpdateFormService();
-			sv.execute(request,response);
-			ui = "/board/boardUpdateForm.jsp";
-		} else if(uri.equals("/MyFirstWeb/boardUpdate.do")) {
-			sv = new BoardUpdateService();
-			sv.execute(request,response);
-			ui = "/boardDetail.do?board_num=" + request.getParameter("board_num");
-		}
-		
+			ui = "/userLogin.do";
+		} 
+
 		RequestDispatcher dp = request.getRequestDispatcher(ui);
 		dp.forward(request, response);
-		
+	}
 	}
 
-	private int BoardUpdateService(int boardNum) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-
-}

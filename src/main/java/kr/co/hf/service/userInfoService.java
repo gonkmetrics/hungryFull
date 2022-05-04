@@ -15,8 +15,7 @@ public class userInfoService implements UserService {
 	
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	UserDAO dao = UserDAO.getInstance();
-	String struserNum = request.getParameter("userNum");
-	int userNum = Integer.parseInt(struserNum);
-	UserVO user = dao.getUserInfo(userNum);
+	String userId = request.getParameter("userId");
+	UserVO user = dao.getUserInfo(userId);
 	}
 }

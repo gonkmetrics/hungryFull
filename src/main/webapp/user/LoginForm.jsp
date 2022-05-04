@@ -13,11 +13,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="LoginCheck.jsp" method="post">
+	<form action="/HFprj/userLoginCheck.do" method="post">
 		아이디 : <input type="text" name="formId" /><br/>
 		비밀번호 : <input type="password" name="formPw" /><br/>
 		<input type="submit" value="로그인" />
 	</form>
-	<a href="JoinForm.jsp">회원가입하기.</a>
+	<a href="/HFprj/userJoinForm.do">회원가입하기.</a>
 </body>
 </html>

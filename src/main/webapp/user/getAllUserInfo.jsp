@@ -1,6 +1,6 @@
-<%@page import="kr.co.HF.domain.UserVO"%>
+<%@page import="kr.co.hf.domain.UserVO"%>
 <%@page import="java.util.List"%>
-<%@page import="kr.co.HF.domain.UserDAO"%>
+<%@page import="kr.co.hf.domain.UserDAO"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.DriverManager"%>

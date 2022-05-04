@@ -80,7 +80,7 @@ public class UserDAO {
 	}// getAllUserList() 끝나는 지점.
 	
 
-	public UserVO getUserInfo(int userNum) {
+	public UserVO getUserInfo(String userId) {
 
 		Connection con = null;
 		ResultSet rs = null;
@@ -91,11 +91,11 @@ public class UserDAO {
 	
 			con = ds.getConnection();
 
-			String sql = "SELECT * FROM user WHERE userNum = ?";
+			String sql = "SELECT * FROM user WHERE userId = ?";
 			
 			pstmt = con.prepareStatement(sql);
 
-			pstmt.setInt(1, userNum);
+			pstmt.setString(1, userId);
 			rs = pstmt.executeQuery();
 	
 			if(rs.next()) {
@@ -175,8 +175,7 @@ public class UserDAO {
 			} 
 		}
 	}// userJoinCheck
-
-
+	
 	public void UpdateCheck(String userPw, String userName, 
 			String userEmail, int uage, String userId) {
 		Connection con = null;
@@ -206,5 +205,8 @@ public class UserDAO {
 		} 	
 		
 	}
+
+
+
 
 }
