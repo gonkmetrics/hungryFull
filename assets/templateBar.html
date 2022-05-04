@@ -118,16 +118,18 @@
                     <div class="recipePost">
                         <h1>recipePost</h1>
                         <!-- #add forEach logic, 5 elements -->
+                        <!-- limit is defined in service -->
+                        <c:forEach items="${boardList}" var="board">
                             <div class="row justify-content-center">
                                 <div class="col rounded" id="recipeDetail">
-                                    <h1>recipeOne</h1>
-                                    <br>
-                                    <br>
-                                    <br>
-                                    <br>
-                                    <br>
+                                    <p>${board.postID}</p>
+                                    <p>${board.postAuthor}</p>
+                                    <p>${board.postContent}</p>
+                                    <p>${board.postTime}</p>
+                                    <p>${board.postType}</p>
                                 </div>
                             </div>
+                        </c:if>
                         <!-- #end of logic -->
                         <!-- #temporary elements -->
                         <div class="row justify-content-center">
@@ -191,6 +193,9 @@
                               <span aria-hidden="true">&laquo;</span>
                             </a>
                           </li>
+                          <form>
+
+                          </form>
                           <li class="page-item"><a class="page-link" href="#">1</a></li>
                           <li class="page-item"><a class="page-link" href="#">2</a></li>
                           <li class="page-item"><a class="page-link" href="#">3</a></li>
