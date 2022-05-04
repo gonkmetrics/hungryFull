@@ -145,7 +145,7 @@ public class BoardController extends HttpServlet {
 			
 			IRsv.execute(request, response);
 			
-			ui = "/boardList.do";
+			ui = "/recipeDetail.do?postID=" + request.getParameter("postID");
 		}
 		
 		RequestDispatcher dp = request.getRequestDispatcher(ui);
