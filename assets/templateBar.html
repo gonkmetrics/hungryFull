@@ -15,15 +15,6 @@
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
 </head>
 <body>
-    <div id="sidebar">
-          <div style="min-height: 120px;">
-            <div class="collapse collapse-horizontal" id="collapseWidthExample">
-              <div class="card card-body" style="width: 400px; height: 1000px;">
-                This is some placeholder content for a horizontal collapse. It's hidden by default and shown when triggered.
-              </div>
-            </div>
-          </div>
-    </div>
     <div>
         <div class="container">
             <!-- #header -->
@@ -34,6 +25,50 @@
                 <h1>header</h1>
             </div>
         </div>
+
+        <div style="display: flex; position: absolute; z-index: 2; top: 0; height: 100%;">
+            <div class="collapse collapse-horizontal" id="collapseWidthExample">
+              <div style="width: 200px; height: 100%; background-color: #ecf4ff;">
+    
+                <div class="row" id="sidebarElement" style="background-color:  #f0b968; padding-bottom: 20px; margin-right: 0;">
+                    <br>
+                    <button class="btn" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
+                        <img src="logosvgwhite.svg" style="width: 95%; padding-top: 20px; padding-right: 10px; display: inline-block;">
+                    </button>
+                    <!-- note: make js function to stop page scroll when sidebar is open-->
+                    <!--
+                        <img src="logosvgwhite.svg" style="width: 60%; padding-top: 20px; display: inline-block;">
+                    <br><br>
+                    <button style="display: inline-block; width: 20%; margin-left: 40px; margin-top: 20px;" class="btn btn-outline-light" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
+                        
+                    </button> -->
+                </div>
+                <div class="row" id="sidebarElement" style="margin-top: 10px;">
+                    <h4 style="color: #f0b968; font-weight: 1000;">Hungry & Full</h4>
+                </div>
+                <div class="row" id="sidebarElement">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                          <a class="nav-link active" href="#">Active</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="#">Link</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="#">Link</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link disabled" href="#">Disabled</a>
+                        </li>
+                      </ul>
+                </div>
+                <hr>
+                <div class="row" id="sidebarElement" style="margin-right: 10px;">
+                    <button type="button" class="btn btn-light">Homepage</button>
+                </div>
+              </div>
+            </div>
+          </div>
     
         <div class="container-fluid">
             <!-- #body -->
@@ -73,9 +108,9 @@
     
         <div class="container" id="recipeBody">
             <div class="row justify-content-center">
-                <button id="sidebarToggle" class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
+                <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
                     Toggle width collapse
-                  </button>
+                </button>
                 <div class="col-10">
                     <div class="recipeTitle">
                         <h1>recipeTitle</h1>
@@ -196,7 +231,5 @@
             </div>
         </div>
     </div>
-
-    
 </body>
 </html>
