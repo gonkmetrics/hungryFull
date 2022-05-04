@@ -80,7 +80,10 @@ postAuthor : ${board.postAuthor}
 				       </form>
 				       <form action="http://localhost:8181/HFprj/ComUpdateForm" method="post">
 					   <input type="hidden" name="commentID" value="${com.commentID }">
+					   <input type="hidden" name="commenContent" value="${com.content }">
+                       <input type="hidden" name="commentAuthor" value="${com.author }">
 					   <input type="submit" value="수정">
+					   
 					 </form>
 				  </td>
               </tr>

@@ -18,6 +18,8 @@ import kr.co.hf.service.BoardInsertService;
 import kr.co.hf.service.BoardListService;
 import kr.co.hf.service.BoardUpdateFormService;
 import kr.co.hf.service.BoardUpdateService;
+import kr.co.hf.service.ComUpdateFormService;
+import kr.co.hf.service.ComUpdateService;
 import kr.co.hf.service.IBoardService;
 import kr.co.hf.service.IRecipeService;
 import kr.co.hf.service.RecipeDetailService;
@@ -26,8 +28,8 @@ import kr.co.hf.service.RecipeDetailService;
  * Servlet implementation class BoardController
  */
 
-
 @WebServlet("*.do")
+
 public class BoardController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -129,6 +131,13 @@ public class BoardController extends HttpServlet {
 			
 			ui = "recipe/recipeDetail.jsp";
 			
+		} else if(uri.equals("/HFprj/comUpdateForm.do")) {
+			
+			IRsv = new ComUpdateFormService();
+			
+			IRsv.execute(request, response);
+			
+			ui = "/com/comUpdateForm.jsp";
 		}
 		
 		RequestDispatcher dp = request.getRequestDispatcher(ui);
