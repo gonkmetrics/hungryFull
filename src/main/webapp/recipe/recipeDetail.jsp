@@ -89,12 +89,13 @@ postAuthor : ${board.postAuthor}
               </c:forEach>
           </tbody>
      </table>
-     <c:forEach var="com" items="${ComList}">
-	     <form action="/HFprj/ComInsertForm.do" method="post">
-	     	<input type="hidden" name="postID" value="${com.postID}">
-			<input type="submit" value="댓글쓰기">
-	     </form>
-     </c:forEach>
      
+	 <form action="/HFprj/ComInsertForm.do" method="post">
+	    <c:forEach var="com" items="${ComList}">
+	     	<input type="hidden" name="postID" value="${com.postID}">
+		</c:forEach>
+			<input type="submit" value="댓글쓰기">
+	 </form>
+    
 </body>
 </html>
