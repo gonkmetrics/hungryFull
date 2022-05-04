@@ -89,6 +89,12 @@ postAuthor : ${board.postAuthor}
               </c:forEach>
           </tbody>
      </table>
-     <a href="http://localhost:8181/HFprj/Com/ComInsertForm.jsp"><button>댓글쓰기</button></a>
+     <c:forEach var="com" items="${ComList}">
+	     <form action="/HFprj/ComInsertForm.do" method="post">
+	     	<input type="hidden" name="postID" value="${com.postID}">
+			<input type="submit" value="댓글쓰기">
+	     </form>
+     </c:forEach>
+     
 </body>
 </html>
