@@ -83,7 +83,6 @@ postAuthor : ${board.postAuthor}
 					   <input type="hidden" name="commenContent" value="${com.content }">
                        <input type="hidden" name="commentAuthor" value="${com.author }">
 					   <input type="submit" value="수정">
-					   
 					 </form>
 				  </td>
               </tr>
