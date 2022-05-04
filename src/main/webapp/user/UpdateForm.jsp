@@ -8,15 +8,11 @@
     pageEncoding="UTF-8"%>
 <%
 
-String struserNum = request.getParameter("userNum");
-int userNum = 0;
-if(struserNum.equals("")) {
-} else {
-	 userNum = Integer.parseInt(struserNum);
-}
+String userId = request.getParameter("userId");
+
 	
 	UserDAO dao = UserDAO.getInstance();
-	UserVO user = dao.getUserInfo(userNum);
+	UserVO user = dao.getUserInfo(userId);
 %>
 <!DOCTYPE html>
 <html>
@@ -26,7 +22,7 @@ if(struserNum.equals("")) {
 </head>
 <body>
 
-	<h1><%= userNum %> 님의 정보를 수정합니다.</h1>
+	<h1><%= userId %> 님의 정보를 수정합니다.</h1>
 	<form action="UpdateCheck.jsp" method="post">
 		<input type ="hidden" name="userNum">
 		<input type="hidden" name="fId" value="<%= user.getUserId() %>"><br/>

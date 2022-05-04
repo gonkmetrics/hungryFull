@@ -68,7 +68,9 @@ public class userController extends HttpServlet {
 			sv.execute(request,response);
 			ui = "/userLogin.do";
 		} 
-
+		
+		
+System.out.println(ui);
 		RequestDispatcher dp = request.getRequestDispatcher(ui);
 		dp.forward(request, response);
 	}

@@ -30,17 +30,17 @@ public class userLoginService implements UserService {
 		session.getAttribute("s_id");
 		session.getAttribute("s_pw");
 		
+		String url = null;
 		if(userId != null){
 			if(formPw.equals(userPw)){
 				session.setAttribute("s_id", userId);	
-				response.sendRedirect("LoginComplete.jsp");
+				url = "LoginComplete.jsp";
 			} else {
-				response.sendRedirect("PwFail.jsp");
+				url = "PwFail.jsp";
 			}
 		} else {
-			response.sendRedirect("IdFail.jsp");
-		}
-		
-		
-	}
+			url = "IdFail.jsp";
+		} response.sendRedirect("LoginComplete.jsp");
+		request.setAttribute("userId",userId);
+	} 
 }

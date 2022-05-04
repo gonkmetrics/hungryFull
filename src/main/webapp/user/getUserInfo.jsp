@@ -7,12 +7,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-	String struserNum = request.getParameter("userNum");
-	int userNum = Integer.parseInt(struserNum);
+	String userId = request.getParameter("userId");
+
 
 	UserDAO dao = UserDAO.getInstance();
 
-	UserVO user = dao.getUserInfo(userNum);
+	UserVO user = dao.getUserInfo(userId);
 %>
     
 <!DOCTYPE html>
