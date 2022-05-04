@@ -138,6 +138,13 @@ public class BoardController extends HttpServlet {
 			IRsv.execute(request, response);
 			
 			ui = "/com/comUpdateForm.jsp";
+		
+		} else if(uri.equals("/HFprj/comUpdate.do")) {
+			
+			IRsv = new ComUpdateService();
+			
+			IRsv.execute(request, response);
+			
 		}
 		
 		RequestDispatcher dp = request.getRequestDispatcher(ui);
