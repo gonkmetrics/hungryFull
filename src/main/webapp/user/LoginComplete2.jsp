@@ -16,9 +16,9 @@
 <title>잘 들어가나 안 들어가나 확인용 </title>
 </head>
 <body>
-
-	<a href="userLogout.do">로그아웃</a>
+	<h1><%= sId %>님 환영합니다!!</h1>
+	<a href="Logout.jsp">로그아웃</a>
 	<a href="Delete.jsp">회원탈퇴</a>
-	<a href="userUpdateForm.do">정보수정</a>
+	<a href="UpdateForm.jsp">정보수정</a>
 </body>
 </html>

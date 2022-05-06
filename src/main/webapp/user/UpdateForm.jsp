@@ -6,14 +6,7 @@
 <%@page import="java.sql.ResultSet"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%
 
-String userId = request.getParameter("userId");
-
-	
-	UserDAO dao = UserDAO.getInstance();
-	UserVO user = dao.getUserInfo(userId);
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,16 +15,17 @@ String userId = request.getParameter("userId");
 </head>
 <body>
 
-	<h1><%= userId %> 님의 정보를 수정합니다.</h1>
-	<form action="UpdateCheck.jsp" method="post">
+	
+	<form action="/HFprj/userUpdate.do" method="post">
 		<input type ="hidden" name="userNum">
-		<input type="hidden" name="fId" value="<%= user.getUserId() %>"><br/>
+		아이디 : <input type="text" name="fId" value = "${user.userId }"readonly /><br/>
 		비밀번호 : <input type="password" name="fPw"/><br/>
-		이름 : <input type="text" name="fName" value="<%= user.getUserName()%>"/><br/>
-		이메일 : <input type="text" name="fEmail" value="<%=user.getUserEmail()%>"/><br/>
-		나이 : <input type="text" name="fuage" value="<%=user.getUage()%>"/>
+		이름 : <input type="text" name="fName" value="${user.userName }"/><br/>
+		이메일 : <input type="text" name="fEmail" value="${user.userEmail}"/><br/>
+		나이 : <input type="text" name="fuage" value="${user.uage}"/>
 		<input type ="hidden" name="isAdmin"><br/>
 		<input type="submit" value="수정하기">
+		
 	</form>
 	
 </body>

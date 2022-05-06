@@ -13,7 +13,6 @@ import kr.co.hf.domain.UserVO;
 public class userLoginService implements UserService {
 	
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		UserDAO dao = UserDAO.getInstance(); 
 
 		String formId = request.getParameter("formId");
 		String formPw = request.getParameter("formPw");
@@ -21,26 +20,36 @@ public class userLoginService implements UserService {
 		String userId = null;
 		String userPw = null;
 		
+		UserDAO dao = UserDAO.getInstance();
 		UserVO user = dao.getUserInfo(formId);
 
 		userId = user.getUserId();
 		userPw = user.getUserPw();
 		
 		HttpSession session = request.getSession();
-		session.getAttribute("s_id");
-		session.getAttribute("s_pw");
-		
 		String url = null;
-		if(userId != null){
-			if(formPw.equals(userPw)){
-				session.setAttribute("s_id", userId);	
-				url = "LoginComplete.jsp";
-			} else {
-				url = "PwFail.jsp";
-			}
+		if(userId != null) {
+			if(formPw.equals(userPw)) {
+			request.setAttribute("s_id", userId);
+			session.setAttribute("s_id", userId);
+			url = "/user/LoginComplete.jsp";
 		} else {
-			url = "IdFail.jsp";
-		} response.sendRedirect("LoginComplete.jsp");
-		request.setAttribute("userId",userId);
+			url = "/user/PwFail.jsp";
+		} } else {
+			url = "/user/IdFail.jsp";
+		} 
+		
+		UserVO user2 = dao.getUserInfo(formId);
+		
+		if(user2.getIsAdmin() == 0) {
+			request.setAttribute("s_admin", 0);
+			session.setAttribute("s_admin", 0);
+		}else if(user2.getIsAdmin() == 1) {
+			request.setAttribute("s_admin", 1);
+			session.setAttribute("s_admin", 1);
+		}
+		request.setAttribute("url", url);
+		}
+		
 	} 
-}
+

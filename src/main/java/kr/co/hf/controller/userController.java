@@ -14,6 +14,10 @@ import kr.co.hf.service.UserService;
 import kr.co.hf.service.userInfoService;
 import kr.co.hf.service.userJoinFormService;
 import kr.co.hf.service.userLoginService;
+import kr.co.hf.service.userLogoutService;
+import kr.co.hf.service.userUpdateFormService;
+import kr.co.hf.service.userUpdateService;
+
 
 /**
  * Servlet implementation class userController
@@ -60,16 +64,25 @@ public class userController extends HttpServlet {
 		else if(uri.equals("/HFprj/userLoginCheck.do")) {
 			sv = new userLoginService();
 			sv.execute(request,response);
-			ui = "/user/LoginComplete.jsp";
+			ui = (String)request.getAttribute("url");
 		} else if (uri.equals("/HFprj/userJoinForm.do")) {
 			ui = "/user/JoinFormlight.jsp";
 		} else if(uri.equals("/HFprj/userJoinCheck.do")) {
 			sv = new userJoinFormService();
 			sv.execute(request,response);
 			ui = "/userLogin.do";
-		} 
-		
-		
+		} else if(uri.equals("/HFprj/userLogout.do")) {
+			sv = new userLogoutService();
+			sv.execute(request,response);
+			ui = "/userLogin.do";
+		} else if(uri.equals("/HFprj/userUpdateForm.do")) {
+			sv = new userUpdateFormService();
+			sv.execute(request,response);
+			ui = "/user/UpdateForm.jsp";
+		} else if(uri.equals("/HFprj/userUpdate.do")) {
+			sv = new userUpdateService();
+			sv.execute(request,response);
+		}
 System.out.println(ui);
 		RequestDispatcher dp = request.getRequestDispatcher(ui);
 		dp.forward(request, response);
