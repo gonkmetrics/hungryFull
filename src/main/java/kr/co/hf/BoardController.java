@@ -170,6 +170,14 @@ public class BoardController extends HttpServlet {
 			
 			ui = "/recipeDetail.do?postID=" + request.getParameter("postID");
 			
+		} else if(uri.equals("/HFprj/tamplateSample.do")){
+			
+			sv = new BoardListService();
+			
+			sv.execute(request, response);
+
+			ui = "/tamplateSample.jsp";
+			
 		}
 		
 		RequestDispatcher dp = request.getRequestDispatcher(ui);
