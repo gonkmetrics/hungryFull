@@ -12,6 +12,8 @@ public class BoardVO {
     private String postContent;
     private int viewCount;
     private int postType;
+    
+    
 	public int getPostID() {
 		return postID;
 	}

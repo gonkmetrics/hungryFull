@@ -6,7 +6,6 @@
 <html>
 
 <style>
-
     body{
     font:15px/1.5 "굴림",Gulim;
     margin:10px;
@@ -23,7 +22,14 @@
 <br/>
 postID : ${board.postID}
 <br/>
-타입 : ${board.postType}
+타입 :
+<c:choose>
+	  <c:when test="${board.postType == 1}"><span class="badge bg-secondary">다이어트</span></c:when>
+	  <c:when test="${board.postType == 2}"><span class="badge bg-secondary">간편식</span></c:when>
+	  <c:when test="${board.postType == 3}"><span class="badge bg-secondary">이유식</span></c:when>
+	  <c:when test="${board.postType == 4}"><span class="badge bg-secondary">건강식</span></c:when>
+      <c:when test="${board.postType == 5}"><span class="badge bg-secondary">특별식</span></c:when>
+</c:choose>
 <br/>
 내용 : ${board.postContent}
 <br/>
@@ -35,10 +41,9 @@ postAuthor : ${board.postAuthor}
 <br/>
 최근 수정 : ${board.postLastModified}
 <br/>
+<hr>
 <div class="mb-12">
-		<br/>
-		<label for="type" class="form-label">타입</label>
-		<input type="text" name="postType" class="form-control" id="title" value="${board.postType}">
+		
 		<br/>
 		<label for="textarea1" class="form-label"> 본 문 </label>
 		<textarea class="form-control" name="postContent" id="textarea1" cols="40" rows="20" readonly>${board.postContent}</textarea>
