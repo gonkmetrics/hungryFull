@@ -12,10 +12,8 @@ public class BoardVO {
     private String postContent;
     private int viewCount;
     private int postType;
-<<<<<<< HEAD
     private String imageLink;
-=======
->>>>>>> 8797acae538acdda8e7c2c742f0d208665f78c04
+
     
     
 	public int getPostID() {
