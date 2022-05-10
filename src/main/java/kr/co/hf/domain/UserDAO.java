@@ -90,7 +90,7 @@ public class UserDAO {
 	
 			con = ds.getConnection();
 
-			String sql = "SELECT * FROM user WHERE userId = ?";
+			String sql = "SELECT * FROM user WHERE userID = ?";
 			
 			pstmt = con.prepareStatement(sql);
 
@@ -174,6 +174,46 @@ public class UserDAO {
 			} 
 		}
 	}// userJoinCheck
+	
+	public UserVO Update(String userId) {
+
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		UserVO user = new UserVO();
+		try {
+			con = ds.getConnection();
+
+			String sql = "SELECT * FROM user WHERE userID = ?";
+			
+			pstmt = con.prepareStatement(sql);
+
+			pstmt.setString(1, userId);
+			rs = pstmt.executeQuery();
+	
+			if(rs.next()) {
+				user.setUserNum(rs.getInt(1));
+				user.setUserId(rs.getString(2));
+				user.setUserPw(rs.getString(3));
+				user.setUserName(rs.getString(4));
+				user.setUserEmail(rs.getString(5));
+				user.setUage(rs.getInt(6));
+				user.setIsAdmin(rs.getInt(7));
+			} System.out.println("데이터 입력 후 : " + user);
+
+		} catch(Exception e){
+			e.printStackTrace();
+		} finally {
+			try {
+				con.close();
+				rs.close();
+				pstmt.close();
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return user;
+	}
 	
 	public void UpdateCheck(String userPw, String userName, 
 			String userEmail, int uage, String userId) {

@@ -14,15 +14,13 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-	
 	<form action="/HFprj/userUpdate.do" method="post">
 		<input type ="hidden" name="userNum">
-		아이디 : <input type="text" name="fId" value = "${user.userId }"readonly /><br/>
-		비밀번호 : <input type="password" name="fPw"/><br/>
-		이름 : <input type="text" name="fName" value="${user.userName }"/><br/>
-		이메일 : <input type="text" name="fEmail" value="${user.userEmail}"/><br/>
-		나이 : <input type="text" name="fuage" value="${user.uage}"/>
+		아이디 : <input type="text" name="user_id" value ="${user.userId }"readonly /><br/>
+		비밀번호 : <input type="password" name="user_pw"/><br/>
+		이름 : <input type="text" name="user_name" value="${user.userName }" readonly/><br/>
+		이메일 : <input type="text" name="user_email" value="${user.userEmail }"/><br/>
+		나이 : <input type="text" name="u_age" value="${user.uage }"/>
 		<input type ="hidden" name="isAdmin"><br/>
 		<input type="submit" value="수정하기">
 		

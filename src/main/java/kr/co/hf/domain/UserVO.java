@@ -55,4 +55,10 @@ public class UserVO {
 	public void setIsAdmin(int isAdmin) {
 		this.isAdmin = isAdmin;
 	}
+	@Override
+	public String toString() {
+		return "UserVO [userNum=" + userNum + ", userId=" + userId + ", userPw=" + userPw + ", userName=" + userName
+				+ ", userEmail=" + userEmail + ", uage=" + uage + ", isAdmin=" + isAdmin + "]";
+	}
+	
 }
