@@ -57,6 +57,11 @@ postAuthor : ${board.postAuthor}
 			<input type="submit" class="btn btn-primary btn-mb-3" value="수정하기">
 		</form>
 	</div>
+	<div>
+			<form action= "/HFprj/tamplateSample.do" method="post">
+			<input type="submit" class="btn btn-primary btn-mb-3" value="홈으로">
+		</form>
+	</div>
 </div>
 
 
