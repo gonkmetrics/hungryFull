@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,9 +19,22 @@
 		  				<label for="title" class="form-label">제목</label>
 		  				<input type="text" name="postTitle" class="form-control" id="title" value="${board.postTitle}">
 		  				<br/>
+					     <div class="dropdown">
+							<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+							  카테고리
+							</button>
+							<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+							  <li><a class="dropdown-item" href="#" >다이어트</a></li>
+							  <li><a class="dropdown-item" href="#">간편식</a></li>
+							  <li><a class="dropdown-item" href="#">이유식</a></li>
+							  <li><a class="dropdown-item" href="#">건강식</a></li>
+							  <li><a class="dropdown-item" href="#">특별식</a></li>
+							</ul>
+						 </div>
 		  				<label for="type" class="form-label">타입</label>
 		  				<input type="text" name="postType" class="form-control" id="title" value="${board.postType}">
 		  				<br/>
+					  </div>
 					</div>
 					<div class="col-sm-3">
 		  				<label for="author" class="form-label">글쓴이</label>
