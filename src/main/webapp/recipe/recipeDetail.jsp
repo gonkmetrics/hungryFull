@@ -64,7 +64,6 @@ postAuthor : ${board.postAuthor}
 	</div>
 </div>
 
-
  <table class="table table-bordered table-hover table-dark">
          <thead>
              <tr>
