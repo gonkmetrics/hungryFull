@@ -153,28 +153,19 @@
                 <div class="col-6">
                     <hr>
                     <br>
-                    <nav aria-label="Page navigation example">
-                        <ul class="pagination justify-content-center">
-                          <li class="page-item">
-                            <a class="page-link" href="#" aria-label="Previous">
-                              <span aria-hidden="true">&laquo;</span>
-                            </a>
-                          </li>
-                          <form>
-
-                          </form>
-                          <li class="page-item"><a class="page-link" href="#">1</a></li>
-                          <li class="page-item"><a class="page-link" href="#">2</a></li>
-                          <li class="page-item"><a class="page-link" href="#">3</a></li>
-                          <li class="page-item"><a class="page-link" href="#">4</a></li>
-                          <li class="page-item"><a class="page-link" href="#">5</a></li>
-                          <li class="page-item">
-                            <a class="page-link" href="#" aria-label="Next">
-                              <span aria-hidden="true">&raquo;</span>
-                            </a>
-                          </li>
-                        </ul>
-                      </nav>
+					<nav aria-label="Page navigation example">
+					  <ul class="pagination justify-content-center">
+					  	<c:if test="${buttons.startPage ne 1}">
+							<li class="page-item"><a class="page-link" href="/HFprj/tamplateSample.do?pageNum=${buttons.startPage - 1}">&laquo;</a></li>
+						</c:if>
+						<c:forEach var="pageNum" begin="${buttons.startPage }" end="${buttons.endPage }">
+							<li class="page-item ${buttons.currentPage eq pageNum ? 'active' : ''}"><a class="page-link" href="/HFprj/tamplateSample.do?pageNum=${pageNum}">${pageNum}</a></li>
+						</c:forEach>
+						<c:if test="${buttons.endPage ne buttons.totalPages}">
+					    	<li class="page-item"><a class="page-link" href="/HFprj/tamplateSample.do?pageNum=${buttons.endPage + 1}">&raquo;</a></li>
+					    </c:if>
+					  </ul>
+					</nav>
                 </div>
             </div>
         </div>

@@ -50,9 +50,12 @@ public class BoardDAO {
 			
 			
 			con = ds.getConnection();
+			
+			int num = (pageNum - 1) * 10;
+			
 			String sql = "SELECT * FROM board ORDER BY postTime DESC limit ?, 10;";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, pageNum);
+			pstmt.setInt(1, num);
 			
 			
 			rs = pstmt.executeQuery();
@@ -268,6 +271,39 @@ public class BoardDAO {
 		}
 	} // updateViewCnt END;
 	
+	public int getBoardCount() {
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;//ResultSet은 실행쿼리문이 SELECT 구문인 경우 결과값을 받기 위해 필요합니다.
+		int boardCount = 0;
+		
+		try {
+			con = ds.getConnection();
+			String sql = "SELECT COUNT(*) FROM board";
+			
+			pstmt = con.prepareStatement(sql);
+
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				boardCount = rs.getInt(1);
+			}else {
+				System.out.println("계정이 없습니다.");
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				con.close();
+				pstmt.close();
+				rs.close();
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return boardCount;
+	}
 	
 	
 } // BoardDAO END;
