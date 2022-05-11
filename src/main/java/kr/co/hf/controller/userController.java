@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import kr.co.hf.domain.UserDAO;
 import kr.co.hf.service.UserService;
+import kr.co.hf.service.userDeleteService;
 import kr.co.hf.service.userInfoService;
 import kr.co.hf.service.userJoinFormService;
 import kr.co.hf.service.userLoginService;
@@ -57,33 +58,40 @@ public class userController extends HttpServlet {
 		String ui = null;
 		UserDAO dao = UserDAO.getInstance();
 		UserService sv = null;
+        uri = uri.substring(uri.lastIndexOf("/")+1);
+        uri = uri.substring(0, uri.indexOf("."));
 		
-		if (uri.equals("/HFprj/userLogin.do")) {
+		if (uri.equals("userLogin")) {
 			ui = "user/LoginForm.jsp";
 		}		
-		else if(uri.equals("/HFprj/userLoginCheck.do")) {
+		else if(uri.equals("userLoginCheck")) {
 			sv = new userLoginService();
 			sv.execute(request,response);
 			ui = (String)request.getAttribute("url");
-		} else if (uri.equals("/HFprj/userJoinForm.do")) {
+		} else if (uri.equals("userJoinForm")) {
 			ui = "/user/JoinFormlight.jsp";
-		} else if(uri.equals("/HFprj/userJoinCheck.do")) {
+		} else if(uri.equals("userJoinCheck")) {
 			sv = new userJoinFormService();
 			sv.execute(request,response);
 			ui = "/userLogin.do";
-		} else if(uri.equals("/HFprj/userLogout.do")) {
+		} else if(uri.equals("userLogout")) {
 			sv = new userLogoutService();
 			sv.execute(request,response);
 			ui = "/userLogin.do";
-		} else if(uri.equals("/HFprj/userUpdateForm.do")) {
+		} else if(uri.equals("userUpdateForm")) {
 			sv = new userUpdateFormService();
 			sv.execute(request,response);
 			ui = "/user/UpdateForm.jsp";
-		} else if(uri.equals("/HFprj/userUpdate.do")) {
+		} else if(uri.equals("userUpdate")) {
 			sv = new userUpdateService();
 			sv.execute(request,response);
+			ui = "/user/LoginComplete.jsp";
+		} else if(uri.equals("userDelete")) {
+			sv = new userDeleteService();
+			sv.execute(request,response);
+			ui = "user/LoginForm.jsp";
 		}
-System.out.println(ui);
+		System.out.println(ui);
 		RequestDispatcher dp = request.getRequestDispatcher(ui);
 		dp.forward(request, response);
 	}

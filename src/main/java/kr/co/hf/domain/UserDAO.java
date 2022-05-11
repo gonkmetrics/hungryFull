@@ -87,11 +87,8 @@ public class UserDAO {
 		
 		UserVO user = new UserVO();
 		try {
-	
 			con = ds.getConnection();
-
 			String sql = "SELECT * FROM user WHERE userID = ?";
-			
 			pstmt = con.prepareStatement(sql);
 
 			pstmt.setString(1, userId);
@@ -121,16 +118,16 @@ public class UserDAO {
 		return user;
 	}
 	
-	public void Delete(int userNum){
+	public void Delete(String userId){
 
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		try {
 			con = ds.getConnection();
-			String sql = "DELETE FROM user WHERE userNum = ?";
+			String sql = "DELETE FROM user WHERE userID = ?";
 			pstmt = con.prepareStatement(sql);
 			
-			pstmt.setInt(1, userNum);
+			pstmt.setString(1, userId);
 		
 			pstmt.executeUpdate();
 		}catch(Exception e) {
@@ -175,17 +172,15 @@ public class UserDAO {
 		}
 	}// userJoinCheck
 	
-	public UserVO Update(String userId) {
+	public UserVO Update (String userId) {
 
 		Connection con = null;
-		PreparedStatement pstmt = null;
 		ResultSet rs = null;
+		PreparedStatement pstmt = null;
 		UserVO user = new UserVO();
 		try {
 			con = ds.getConnection();
-
 			String sql = "SELECT * FROM user WHERE userID = ?";
-			
 			pstmt = con.prepareStatement(sql);
 
 			pstmt.setString(1, userId);
@@ -199,7 +194,7 @@ public class UserDAO {
 				user.setUserEmail(rs.getString(5));
 				user.setUage(rs.getInt(6));
 				user.setIsAdmin(rs.getInt(7));
-			} System.out.println("데이터 입력 후 : " + user);
+			}
 
 		} catch(Exception e){
 			e.printStackTrace();
@@ -215,8 +210,8 @@ public class UserDAO {
 		return user;
 	}
 	
-	public void UpdateCheck(String userPw, String userName, 
-			String userEmail, int uage, String userId) {
+	public void UpdateCheck(String userId, String userPw, String userName, 
+			String userEmail, int uage) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		try {

@@ -9,10 +9,11 @@
 <%
 	String userId = request.getParameter("userId");
 
-
 	UserDAO dao = UserDAO.getInstance();
 
 	UserVO user = dao.getUserInfo(userId);
+	System.out.println("유저 정보 확인 : " + user);
+	out.println(user + "<br/>");
 %>
     
 <!DOCTYPE html>

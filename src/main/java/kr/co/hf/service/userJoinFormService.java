@@ -28,9 +28,9 @@ public class userJoinFormService implements UserService {
 		String strisAdmin = request.getParameter("isAdmin");
 
 		int isAdmin = 0;
-		if(struserNum.equals("")) {
+		if(strisAdmin.equals("")) {
 		} else {
-			 userNum = Integer.parseInt(strisAdmin);
+			 isAdmin = Integer.parseInt(strisAdmin);
 		}
 		dao.JoinCheck(userNum, userId, userPw, userName, userEmail, uage, isAdmin);
 }

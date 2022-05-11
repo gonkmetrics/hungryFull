@@ -15,16 +15,33 @@ public class userUpdateService implements UserService {
 		request.setCharacterEncoding("utf-8");
 		UserDAO dao = UserDAO.getInstance();
 		
-		String userId = request.getParameter("fId");
-		String userPw = request.getParameter("fPw");
-		String userName = request.getParameter("fName");
-		String userEmail = request.getParameter("fEmail");
-		String struage = request.getParameter("fuage");
-		int uage = Integer.parseInt(struage);
+		String struserNum = request.getParameter("userNum");
+		int userNum = 0;
+		if(struserNum.equals("")) {
+		} else {
+			 userNum = Integer.parseInt(struserNum);
+		}
 		
+		String userId = request.getParameter("s_id");
+		String userPw = request.getParameter("user_pw");
+		String userName = request.getParameter("user_name");
+		String userEmail = request.getParameter("user_email");
 		
-		// 가입로직을 실행해주세요.
-		dao.UpdateCheck(userPw, userName, userEmail, uage, userId);
+		String struage = request.getParameter("user_age");
+		int uage = 0;
+		if(struage.equals("")) {
+		} else {
+			 uage = Integer.parseInt(struage);
+		}
+		String strisAdmin = request.getParameter("isAdmin");
+
+		int isAdmin = 0;
+		if(strisAdmin.equals("")) {
+		} else {
+			 isAdmin = Integer.parseInt(strisAdmin);
+		}
+
+		dao.UpdateCheck(userId, userPw, userName, userEmail, uage);
 		
 	}
 

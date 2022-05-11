@@ -27,6 +27,7 @@ public class userLoginService implements UserService {
 		userPw = user.getUserPw();
 		
 		HttpSession session = request.getSession();
+		System.out.println();
 		String url = null;
 		if(userId != null) {
 			if(formPw.equals(userPw)) {
@@ -39,16 +40,16 @@ public class userLoginService implements UserService {
 			url = "/user/IdFail.jsp";
 		} 
 		
-		UserVO user2 = dao.getUserInfo(formId);
+		/* UserVO user2 = dao.getUserInfo(formId);
 		
-		if(user2.getIsAdmin() == 0) {
+		 if(user2.getIsAdmin() == 0) {
 			request.setAttribute("s_admin", 0);
 			session.setAttribute("s_admin", 0);
 		}else if(user2.getIsAdmin() == 1) {
 			request.setAttribute("s_admin", 1);
 			session.setAttribute("s_admin", 1);
-		}
-		request.setAttribute("url", url);
+		} */
+		request.setAttribute("url", url); 
 		}
 		
 	} 
