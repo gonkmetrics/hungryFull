@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import kr.co.hf.domain.UserDAO;
+import kr.co.hf.service.AllUserService;
 import kr.co.hf.service.UserService;
 import kr.co.hf.service.userDeleteService;
 import kr.co.hf.service.userInfoService;
@@ -90,6 +91,10 @@ public class userController extends HttpServlet {
 			sv = new userDeleteService();
 			sv.execute(request,response);
 			ui = "user/LoginForm.jsp";
+		} else if(uri.equals("AllUser")) {
+			sv = new AllUserService();
+			sv.execute(request,response);
+			ui = "user/getAllUserInfo.jsp";
 		}
 		System.out.println(ui);
 		RequestDispatcher dp = request.getRequestDispatcher(ui);

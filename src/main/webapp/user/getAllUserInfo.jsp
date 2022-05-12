@@ -7,11 +7,12 @@
 <%@page import="java.sql.Connection"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%
-
-	UserDAO dao = UserDAO.getInstance();
-	List<UserVO> userList = dao.getAllUserList();
-%>   
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<c:if test="${sessionScope.s_id eq null}">
+<c:if test="${sessionScope.s_isAdmin eq 1 }">
+<c:redirect url="/userLogin.do"/>
+</c:if>
+</c:if>
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,16 +32,16 @@
 			</tr>
 		</thead>
 		<tbody>
-			<% for(UserVO user : userList){ %>
-				<tr>
-					<td><%= user.getUserNum() %></td>
-					<td><%= user.getUserId() %></td>
-					<td><%= user.getUserPw() %></td>
-					<td><%= user.getUserName() %></td>
-					<td><%= user.getUserEmail() %></td>
-					<td><%= user.getUage() %></td>
-				</tr>		
-			<% } %>
+		<c:forEach var="userList" items="${userList}">
+			<tr>
+						<td>${userList.userNum}</td>
+						<td>${userList.userId}</td>
+						<td>${userList.userPw}</td>
+						<td>${userList.userName}</td>
+						<td>${userList.userEmail}</td>
+						<td>${userList.uage}</td>
+					</tr>
+					</c:forEach>
 		</tbody>
 	</table>
 </body>

@@ -40,15 +40,13 @@ public class userLoginService implements UserService {
 			url = "/user/IdFail.jsp";
 		} 
 		
-		/* UserVO user2 = dao.getUserInfo(formId);
-		
-		 if(user2.getIsAdmin() == 0) {
-			request.setAttribute("s_admin", 0);
-			session.setAttribute("s_admin", 0);
-		}else if(user2.getIsAdmin() == 1) {
-			request.setAttribute("s_admin", 1);
-			session.setAttribute("s_admin", 1);
-		} */
+		 if(user.getIsAdmin() == 0) {
+			request.setAttribute("s_isAdmin", 0);
+			session.setAttribute("s_isAdmin", 0);
+		}else if(user.getIsAdmin() == 1) {
+			request.setAttribute("s_isAdmin", 1);
+			session.setAttribute("s_isAdmin", 1);
+		} 
 		request.setAttribute("url", url); 
 		}
 		
