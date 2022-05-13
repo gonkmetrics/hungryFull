@@ -11,6 +11,8 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+//rankDAO, VO to be deleted
+
 public class RankDAO {
 	
 	
@@ -27,8 +29,6 @@ public class RankDAO {
 			e.printStackTrace();
 		}
 	}
-	
-
 	
 	public static RankDAO getInstance() {
 		
@@ -118,7 +118,6 @@ public class RankDAO {
 			pstmt.setInt(1, postID);
 			pstmt.setInt(1, postID);
 			pstmt.setInt(1, postID);
-			rs = pstmt.executeQuery();
 			
 		} catch(Exception e) {
 			e.printStackTrace();
