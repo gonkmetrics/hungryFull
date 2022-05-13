@@ -151,20 +151,21 @@ public class BoardDAO {
 	
 	
 	
-	public void boardInsert(int postAuthor, String postTitle, String postContent, int postType) {
+	public void boardInsert(int postAuthor, String postTitle, String postContent, int postType , String imageLink) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		
 		try {
 			con = ds.getConnection();
 			
-			String sql = "INSERT INTO board (postAuthor, postTitle, postContent, postType) VALUES (?, ?, ?, ?)";
+			String sql = "INSERT INTO board (postAuthor, postTitle, postContent, postType, imageLink) VALUES (?, ?, ?, ?, ?)";
 			
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, postAuthor);
 			pstmt.setString(2, postTitle);
 			pstmt.setString(3, postContent);
 			pstmt.setInt(4, postType);
+			pstmt.setString(5, imageLink);
 			
 		
 			pstmt.executeUpdate();
@@ -212,20 +213,21 @@ public class BoardDAO {
 	} //boardDelete END.
 	
 	
-	public void boardUpdate(String postTitle, String postContent, int postType, int postID) {
+	public void boardUpdate(String postTitle, String postContent, int postType, int postID, String imageLink) {
 		
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		
 		try {
 			con = ds.getConnection();
-			String sql = "UPDATE board SET postTitle = ?, postContent = ?, postType = ?,  postLastModified = now() WHERE postID = ?";
+			String sql = "UPDATE board SET postTitle = ?, postContent = ?, postType = ?, imageLink = ?, postLastModified = now() WHERE postID = ?";
 			pstmt = con.prepareStatement(sql);
 			
 			pstmt.setString(1, postTitle);
 			pstmt.setString(2, postContent);
 			pstmt.setInt(3, postType);
-			pstmt.setInt(4, postID);
+			pstmt.setString(4, imageLink);
+			pstmt.setInt(5, postID);
 			
 			pstmt.executeUpdate();
 			

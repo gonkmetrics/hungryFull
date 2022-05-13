@@ -39,7 +39,7 @@ public class BoardInsert extends HttpServlet {
 		
 		
 		BoardDAO dao = BoardDAO.getInstance();
-		dao.boardInsert(Integer.parseInt(postAuthor), postTitle, postContent, Integer.parseInt(postType));
+		dao.boardInsert(Integer.parseInt(postAuthor), postTitle, postContent, Integer.parseInt(postType), imageLink);
 		response.sendRedirect("#");
 	}
 
