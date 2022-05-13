@@ -31,6 +31,47 @@
 							  <li><a class="dropdown-item" href="#">특별식</a></li>
 							</ul>
 						 </div>
+						 <div class="dropdown">
+							  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+							    Dropdown button
+							  </button>
+							  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+							    <li><a class="dropdown-item" href="#">Action</a></li>
+							    <li><a class="dropdown-item" href="#">Another action</a></li>
+							    <li><a class="dropdown-item" href="#">Something else here</a></li>
+							  </ul>
+						</div>
+						  <div class="btn-group" role="group">
+    <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+      Dropdown
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+      <li><a class="dropdown-item" href="#">Dropdown link</a></li>
+      <li><a class="dropdown-item" href="#">Dropdown link</a></li>
+    </ul>
+  </div>
+  <div class="cont_line"><p class="cont_tit4">카테고리</p>
+        <select name="cok_sq_category_4" id="cok_sq_category_4" text="종류별">
+			<option value="">종류별</option><option value="63">밑반찬</option>
+			<option value="56">메인반찬</option>
+			<option value="54">국/탕</option>
+			<option value="55">찌개</option>
+			<option value="60">디저트</option>
+			<option value="53">면/만두</option>
+			<option value="52">밥/죽/떡</option>
+			<option value="61">퓨전</option>
+			<option value="57">김치/젓갈/장류</option>
+			<option value="58">양념/소스/잼</option>
+			<option value="65">양식</option>
+			<option value="64">샐러드</option>
+			<option value="68">스프</option>
+			<option value="66">빵</option>
+			<option value="69">과자</option>
+			<option value="59">차/음료/술</option>
+			<option value="62">기타</option>
+		</select>
+		<span class="guide" style="margin:-22px 0 0 146px;">분류를 바르게 설정해주시면, 이용자들이 쉽게 레시피를 검색할 수 있어요.</span>
+      </div>
 		  				<label for="type" class="form-label">타입</label>
 		  				<input type="text" name="postType" class="form-control" id="title" value="${board.postType}">
 		  				<br/>
