@@ -78,7 +78,11 @@
 <body>
 <div class="container">
 		<div class="grid">
+<<<<<<< HEAD
+			<form action="/HFprj/boardUpdate.do" method="post">
+=======
 			<form action="/HFprj/boardUpdate.do" method="post">	
+>>>>>>> eb995ec4bed56a43b2fdb08984a030fcbc3da5c2
 			<br>	
 					<div class="header">
 					    <label for="postTitle" class="form-label" style="margin : 10px; ">레시피 제목</label>
@@ -107,9 +111,13 @@
 						 
 						 function 
 						 </script>
+<<<<<<< HEAD
+		  				  <input type="hidden" name="postType" id="buttonType" value="${board.postType}" style="margin : 10px;">
+=======
 						 <form>
 		  				  <input type="hidden" name="postType" id="buttonType" value="${board.postType}" style="margin : 10px;">
 		  				 </form>
+>>>>>>> eb995ec4bed56a43b2fdb08984a030fcbc3da5c2
 		  				<br/>
 					  </div>
 					</div><!-- grid끝 -->
@@ -120,17 +128,29 @@
 					</div>
 				<div class="wrtier">
 				 	<label for="textarea" class="form-label" style="margin : 10px;"> 요리 소개 </label>
+<<<<<<< HEAD
+					<textarea class="form-control" name="postContent" id="textarea1">${board.postContent}</textarea>
+=======
 					<textarea class="form-control" name="postContent" id="textarea1" rows="30">${board.postContent}</textarea>
+>>>>>>> eb995ec4bed56a43b2fdb08984a030fcbc3da5c2
 					<br/>
+				  사진 업로드 <input type="textarea"  value="${board.imageLink}" name="imageLink">
 				</div>
+<<<<<<< HEAD
+=======
 				<div class="box">
 				  <input type="textarea" style="height:100px;">
 				</div>
+>>>>>>> eb995ec4bed56a43b2fdb08984a030fcbc3da5c2
 				<div class="update">
 				 <input type="hidden" name="postID" value="${board.postID}">
 				 <input type="submit" value="수정완료" class="btn btn-primary btn-dark">
 			    </div>
+<<<<<<< HEAD
+			</form>	
+=======
 			</form>
+>>>>>>> eb995ec4bed56a43b2fdb08984a030fcbc3da5c2
 		</div>
 	</div> <!-- container END -->
 </body>

@@ -14,7 +14,6 @@ public class BoardVO {
     private int postType;
     private String imageLink;
 
-
     
 	public int getPostID() {
 		return postID;
