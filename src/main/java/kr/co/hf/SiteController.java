@@ -199,12 +199,13 @@ protected void doRequest(HttpServletRequest request, HttpServletResponse respons
 			ui = "/tamplateSample.jsp";
 			
 		} else if (uri.equals("userLogin")) {
-			ui = "user/LoginForm.jsp";
+			ui = "/user/LoginForm.jsp";
 		}		
 		else if(uri.equals("userLoginCheck")) {
 			usv = new userLoginService();
 			usv.execute(request,response);
 			ui = (String)request.getAttribute("url");
+			System.out.println(ui);
 		} else if (uri.equals("userJoinForm")) {
 			ui = "/user/JoinFormlight.jsp";
 		} else if(uri.equals("userJoinCheck")) {
@@ -226,11 +227,11 @@ protected void doRequest(HttpServletRequest request, HttpServletResponse respons
 		} else if(uri.equals("userDelete")) {
 			usv = new userDeleteService();
 			usv.execute(request,response);
-			ui = "user/LoginForm.jsp";
+			ui = "/user/LoginForm.jsp";
 		} else if(uri.equals("AllUser")) {
 			usv = new AllUserService();
 			usv.execute(request,response);
-			ui = "user/getAllUserInfo.jsp";
+			ui = "/user/getAllUserInfo.jsp";
 		}
 		
 		RequestDispatcher dp = request.getRequestDispatcher(ui);

@@ -144,7 +144,17 @@
                 </div>
             </div>
         </div>
-    
+        <a href="/HFprj/userLogin.do">로그인하기</a></br>
+
+    	<a href="userLogout.do">로그아웃</a></br>
+		<a href="userDelete.do">회원탈퇴</a></br>
+		</br>
+		<form action = "userUpdateForm.do" method = "post">
+			<input type="text" name="s_id" value="${s_id}"/>
+			<input type ="submit" value = "정보수정" />
+		</form>
+		</br>
+		<a href="AllUser.do">회원목록</a>
         <br>
         <br>
     
