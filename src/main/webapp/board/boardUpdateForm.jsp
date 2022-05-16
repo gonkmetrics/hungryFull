@@ -78,7 +78,7 @@
 <body>
 <div class="container">
 		<div class="grid">
-			<form action="/HFprj/boardUpdate.do" method="post">	
+			<form action="/HFprj/boardUpdate.do" method="post">
 			<br>	
 					<div class="header">
 					    <label for="postTitle" class="form-label" style="margin : 10px; ">레시피 제목</label>
@@ -104,12 +104,9 @@
 						 function setValue3() { document.getElementById('buttonType').value = "3"; }
 						 function setValue4() { document.getElementById('buttonType').value = "4"; }
 						 function setValue5() { document.getElementById('buttonType').value = "5"; }
-						 
-						 function 
 						 </script>
-						 <form>
 		  				  <input type="hidden" name="postType" id="buttonType" value="${board.postType}" style="margin : 10px;">
-		  				 </form>
+		  				  <input type="hidden" name="postType" id="buttonType" value="${board.postType}" style="margin : 10px;">
 		  				<br/>
 					  </div>
 					</div><!-- grid끝 -->
@@ -120,11 +117,9 @@
 					</div>
 				<div class="wrtier">
 				 	<label for="textarea" class="form-label" style="margin : 10px;"> 요리 소개 </label>
-					<textarea class="form-control" name="postContent" id="textarea1" rows="30">${board.postContent}</textarea>
+					<textarea class="form-control" name="postContent" id="textarea1">${board.postContent}</textarea>
 					<br/>
-				</div>
-				<div class="box">
-				  <input type="textarea" style="height:100px;">
+				  사진 업로드 <input type="textarea"  value="${board.imageLink}" name="imageLink">
 				</div>
 				<div class="update">
 				 <input type="hidden" name="postID" value="${board.postID}">
