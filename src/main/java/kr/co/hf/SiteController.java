@@ -88,15 +88,15 @@ protected void doRequest(HttpServletRequest request, HttpServletResponse respons
 		
 		BoardDAO dao = BoardDAO.getInstance();
 		
-		IBoardService sv = null;
+		IBoardService bsv = null;
 		UserService usv = null;
-		IRecipeService IRsv = null;
+		IRecipeService rsv = null;
 		
 		if(uri.equals("boardList")) {
 			
-			sv = new BoardListService();
+			bsv = new BoardListService();
 			
-			sv.execute(request, response);
+			bsv.execute(request, response);
 
 			ui = "/board/getBoardList.jsp";
 			
@@ -104,9 +104,9 @@ protected void doRequest(HttpServletRequest request, HttpServletResponse respons
 			
 		} else if (uri.equals("boardDetail")) {
 			
-			sv = new BoardDetailService();
+			bsv = new BoardDetailService();
 			
-			sv.execute(request, response);
+			bsv.execute(request, response);
 			
 			ui = "/board/boardDetail.jsp";
 			
@@ -116,65 +116,65 @@ protected void doRequest(HttpServletRequest request, HttpServletResponse respons
 			
 		} else if (uri.equals("boardInsert")) {
 			
-			sv = new BoardInsertService();
+			bsv = new BoardInsertService();
 			
-			sv.execute(request, response);
+			bsv.execute(request, response);
 			
 			ui = "/boardList.do";
 			
 		} else if (uri.equals("boardUpdate")) {
 			
-			sv = new BoardUpdateService();
+			bsv = new BoardUpdateService();
 			
-			sv.execute(request, response);
+			bsv.execute(request, response);
 			
 			ui = "/boardList.do";
 			
 		} else if (uri.equals("boardUpdateForm")) {
 			
-			sv = new BoardUpdateFormService();
+			bsv = new BoardUpdateFormService();
 			
-			sv.execute(request, response);
+			bsv.execute(request, response);
 			
 			ui = "/board/boardUpdateForm.jsp";
 		
 		} else if (uri.equals("boardDelete")) {
 			
-			sv = new BoardDeleteService();
+			bsv = new BoardDeleteService();
 			
-			sv.execute(request, response);
+			bsv.execute(request, response);
 			
 			ui = "/boardList.do";
 			
 		} else if (uri.equals("recipeDetail")) {
 			
-			IRsv = new RecipeDetailService();
+			rsv = new RecipeDetailService();
 			
-			IRsv.execute(request, response);
+			rsv.execute(request, response);
 			
 			ui = "recipe/recipeDetail.jsp";
 			
 		} else if(uri.equals("ComUpdateForm")) {
 			
-			IRsv = new ComUpdateFormService();
+			rsv = new ComUpdateFormService();
 			
-			IRsv.execute(request, response);
+			rsv.execute(request, response);
 			
 			ui = "/Com/ComUpdateForm.jsp";
 		
 		} else if(uri.equals("ComUpdate")) {
 			
-			IRsv = new ComUpdateService();
+			rsv = new ComUpdateService();
 			
-			IRsv.execute(request, response);
+			rsv.execute(request, response);
 			
 			ui = "/recipeDetail.do?postID=" + request.getParameter("postID");
 			
 		} else if(uri.equals("ComDelete")) {
 			
-			IRsv = new ComDeleteService();
+			rsv = new ComDeleteService();
 			
-			IRsv.execute(request, response);
+			rsv.execute(request, response);
 			
 			ui = "/recipeDetail.do?postID=" + request.getParameter("postID");
 			
@@ -184,54 +184,72 @@ protected void doRequest(HttpServletRequest request, HttpServletResponse respons
 		
 		} else if(uri.equals("ComInsert")) {
 			
-			IRsv = new ComInsertService();
+			rsv = new ComInsertService();
 			
-			IRsv.execute(request, response);
+			rsv.execute(request, response);
 			
 			ui = "/recipeDetail.do?postID=" + request.getParameter("postID");
 			
 		} else if(uri.equals("tamplateSample")){
 			
-			sv = new BoardListService();
+			bsv = new BoardListService();
 			
-			sv.execute(request, response);
+			bsv.execute(request, response);
 
 			ui = "/tamplateSample.jsp";
 			
 		} else if (uri.equals("userLogin")) {
+			
 			ui = "/user/LoginForm.jsp";
+		
 		}		
 		else if(uri.equals("userLoginCheck")) {
+			
 			usv = new userLoginService();
 			usv.execute(request,response);
 			ui = (String)request.getAttribute("url");
 			System.out.println(ui);
+			
 		} else if (uri.equals("userJoinForm")) {
+			
 			ui = "/user/JoinFormlight.jsp";
+			
 		} else if(uri.equals("userJoinCheck")) {
+			
 			usv = new userJoinFormService();
 			usv.execute(request,response);
 			ui = "/userLogin.do";
+			
 		} else if(uri.equals("userLogout")) {
+			
 			usv = new userLogoutService();
 			usv.execute(request,response);
 			ui = "/userLogin.do";
+			
 		} else if(uri.equals("userUpdateForm")) {
+			
 			usv = new userUpdateFormService();
 			usv.execute(request,response);
 			ui = "/user/UpdateForm.jsp";
+			
 		} else if(uri.equals("userUpdate")) {
+			
 			usv = new userUpdateService();
 			usv.execute(request,response);
 			ui = "/user/LoginComplete.jsp";
+			
 		} else if(uri.equals("userDelete")) {
+			
 			usv = new userDeleteService();
 			usv.execute(request,response);
 			ui = "/user/LoginForm.jsp";
+			
 		} else if(uri.equals("AllUser")) {
+			
 			usv = new AllUserService();
 			usv.execute(request,response);
 			ui = "/user/getAllUserInfo.jsp";
+		
 		}
 		
 		RequestDispatcher dp = request.getRequestDispatcher(ui);
