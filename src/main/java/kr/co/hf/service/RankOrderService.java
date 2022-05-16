@@ -22,15 +22,15 @@ public class RankOrderService {
 		
 		int columns = md.getColumnCount();
 		List<Map<String, Object>> rankList = new ArrayList<>();
-		while(rs.next()) {
+		/* while(rs.next()) {
 			Map<String, Object> row = new HashMap<>(columns);
 			for(int i = 1; i<columns; i++) {
 				row.put(md.getColumnName(columns), rs.getObject(replace));
 			}
-		}
+		} */
 		
-		List<Integer> ranking = new ArrayList<>();
-		request.setAttribute("ranking", ranking);
+		/* List<Integer> ranking = new ArrayList<>();
+		request.setAttribute("ranking", ranking); */
 		
 		//retrieve only top 3 
 		//page needs 1-3 ordered ranked posts

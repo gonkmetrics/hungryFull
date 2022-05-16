@@ -28,7 +28,7 @@ public class BoardListService implements IBoardService{
 		
 		int boardCount = dao.getBoardCount();
 		
-		BoardButtonDTO buttons = new BoardButtonDTO(boardCount, pageNum);;
+		BoardButtonDTO buttons = new BoardButtonDTO(boardCount, pageNum);
 		
 		List<BoardVO> boardList = dao.getBoardList(pageNum);
 		
