@@ -1,9 +1,9 @@
 package kr.co.hf;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import kr.co.hf.domain.BoardDAO;
-import kr.co.hf.domain.BoardVO;
+import kr.co.hf.service.AllUserService;
 import kr.co.hf.service.BoardDeleteService;
 import kr.co.hf.service.BoardDetailService;
 import kr.co.hf.service.BoardInsertService;
@@ -25,23 +25,42 @@ import kr.co.hf.service.ComUpdateService;
 import kr.co.hf.service.IBoardService;
 import kr.co.hf.service.IRecipeService;
 import kr.co.hf.service.RecipeDetailService;
+import kr.co.hf.service.UserService;
+import kr.co.hf.service.userDeleteService;
+import kr.co.hf.service.userJoinFormService;
+import kr.co.hf.service.userLoginService;
+import kr.co.hf.service.userLogoutService;
+import kr.co.hf.service.userUpdateFormService;
+import kr.co.hf.service.userUpdateService;
 
 /**
- * Servlet implementation class BoardController
+ * Servlet implementation class SiteController
  */
-
 @WebServlet("*.do")
-
-public class BoardController extends HttpServlet {
+public class SiteController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public BoardController() {
+    public SiteController() {
         super();
         // TODO Auto-generated constructor stub
     }
+
+	/**
+	 * @see Servlet#init(ServletConfig)
+	 */
+	public void init(ServletConfig config) throws ServletException {
+		// TODO Auto-generated method stub
+	}
+
+	/**
+	 * @see Servlet#destroy()
+	 */
+	public void destroy() {
+		// TODO Auto-generated method stub
+	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -54,11 +73,10 @@ public class BoardController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		doRequest(request, response);
 	}
 	
-	protected void doRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+protected void doRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		request.setCharacterEncoding("UTF-8");
 		
@@ -71,7 +89,7 @@ public class BoardController extends HttpServlet {
 		BoardDAO dao = BoardDAO.getInstance();
 		
 		IBoardService sv = null;
-		
+		UserService usv = null;
 		IRecipeService IRsv = null;
 		
 		if(uri.equals("boardList")) {
@@ -180,11 +198,45 @@ public class BoardController extends HttpServlet {
 
 			ui = "/tamplateSample.jsp";
 			
+		} else if (uri.equals("userLogin")) {
+			ui = "/user/LoginForm.jsp";
+		}		
+		else if(uri.equals("userLoginCheck")) {
+			usv = new userLoginService();
+			usv.execute(request,response);
+			ui = (String)request.getAttribute("url");
+			System.out.println(ui);
+		} else if (uri.equals("userJoinForm")) {
+			ui = "/user/JoinFormlight.jsp";
+		} else if(uri.equals("userJoinCheck")) {
+			usv = new userJoinFormService();
+			usv.execute(request,response);
+			ui = "/userLogin.do";
+		} else if(uri.equals("userLogout")) {
+			usv = new userLogoutService();
+			usv.execute(request,response);
+			ui = "/userLogin.do";
+		} else if(uri.equals("userUpdateForm")) {
+			usv = new userUpdateFormService();
+			usv.execute(request,response);
+			ui = "/user/UpdateForm.jsp";
+		} else if(uri.equals("userUpdate")) {
+			usv = new userUpdateService();
+			usv.execute(request,response);
+			ui = "/user/LoginComplete.jsp";
+		} else if(uri.equals("userDelete")) {
+			usv = new userDeleteService();
+			usv.execute(request,response);
+			ui = "/user/LoginForm.jsp";
+		} else if(uri.equals("AllUser")) {
+			usv = new AllUserService();
+			usv.execute(request,response);
+			ui = "/user/getAllUserInfo.jsp";
 		}
 		
 		RequestDispatcher dp = request.getRequestDispatcher(ui);
 		dp.forward(request, response);
 		
 	}
-
+	
 }

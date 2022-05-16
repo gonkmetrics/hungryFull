@@ -1,5 +1,3 @@
-<%@page import="kr.co.hf.domain.UserVO"%>
-<%@page import="kr.co.hf.domain.UserDAO"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.Connection"%>

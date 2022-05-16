@@ -41,6 +41,7 @@ postAuthor : ${board.postAuthor}
 <br/>
 최근 수정 : ${board.postLastModified}
 <br/>
+<br/>imageLink : <img src="${board.imageLink}"/>
 <hr>
 <div class="mb-12">
 		

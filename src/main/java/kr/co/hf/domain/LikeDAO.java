@@ -82,6 +82,39 @@ public class LikeDAO {
 		
 	}
 	
+	public int getLikeCount(int postID){
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int count = 0;
+		
+		
+		try {
+			con = ds.getConnection();
+			String s = "SELECT * FROM like WHERE postID = ? count ";
+			pstmt = con.prepareStatement(s);
+			pstmt.setInt(1, postID);
+			rs = pstmt.executeQuery();
+			
+			rs.next();
+			count = rs.getInt(1);
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				con.close();
+				pstmt.close();
+				rs.close();
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return count;
+		
+		
+	}
+	
 	public void createLike(int postID){
 		Connection con = null;
 		PreparedStatement pstmt = null;

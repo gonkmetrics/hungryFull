@@ -20,13 +20,14 @@ public class BoardInsertService implements IBoardService{
 		String strPostAuthor = request.getParameter("postAuthor");
 		String postContent = request.getParameter("postContent");
 		String strPostType = request.getParameter("postType");
+		String imageLink = request.getParameter("imageLink");
 		
 		int postAuthor = Integer.parseInt(strPostAuthor);
 		int postType = Integer.parseInt(strPostType);
 		
 		BoardDAO dao = BoardDAO.getInstance();
 		
-		dao.boardInsert(postAuthor, postTitle, postContent, postType);
+		dao.boardInsert(postAuthor, postTitle, postContent, postType, imageLink);
 		
 		
 	}
