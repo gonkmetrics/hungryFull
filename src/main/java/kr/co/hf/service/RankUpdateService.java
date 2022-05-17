@@ -19,6 +19,7 @@ public class RankUpdateService implements ForumService{
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		request.setCharacterEncoding("UTF-8");
 		String strPostID = request.getParameter("postID");
 		
 		int postID = Integer.parseInt(strPostID);

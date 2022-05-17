@@ -13,7 +13,7 @@ import kr.co.hf.domain.UserVO;
 public class UserLoginService implements ForumService{
 	
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		request.setCharacterEncoding("UTF-8");
 		String formId = request.getParameter("formId");
 		String formPw = request.getParameter("formPw");
 		

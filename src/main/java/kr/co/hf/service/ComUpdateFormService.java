@@ -13,7 +13,7 @@ import kr.co.hf.domain.ComVO;
 
 public class ComUpdateFormService implements ForumService{
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-		
+		request.setCharacterEncoding("UTF-8");
 		String commentid = request.getParameter("commentID");
 		
 		int commentID = Integer.parseInt(commentid);

@@ -15,7 +15,7 @@ public class BoardListService implements ForumService{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		request.setCharacterEncoding("UTF-8");
 		BoardDAO dao = BoardDAO.getInstance();
 		
 		String strpageNum = request.getParameter("pageNum");

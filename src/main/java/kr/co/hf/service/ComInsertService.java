@@ -13,7 +13,7 @@ import kr.co.hf.domain.ComVO;
 
 public class ComInsertService implements ForumService{
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-		
+		request.setCharacterEncoding("UTF-8");
 		ComDAO dao = ComDAO.getInstance();
 		String commentAuthor = request.getParameter("commentAuthor");
 		String commentContent = request.getParameter("commentContent");

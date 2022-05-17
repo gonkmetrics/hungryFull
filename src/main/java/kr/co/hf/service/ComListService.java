@@ -13,6 +13,7 @@ import kr.co.hf.domain.ComVO;
 
 public class ComListService implements ForumService{
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+		request.setCharacterEncoding("UTF-8");
 		ComDAO dao = ComDAO.getInstance();
 		String postid = "1";
 		int postID = Integer.parseInt(postid);

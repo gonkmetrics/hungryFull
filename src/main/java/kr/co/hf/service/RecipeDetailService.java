@@ -16,7 +16,7 @@ public class RecipeDetailService implements ForumService{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		request.setCharacterEncoding("UTF-8");
 		String strPostID = request.getParameter("postID");
 		
 		int postID = Integer.parseInt(strPostID);

@@ -16,6 +16,7 @@ public class UserUpdateFormService implements ForumService{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		request.setCharacterEncoding("utf-8");
 		String userId = (String)request.getParameter("s_id");
 		System.out.println(userId);

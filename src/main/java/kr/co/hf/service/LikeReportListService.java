@@ -5,21 +5,24 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import kr.co.hf.domain.UserDAO;
-import kr.co.hf.domain.UserVO;
+import kr.co.hf.domain.LikeDAO;
 
-public class UserDeleteService implements ForumService{
+public class LikeReportListService implements ForumService{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
-		HttpSession session = request.getSession();
-		String userId = (String)session.getAttribute("s_id");
-		UserDAO dao = UserDAO.getInstance();
-		dao.Delete(userId);
+		// TODO Auto-generated method stub
 		
-		session.invalidate();
-}
+		request.setCharacterEncoding("UTF-8");
+		
+		String userNum = request.getParameter("usernum");
+		
+		int unum = Integer.parseInt(userNum);
+		
+		LikeDAO dao = LikeDAO.getInstance();
+		dao.getLikeUser(unum);
+		
+	}
+	
 }
