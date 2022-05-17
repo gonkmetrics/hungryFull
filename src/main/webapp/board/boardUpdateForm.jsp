@@ -7,9 +7,6 @@
 <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-
-<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
 <style>
         
 
@@ -79,8 +76,12 @@
 <div class="container">
 		<form action="/HFProject/boardUpdate.do" method="post">
 		<div class="grid">
+<<<<<<< HEAD
 			
 			
+=======
+			<form action="/HFProject/boardUpdate.do" method="post">
+>>>>>>> 3410b9bec4133e15f83242c7143498ad0f32554d
 			<br>	
 					<div class="header">
 					    <label for="postTitle" class="form-label" style="margin : 10px; ">레시피 제목</label>
@@ -108,9 +109,6 @@
 						 function setValue5() { document.getElementById('buttonType').value = "5"; }
 						 </script>
 		  				  <input type="hidden" name="postType" id="buttonType" value="${board.postType}" style="margin : 10px;">
-						 <form>
-		  				  <input type="hidden" name="postType" id="buttonType" value="${board.postType}" style="margin : 10px;">
-		  				 </form>
 		  				<br/>
 					  </div>
 					</div><!-- grid끝 -->
@@ -129,7 +127,13 @@
 				 <input type="hidden" name="postID" value="${board.postID}">
 				 <input type="submit" value="수정완료" class="btn btn-primary btn-dark">
 			    </div>
+<<<<<<< HEAD
 			    </form>
 		</div> <!-- container END -->
+=======
+			</form>
+		</div>
+	</div> <!-- container END -->
+>>>>>>> 3410b9bec4133e15f83242c7143498ad0f32554d
 </body>
 </html>

@@ -52,6 +52,6 @@
 		  </ul>
 		</nav>
 
-<a href="/HFprj/boardInsertForm.do">글쓰기</a>
+<a href="/HFProject/boardInsertForm.do">글쓰기</a>
 </body>
 </html>

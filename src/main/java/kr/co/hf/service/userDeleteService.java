@@ -18,6 +18,7 @@ public class userDeleteService implements UserService {
 		String userId = (String)session.getAttribute("s_id");
 		UserDAO dao = UserDAO.getInstance();
 		dao.Delete(userId);
+		
 		session.invalidate();
 }
 }
