@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import kr.co.hf.domain.BoardDAO;
 import kr.co.hf.domain.BoardVO;
 
-public class BoardDetailService implements IBoardService{
+public class BoardDetailService implements ForumService{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

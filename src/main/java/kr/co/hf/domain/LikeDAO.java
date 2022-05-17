@@ -28,8 +28,6 @@ public class LikeDAO {
 		}
 	}
 	
-
-	
 	public static LikeDAO getInstance() {
 		
 		if(dao == null) {
@@ -38,34 +36,27 @@ public class LikeDAO {
 		return dao;
 	}
 	
-	
-	
-	public List<LikeVO> getLikeOrderedList(int postID){
+	//gets full list of like entries
+	public List<LikeVO> getLikeList(){
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		
-		
 		List<LikeVO> likeList = new ArrayList<>();
 		
 		try {
 			con = ds.getConnection();
-			String s = "SELECT * FROM rank ORDER BY rankPosition DESC";
+			String s = "SELECT * FROM likes";
 			pstmt = con.prepareStatement(s);
-			pstmt.setInt(1, postID);
 			rs = pstmt.executeQuery();
 			
-			for(int i = 0; i < 10; i++) {
-				if(rs.next()) {
-					LikeVO like = new LikeVO();
-					like.setLikeID(rs.getInt(1));
-					like.setPostID(rs.getInt(3));
-					like.setUserID(rs.getInt(4));
-                    like.setLikeType(rs.getInt(2));
-					likeList.add(like);
-					
-				}
-			}			
+			while(rs.next()) {
+				LikeVO like = new LikeVO();
+				like.setLikeID(rs.getInt(1));
+				like.setLikeType(rs.getInt(2));
+				like.setPostID(rs.getInt(3));
+                like.setUserNum(rs.getInt(4));
+				likeList.add(like);
+				}	
 		} catch(Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -77,21 +68,19 @@ public class LikeDAO {
 				e.printStackTrace();
 			}
 		}
-		return likeList;
-		
-		
+		return likeList;	
 	}
 	
+	//gets like count for specified post
 	public int getLikeCount(int postID){
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		int count = 0;
 		
-		
 		try {
 			con = ds.getConnection();
-			String s = "SELECT * FROM like WHERE postID = ? count ";
+			String s = "SELECT COUNT(case when likeType=1 then 1 end) as total FROM likes WHERE postID = ?";
 			pstmt = con.prepareStatement(s);
 			pstmt.setInt(1, postID);
 			rs = pstmt.executeQuery();
@@ -115,19 +104,17 @@ public class LikeDAO {
 		
 	}
 	
-	public void createLike(int postID){
+	//creates like entry for specified post with default likeType=1 (like=true)
+	public void createLike(int postID, int userNum){
 		Connection con = null;
 		PreparedStatement pstmt = null;
-		ResultSet rs = null;
 		
 		try {
 			con = ds.getConnection();
-			String s = "INSERT INTO like VALUES(?,?,?,?)";
+			String s = "INSERT INTO likes VALUES(null,1,?,?)";
 			pstmt = con.prepareStatement(s);
 			pstmt.setInt(1, postID);
-			pstmt.setInt(2, postID);
-			pstmt.setInt(3, postID);
-			pstmt.setInt(4, postID);
+			pstmt.setInt(2, userNum);
 			pstmt.executeUpdate();
 			
 		} catch(Exception e) {
@@ -145,14 +132,15 @@ public class LikeDAO {
 		
 	}
 	
-	public void toggleLike(int postID, int likeType){
+	//toggles the likeType value for the specified like entry
+	/*public void toggleLike(int postID, int likeType){
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
 		try {
 			con = ds.getConnection();
-			String s = "UPDATE like SET likeType=? WHERE postID=?";
+			String s = "UPDATE likes SET likeType=? WHERE postID=?";
 			pstmt = con.prepareStatement(s);
 			if(likeType == 0) {
 				pstmt.setInt(1, 1);
@@ -174,13 +162,110 @@ public class LikeDAO {
 		}
 		return;
 		
+	}*/
+	
+	//gets LikeVO for specified user and post combination
+	public LikeVO getLikeUP(int postID, int userNum){
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		LikeVO like = new LikeVO();
 		
+		try {
+			con = ds.getConnection();
+			String s = "SELECT * FROM likes WHERE postID=? AND userNum=?";
+			pstmt = con.prepareStatement(s);
+			pstmt.setInt(1, postID);
+			pstmt.setInt(2, userNum);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				like.setLikeID(rs.getInt(1));
+				like.setLikeType(rs.getInt(2));
+				like.setPostID(rs.getInt(3));
+                like.setUserNum(rs.getInt(4));
+				}	
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				con.close();
+				pstmt.close();
+				rs.close();
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return like;	
 	}
+	
+	//gets all like for a user
+	public List<LikeVO> getLikeUser(int userNum){
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<LikeVO> likeList = new ArrayList<>();
+		
+		try {
+			con = ds.getConnection();
+			String s = "SELECT * FROM likes WHERE userNum=?";
+			pstmt = con.prepareStatement(s);
+			pstmt.setInt(1, userNum);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				LikeVO like = new LikeVO();
+				like.setLikeID(rs.getInt(1));
+				like.setLikeType(rs.getInt(2));
+				like.setPostID(rs.getInt(3));
+                like.setUserNum(rs.getInt(4));
+				likeList.add(like);
+				}	
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				con.close();
+				pstmt.close();
+				rs.close();
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return likeList;	
+	}
+	
+	//deletes like, instead of toggle
+	public void deleteLike(int postID, int userNum){
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			con = ds.getConnection();
+			String s = "DELETE FROM likes WHERE postID=? AND userNum=?";
+			pstmt = con.prepareStatement(s);
+			pstmt.setInt(1, postID);
+			pstmt.setInt(2, userNum);
+			pstmt.executeUpdate();
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				con.close();
+				pstmt.close();
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return;
+		}
+	}
+	
 	
 
 	
 	
 	
 		
-	
-}

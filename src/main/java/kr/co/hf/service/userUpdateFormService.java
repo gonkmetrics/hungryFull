@@ -12,7 +12,7 @@ import kr.co.hf.domain.UserDAO;
 import kr.co.hf.domain.UserVO;
 
 
-public class userUpdateFormService implements UserService {
+public class UserUpdateFormService implements ForumService{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

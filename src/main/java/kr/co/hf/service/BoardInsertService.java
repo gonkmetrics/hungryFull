@@ -14,7 +14,7 @@ import kr.co.hf.domain.ComVO;
 import kr.co.hf.domain.UserDAO;
 import kr.co.hf.domain.UserVO;
 
-public class BoardInsertService implements IBoardService{
+public class BoardInsertService implements ForumService{
 	
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -10,7 +10,7 @@ import javax.servlet.http.HttpSession;
 import kr.co.hf.domain.UserDAO;
 import kr.co.hf.domain.UserVO;
 
-public class userLoginService implements UserService {
+public class UserLoginService implements ForumService{
 	
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

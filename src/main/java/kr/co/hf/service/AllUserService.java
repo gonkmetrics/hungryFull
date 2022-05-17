@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import kr.co.hf.domain.UserDAO;
 import kr.co.hf.domain.UserVO;
 
-public class AllUserService implements UserService {
+public class AllUserService implements ForumService {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

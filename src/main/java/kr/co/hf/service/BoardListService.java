@@ -11,7 +11,7 @@ import kr.co.hf.domain.BoardButtonDTO;
 import kr.co.hf.domain.BoardDAO;
 import kr.co.hf.domain.BoardVO;
 
-public class BoardListService implements IBoardService{
+public class BoardListService implements ForumService{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import kr.co.hf.domain.UserDAO;
 
-public class userJoinFormService implements UserService {
+public class UserJoinFormService implements ForumService{
 	
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");

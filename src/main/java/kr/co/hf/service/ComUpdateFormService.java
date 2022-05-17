@@ -11,7 +11,7 @@ import javax.servlet.http.HttpSession;
 import kr.co.hf.domain.ComDAO;
 import kr.co.hf.domain.ComVO;
 
-public class ComUpdateFormService implements IRecipeService{
+public class ComUpdateFormService implements ForumService{
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		
 		String commentid = request.getParameter("commentID");

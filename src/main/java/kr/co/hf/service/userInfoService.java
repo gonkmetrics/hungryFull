@@ -11,7 +11,7 @@ import kr.co.hf.domain.UserDAO;
 import kr.co.hf.domain.UserVO;
 
 
-public class userInfoService implements UserService {
+public class UserInfoService implements ForumService{
 	
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	UserDAO dao = UserDAO.getInstance();

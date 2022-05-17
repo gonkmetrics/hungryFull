@@ -11,7 +11,7 @@ import javax.servlet.http.HttpSession;
 import kr.co.hf.domain.ComDAO;
 import kr.co.hf.domain.ComVO;
 
-public class ComListService implements IComService{
+public class ComListService implements ForumService{
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		ComDAO dao = ComDAO.getInstance();
 		String postid = "1";

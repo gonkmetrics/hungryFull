@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import kr.co.hf.domain.UserDAO;
 
-public class userUpdateService implements UserService {
+public class UserUpdateService implements ForumService{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

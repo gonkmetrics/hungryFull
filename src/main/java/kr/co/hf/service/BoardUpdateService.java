@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import kr.co.hf.domain.BoardDAO;
 
-public class BoardUpdateService implements IBoardService{
+public class BoardUpdateService implements ForumService{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

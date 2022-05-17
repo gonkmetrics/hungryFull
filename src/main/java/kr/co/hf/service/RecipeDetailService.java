@@ -12,7 +12,7 @@ import kr.co.hf.domain.BoardVO;
 import kr.co.hf.domain.ComDAO;
 import kr.co.hf.domain.ComVO;
 
-public class RecipeDetailService implements IRecipeService{
+public class RecipeDetailService implements ForumService{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

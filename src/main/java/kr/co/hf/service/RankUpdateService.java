@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 import kr.co.hf.domain.BoardDAO;
 import kr.co.hf.domain.LikeDAO;
 
-public class RankUpdateService implements IBoardService{
+public class RankUpdateService implements ForumService{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import kr.co.hf.domain.BoardDAO;
 import kr.co.hf.domain.BoardVO;
 
-public class BoardDeleteService implements IBoardService{
+public class BoardDeleteService implements ForumService{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
