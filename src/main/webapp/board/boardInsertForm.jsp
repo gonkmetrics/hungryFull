@@ -8,7 +8,9 @@
 <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
+<c:if test="${sessionScope.s_id eq null}">
+	<c:redirect url="/userLogin.do"/>
+</c:if>
 <style>
    div.container{
         width:10000px; 
@@ -87,8 +89,6 @@
 						 function setValue3() { document.getElementById('buttonType').value = "3"; }
 						 function setValue4() { document.getElementById('buttonType').value = "4"; }
 						 function setValue5() { document.getElementById('buttonType').value = "5"; }
-						 
-						 function 
 						 </script>
 	</div>
 	<div class="author">

@@ -35,6 +35,7 @@ public class BoardInsert extends HttpServlet {
 		String postAuthor = request.getParameter("postAuthor");
 		String postContent = request.getParameter("postContent");
 		String postType = request.getParameter("postType");
+		String imageLink = request.getParameter("imageLink");
 		
 		
 		
