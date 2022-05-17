@@ -64,7 +64,7 @@
 </head>
 <body>
 <div class="container"> 
-  <form action="/HFprj/boardInsert.do" method="post">
+  <form action="/HFProject/boardInsert.do" method="post">
     <div class="header">
 	<label for="postTitle" class="form-label" style="margin : 10px; ">레시피 제목</label>
 	<input type="text" name="postTitle"  style="margin : 10px; "><br/>
@@ -92,7 +92,8 @@
 						 </script>
 	</div>
 	<div class="author">
-	 글쓴이  <input type="text" name="postAuthor"  style="margin : 10px; "><br/>
+	 글쓴이  <input type="text" name="userID"  style="margin : 10px; " value="${sessionScope.s_id}"  readonly><br/>
+	 <input type="hidden" name="postAuthor" value="${user.userNum}"/>
 	</div>
 	<div class="content">
 	<label for="postTitle" class="form-label" style="margin : 10px; ">요리 소개</label>
