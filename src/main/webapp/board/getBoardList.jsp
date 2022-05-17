@@ -28,7 +28,7 @@
 			<tr>
 				<td>${board.postID}</td>
 				<td>${board.postAuthor}</td>
-				<td><a href="/HFprj/recipeDetail.do?postID=${board.postID}"/>${board.postTitle}</td>
+				<td><a href="/HFProject/recipeDetail.do?postID=${board.postID}"/>${board.postTitle}</td>
 				<td>${board.postContent}</td>
 				<td>${board.postTime}</td>
 				<td>${board.postLastModified}</td>
@@ -41,13 +41,13 @@
 		<nav aria-label="Page navigation example">
 		  <ul class="pagination justify-content-center">
 		  	<c:if test="${buttons.startPage ne 1}">
-				<li class="page-item"><a class="page-link" href="/HFprj/boardList.do?pageNum=${buttons.startPage - 1}">Previous</a></li>
+				<li class="page-item"><a class="page-link" href="/HFProject/boardList.do?pageNum=${buttons.startPage - 1}">Previous</a></li>
 			</c:if>
 			<c:forEach var="pageNum" begin="${buttons.startPage }" end="${buttons.endPage }">
-				<li class="page-item ${buttons.currentPage eq pageNum ? 'active' : ''}"><a class="page-link" href="/HFprj/boardList.do?pageNum=${pageNum}">${pageNum}</a></li>
+				<li class="page-item ${buttons.currentPage eq pageNum ? 'active' : ''}"><a class="page-link" href="/HFProject/boardList.do?pageNum=${pageNum}">${pageNum}</a></li>
 			</c:forEach>
 			<c:if test="${buttons.endPage ne buttons.totalPages}">
-		    	<li class="page-item"><a class="page-link" href="/HFprj/boardList.do?pageNum=${buttons.endPage + 1}">Next</a></li>
+		    	<li class="page-item"><a class="page-link" href="/HFProject/boardList.do?pageNum=${buttons.endPage + 1}">Next</a></li>
 		    </c:if>
 		  </ul>
 		</nav>

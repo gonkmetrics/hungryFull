@@ -77,9 +77,10 @@
 </head>
 <body>
 <div class="container">
+		<form action="/HFProject/boardUpdate.do" method="post">
 		<div class="grid">
-			<form action="/HFprj/boardUpdate.do" method="post">
-			<form action="/HFprj/boardUpdate.do" method="post">	
+			
+			
 			<br>	
 					<div class="header">
 					    <label for="postTitle" class="form-label" style="margin : 10px; ">레시피 제목</label>
@@ -128,9 +129,7 @@
 				 <input type="hidden" name="postID" value="${board.postID}">
 				 <input type="submit" value="수정완료" class="btn btn-primary btn-dark">
 			    </div>
-			</form>	
-			</form>
-		</div>
-	</div> <!-- container END -->
+			    </form>
+		</div> <!-- container END -->
 </body>
 </html>

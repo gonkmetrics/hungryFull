@@ -18,6 +18,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<c:import url="templateHeader.html"/>
 제목 : ${board.postTitle}
 <br/>
 postID : ${board.postID}
@@ -104,6 +105,6 @@ postAuthor : ${board.postAuthor}
 	     	<input type="hidden" name="postID" value="${board.postID}">
 			<input type="submit" value="댓글쓰기">
 	 </form>
-    
+    <c:import url="templateFooter.html"/>
 </body>
 </html>

@@ -62,7 +62,7 @@
 </head>
 <body>
 <div class="container"> 
-  <form action="/HFprj/boardInsert.do" method="post">
+  <form action="/HFProject/boardInsert.do" method="post">
     <div class="header">
 	<label for="postTitle" class="form-label" style="margin : 10px; ">레시피 제목</label>
 	<input type="text" name="postTitle"  style="margin : 10px; "><br/>

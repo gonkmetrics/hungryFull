@@ -120,7 +120,7 @@ protected void doRequest(HttpServletRequest request, HttpServletResponse respons
 			
 			bsv.execute(request, response);
 			
-			ui = "/board/homepage.jsp";
+			ui = "/homepage.do";
 			
 		} else if (uri.equals("boardUpdate")) {
 			
@@ -128,7 +128,7 @@ protected void doRequest(HttpServletRequest request, HttpServletResponse respons
 			
 			bsv.execute(request, response);
 			
-			ui = "/board/homepage.jsp";
+			ui = "/homepage.do";
 			
 		} else if (uri.equals("boardUpdateForm")) {
 			
@@ -144,7 +144,7 @@ protected void doRequest(HttpServletRequest request, HttpServletResponse respons
 			
 			bsv.execute(request, response);
 			
-			ui = "/board/homepage.jsp";
+			ui = "/homepage.do";
 			
 		} else if (uri.equals("recipeDetail")) {
 			
@@ -152,7 +152,7 @@ protected void doRequest(HttpServletRequest request, HttpServletResponse respons
 			
 			rsv.execute(request, response);
 			
-			ui = "recipe/recipeDetail.jsp";
+			ui = "/recipe/recipeDetail.jsp";
 			
 		} else if(uri.equals("ComUpdateForm")) {
 			
