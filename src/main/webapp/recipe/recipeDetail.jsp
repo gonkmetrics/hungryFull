@@ -50,21 +50,21 @@ postAuthor : ${board.postAuthor}
 		<textarea class="form-control" name="postContent" id="textarea1" cols="40" rows="20" readonly>${board.postContent}</textarea>
 		<br/>
 		<br/>
-		<a href="/HFprj/boardList.do" class="btn btn-success btn-mb-3">목록으로</a>
+		<a href="/HFProject/boardList.do" class="btn btn-success btn-mb-3">목록으로</a>
 	<div>
-		<form action= "/HFprj/boardDelete.do" method="post">
+		<form action= "/HFProject/boardDelete.do" method="post">
 			<input type="hidden" name="postID" value="${board.postID}">
 			<input type="submit" class="btn btn-danger btn-mb-3" value="삭제하기">
 		</form>
 	</div>
 	<div>
-		<form action= "/HFprj/boardUpdateForm.do" method="post">
+		<form action= "/HFProject/boardUpdateForm.do" method="post">
 			<input type="hidden" name="postID" value="${board.postID}">
 			<input type="submit" class="btn btn-primary btn-mb-3" value="수정하기">
 		</form>
 	</div>
 	<div>
-			<form action= "/HFprj/tamplateSample.do" method="post">
+			<form action= "/HFProject/tamplateSample.do" method="post">
 			<input type="submit" class="btn btn-primary btn-mb-3" value="홈으로">
 		</form>
 	</div>
@@ -81,14 +81,14 @@ postAuthor : ${board.postAuthor}
           <tbody>
              <c:forEach var="com" items="${ComList}">
               <tr>
-                <td><a href="http://localhost:8181/HFprj/ComDetail?commentID=${com.commentID}">${com.commentID }</td>
+                <td><a href="http://localhost:8181/HFProject/ComDetail?commentID=${com.commentID}">${com.commentID }</td>
                  <td>${com.getCommentAuthor()}</td>
-                 <td>${com.getCommentContent()}<form action="http://localhost:8181/HFprj/ComDelete.do" method="post">
+                 <td>${com.getCommentContent()}<form action="http://localhost:8181/HFProject/ComDelete.do" method="post">
 				        <input type="hidden" name="commentID" value="${com.commentID}">
 				        <input type="hidden" name="postID" value="${com.postID}">
 				        <input type="submit" value="삭제" >
 				       </form>
-				       <form action="http://localhost:8181/HFprj/ComUpdateForm.do" method="post">
+				       <form action="http://localhost:8181/HFProject/ComUpdateForm.do" method="post">
 					   <input type="hidden" name="commentID" value="${com.commentID }">
 					   <input type="hidden" name="commenContent" value="${com.commentContent }">
                        <input type="hidden" name="commentAuthor" value="${com.commentAuthor }">
@@ -100,7 +100,7 @@ postAuthor : ${board.postAuthor}
           </tbody>
      </table>
      
-	 <form action="/HFprj/ComInsertForm.do" method="post">
+	 <form action="/HFProject/ComInsertForm.do" method="post">
 	     	<input type="hidden" name="postID" value="${board.postID}">
 			<input type="submit" value="댓글쓰기">
 	 </form>

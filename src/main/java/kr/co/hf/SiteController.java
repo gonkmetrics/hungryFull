@@ -58,9 +58,9 @@ public class SiteController extends HttpServlet {
 	/**
 	 * @see Servlet#destroy()
 	 */
-	public void destroy() {
+	/*public void destroy() {
 		// TODO Auto-generated method stub
-	}
+	}*/
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -120,7 +120,7 @@ protected void doRequest(HttpServletRequest request, HttpServletResponse respons
 			
 			bsv.execute(request, response);
 			
-			ui = "/boardList.do";
+			ui = "/board/homepage.jsp";
 			
 		} else if (uri.equals("boardUpdate")) {
 			
@@ -128,7 +128,7 @@ protected void doRequest(HttpServletRequest request, HttpServletResponse respons
 			
 			bsv.execute(request, response);
 			
-			ui = "/boardList.do";
+			ui = "/board/homepage.jsp";
 			
 		} else if (uri.equals("boardUpdateForm")) {
 			
@@ -144,7 +144,7 @@ protected void doRequest(HttpServletRequest request, HttpServletResponse respons
 			
 			bsv.execute(request, response);
 			
-			ui = "/boardList.do";
+			ui = "/board/homepage.jsp";
 			
 		} else if (uri.equals("recipeDetail")) {
 			
@@ -190,13 +190,13 @@ protected void doRequest(HttpServletRequest request, HttpServletResponse respons
 			
 			ui = "/recipeDetail.do?postID=" + request.getParameter("postID");
 			
-		} else if(uri.equals("tamplateSample")){
+		} else if(uri.equals("homepage")){
 			
 			bsv = new BoardListService();
 			
 			bsv.execute(request, response);
 
-			ui = "/tamplateSample.jsp";
+			ui = "/board/homepage.jsp";
 			
 		} else if (uri.equals("userLogin")) {
 			

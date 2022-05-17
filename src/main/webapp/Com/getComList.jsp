@@ -33,7 +33,7 @@
           <tbody>
              <c:forEach var="com" items="${ComList}">
               <tr>
-                <td><a href="http://localhost:8181/HFprj/ComDetail?commentID=${com.commentID}">${com.commentID }</td>
+                <td><a href="http://localhost:8181/HFProject/ComDetail?commentID=${com.commentID}">${com.commentID }</td>
                  <td>${com.getCommentAuthor()}</td>
                  <td>${com.getCommentContent()}</td>
               </tr>

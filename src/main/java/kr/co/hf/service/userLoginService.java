@@ -33,7 +33,7 @@ public class userLoginService implements UserService {
 			if(formPw.equals(userPw)) {
 			request.setAttribute("s_id", userId);
 			session.setAttribute("s_id", userId);
-			url = "http://localhost:8181/HFprj/tamplateSample.do";
+			url = "homepage.do";
 		} else {
 			url = "/user/PwFail.jsp";
 		} } else {

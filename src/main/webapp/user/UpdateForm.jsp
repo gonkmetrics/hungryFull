@@ -15,7 +15,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="/HFprj/userUpdate.do" method="post">
+	<form action="/HFProject/userUpdate.do" method="post">
 		<input type ="hidden" name="userNum">
 		아이디 : <input type="text" name="s_id" value ="${user.userId }"readonly /><br/>
 		비밀번호 : <input type="password" name="user_pw" value="${user.userPw }"/><br/>

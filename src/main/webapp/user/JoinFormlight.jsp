@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="/HFprj/userJoinCheck.do" method="post">
+	<form action="/HFProject/userJoinCheck.do" method="post">
 	<input type ="hidden" name="userNum">
 		아이디 : <input type="text" name="userId"/><br/>
 		비밀번호 : <input type="password" name="userPw"/><br/>

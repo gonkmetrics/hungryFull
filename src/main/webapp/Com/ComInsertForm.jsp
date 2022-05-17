@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="/HFprj/ComInsert.do" method="post">
+<form action="/HFProject/ComInsert.do" method="post">
    작성자 : <input type="text" name="commentAuthor"><br>
    내용 : <textarea cols="30" rows="15" name="commentContent"></textarea><br>
    <input type="hidden" name = "postID" value="${param.postID}">

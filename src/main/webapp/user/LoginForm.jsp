@@ -8,11 +8,11 @@
 </head>
 <body>
 ${user}
-	<form action="/HFprj/userLoginCheck.do" method="post">
+	<form action="/HFProject/userLoginCheck.do" method="post">
 		아이디 : <input type="text" name="formId" /><br/>
 		비밀번호 : <input type="password" name="formPw" /><br/>
 		<input type="submit" value="로그인" />
 	</form>
-	<a href="/HFprj/userJoinForm.do">회원가입하기.</a>
+	<a href="/HFProject/userJoinForm.do">회원가입하기.</a>
 </body>
 </html>

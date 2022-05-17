@@ -2,6 +2,16 @@
 	background-color: grey;
 }
 
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%
+}
+
+.sticky + .content {
+  padding-top: 102px;
+}
+
 #sidebar{
   position: absolute;
   top: 0;
@@ -50,6 +60,7 @@ button:focus { outline: none; }
     margin-top: -100px;
     background-size: 100%;
     background-image: linear-gradient(transparent, white 75%), url("background2.png");
+
 
 }
 
