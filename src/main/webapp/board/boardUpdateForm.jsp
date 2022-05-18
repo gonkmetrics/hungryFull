@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -7,81 +13,14 @@
 <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<style>
-        
-
-        
-        div.container{
-        width:10000px; 
-        background:#e9ecef;
-        margin:10px;
-        margin-left:55px;
-        padding:10px;
-        float:center;
-        border-radius:10px 10px 10px 10px;
-        }
-        
-        .box{
-        padding:10px;
-        border-radius:10px 10px 10px 10px;
-        }
-        
-        .header{
-        background:#f8f9fa;
-        padding:10px;
-        margin:10px;
-        border-radius:10px 10px 10px 10px;
-        }
-        
-        .author{
-        padding:10px;
-        margin:10px;
-        border-radius:10px 10px 10px 10px;
-        }
-        
-        .wrtier{
-        padding:10px;
-        margin:10px;
-        background:#f8f9fa;
-        border-radius:10px 10px 10px 10px;
-        
-        }
-        .update{
-        margin:10px;
-        padding:10px;
-        }
-        
-        .box{
-        padding:10px;
-        margin:10px;
-        border-radius:10px 10px 10px 10px;
-        }
-        
-        #textarea1{
-        height:50vh;
-        margin-right:40px;
-        border-radius:10px 10px 10px 10px;
-        }
-   
-   
-</style>
-
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+<script src="https://cdn.tiny.cloud/1/z9bmvgme3buxgw19nqhokowjd4x0b9mxwo8nspf31c2zbvmd/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tinymce/tinymce-jquery@1/dist/tinymce-jquery.min.js"></script>
 </head>
 <body>
 <div class="container">
-		<form action="/HFProject/boardUpdate.do" method="post">
-		<div class="grid">
-<<<<<<< HEAD
-			
-			
-=======
+
 			<form action="/HFProject/boardUpdate.do" method="post">
->>>>>>> 3410b9bec4133e15f83242c7143498ad0f32554d
+
 			<br>	
 					<div class="header">
 					    <label for="postTitle" class="form-label" style="margin : 10px; ">레시피 제목</label>
@@ -118,22 +57,24 @@
 						<br/>
 					</div>
 				<div class="wrtier">
-				 	<label for="textarea" class="form-label" style="margin : 10px;"> 요리 소개 </label>
-					<textarea class="form-control" name="postContent" id="textarea1">${board.postContent}</textarea>
+				 	<label for="textarea"  class="form-label" style="margin : 10px;"> 요리 소개 </label>
+				 	
+					<textarea name="postContent" id="tiny">${board.postContent}</textarea>
+						<script>
+						  $('textarea#tiny').tinymce({ height: 500, /* other settings... */ });
+						</script>
 					<br/>
 				  사진 업로드 <input type="textarea"  value="${board.imageLink}" name="imageLink">
 				</div>
-				<div class="update">
+				<div class="update">	
 				 <input type="hidden" name="postID" value="${board.postID}">
 				 <input type="submit" value="수정완료" class="btn btn-primary btn-dark">
 			    </div>
-<<<<<<< HEAD
 			    </form>
 		</div> <!-- container END -->
-=======
+
 			</form>
 		</div>
 	</div> <!-- container END -->
->>>>>>> 3410b9bec4133e15f83242c7143498ad0f32554d
 </body>
 </html>

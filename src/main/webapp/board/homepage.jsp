@@ -65,16 +65,11 @@
                     </div>
                     <div id="rankPost" class="row">
                         <!-- <h1>rankPost</h1> -->
-                        <!-- #add forEach logic, 3 elements -->
-                        <div class="col-md-4" id="rankDisplayBlock">
-                            element 1
-                        </div>
-                        <div class="col-md-4" id="rankDisplayBlock">
-                            element 2
-                        </div>
-                        <div class="col-md-4" id="rankDisplayBlock">
-                            element 3
-                        </div>
+                        <c:forEach var="i" begin="1" end="3">
+	                        <div class="col-md-4" id="rankDisplayBlock">
+	                            <!--  from listener -->
+	                        </div>
+                        </c:forEach>
                     </div>
                 </div>
             </div>
@@ -177,6 +172,7 @@
                 </div>
             </div>
         </div>
+        <div id="space"></div>
         <c:import url="../templateFooter.html"/>
     </div>
 </body>

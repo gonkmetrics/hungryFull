@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import kr.co.hf.domain.BoardDAO;
 import kr.co.hf.domain.LikeDAO;
+import kr.co.hf.domain.PostRankVO;
 
 public class RankUpdateService implements ForumService{
 
@@ -21,16 +22,13 @@ public class RankUpdateService implements ForumService{
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");
 		String strPostID = request.getParameter("postID");
-		
 		int postID = Integer.parseInt(strPostID);
-		
 		BoardDAO dao = BoardDAO.getInstance();
-		
-		HashMap<Integer, Integer> hash_mapRank = new HashMap<>();
+		HashMap<Integer, PostRankVO> hash_mapRank = new HashMap<>();
 		//tree_mapRank = new
 		int boardCount = dao.getBoardCount();
 		HttpSession session = request.getSession();
-		if(session.getAttribute("rankMap") == null) {
+		if(session.getAttribute("rankMap") == null) { //get from listener
 			for(int countA = 0; countA < boardCount; countA++) {
 				addRankMap(countA, hash_mapRank);
 			}
@@ -39,20 +37,24 @@ public class RankUpdateService implements ForumService{
 			}
 		
 		hash_mapRank = sortByValue(hash_mapRank);
-		session.setAttribute("rankMap",hash_mapRank);
+		//session.setAttribute("rankMap", hash_mapRank);
+		//pass to listener
 		
 	}
 	
-	public static void addRankMap(int postId, HashMap<Integer, Integer> hash_map) {
+	//add to hashmap
+	public static void addRankMap(int postId, HashMap<Integer, PostRankVO> hash_map) {
+		PostRankVO pro = new PostRankVO();
 		LikeDAO likeDAO = LikeDAO.getInstance();
 		int likeCount = likeDAO.getLikeCount(postId);
-		hash_map.put(postId, likeCount);
+		pro.setLikeCount(likeCount);
+		pro.setPostID(postId);
+		hash_map.put(postId, pro);
 	}
 	
-    public static HashMap<Integer, Integer>
-    sortByValue(HashMap<Integer, Integer> hm)
-    {
-        HashMap<Integer, Integer> temp
+	//sort hashmap
+    public static HashMap<Integer, PostRankVO> sortByValue(HashMap<Integer, PostRankVO> hm){
+        HashMap<Integer, PostRankVO> temp
             = hm.entrySet()
                   .stream()
                   .sorted((i1, i2)
