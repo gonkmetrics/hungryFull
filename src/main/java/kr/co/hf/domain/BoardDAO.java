@@ -158,7 +158,7 @@ public class BoardDAO {
 		try {
 			con = ds.getConnection();
 			
-			String sql = "INSERT INTO board (postAuthor, postTitle, postContent, postType, imageLink) VALUES (?, ?, ?, ?, ?)";
+			String sql = "INSERT INTO board (postAuthor, postTitle, postContent, postType, imageLink, viewCount) VALUES (?, ?, ?, ?, ?, 0)";
 			
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, postAuthor);
@@ -245,7 +245,7 @@ public class BoardDAO {
 		}
 	} //  boardUpdate END.
 	
-	public void updateViewCnt(int postID) {
+	public void upViewCnt(int postID) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		
@@ -253,7 +253,7 @@ public class BoardDAO {
 			
 			con = ds.getConnection();
 
-			String sql = "UPDATE board SET viewcount = viewcount + 1 where postID=?";
+			String sql = "UPDATE board SET viewCount = viewCount + 1 WHERE postID=?";
 			pstmt =  con.prepareStatement(sql);
 			
 			pstmt.setInt(1, postID);
@@ -271,13 +271,13 @@ public class BoardDAO {
 			}
 			
 		}
-	} // updateViewCnt END;
+	} // upViewCnt END;
 	
 	public int getBoardCount() {
 		
 		Connection con = null;
 		PreparedStatement pstmt = null;
-		ResultSet rs = null;//ResultSet은 실행쿼리문이 SELECT 구문인 경우 결과값을 받기 위해 필요합니다.
+		ResultSet rs = null;
 		int boardCount = 0;
 		
 		try {
@@ -305,8 +305,8 @@ public class BoardDAO {
 			}
 		}
 		return boardCount;
-	}
-	
+	} // getBoardCount END;
+
 	
 } // BoardDAO END;
 

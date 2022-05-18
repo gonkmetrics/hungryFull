@@ -53,5 +53,6 @@
 		</nav>
 
 <a href="/HFProject/boardInsertForm.do">글쓰기</a>
+<a href="/HFProject/userLogout.do">로그아웃</a>
 </body>
 </html>

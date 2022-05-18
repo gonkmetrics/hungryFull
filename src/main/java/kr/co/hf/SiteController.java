@@ -19,6 +19,7 @@ import kr.co.hf.service.BoardListService;
 import kr.co.hf.service.BoardUpdateFormService;
 import kr.co.hf.service.BoardUpdateService;
 import kr.co.hf.service.ComDeleteService;
+import kr.co.hf.service.ComInsertFormService;
 import kr.co.hf.service.ComInsertService;
 import kr.co.hf.service.ComUpdateFormService;
 import kr.co.hf.service.ComUpdateService;
@@ -198,6 +199,10 @@ protected void doRequest(HttpServletRequest request, HttpServletResponse respons
 		}
 		
 		if(uri.equals("ComInsertForm")) {
+			
+			sv = new ComInsertFormService();
+			
+			sv.execute(request, response);
 			
 			ui = "/Com/ComInsertForm.jsp";
 		

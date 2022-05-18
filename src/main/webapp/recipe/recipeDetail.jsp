@@ -50,21 +50,25 @@ userId :<span id = "userId">${user.userId}</span>
 		<br/>
 		<a href="/HFProject/boardList.do" class="btn btn-success btn-mb-3">목록으로</a>
 	<div>
-		<form action= "/HFProject/boardDelete.do" method="post">
-			<input type="hidden" name="postID" value="${board.postID}">
-			<input type="submit" class="btn btn-danger btn-mb-3" value="삭제하기">
-		</form>
+		<c:if test="${sessionScope.s_id eq user.userId}">
+			<form action= "/HFProject/boardDelete.do" method="post">
+				<input type="hidden" name="postID" value="${board.postID}">
+				<input type="submit" class="btn btn-danger btn-mb-3" value="삭제하기">
+			</form>
+		</c:if>
 	</div>
 	<div>
-		<form action= "/HFProject/boardUpdateForm.do" method="post">
-			<input type="hidden" name="postID" value="${board.postID}">
-			<input type="submit" class="btn btn-primary btn-mb-3" value="수정하기">
-		</form>
+		<c:if test="${sessionScope.s_id eq user.userId}">
+			<form action= "/HFProject/boardUpdateForm.do" method="post">
+				<input type="hidden" name="postID" value="${board.postID}">
+				<input type="submit" class="btn btn-primary btn-mb-3" value="수정하기">
+			</form>
+		</c:if>
 	</div>
 	<div>
-			<form action= "/HFProject/tamplateSample.do" method="post">
-			<input type="submit" class="btn btn-primary btn-mb-3" value="홈으로">
-		</form>
+			<form action= "/HFProject/" method="post">
+				<input type="submit" class="btn btn-primary btn-mb-3" value="홈으로">
+			</form>
 	</div>
 </div>
 
@@ -95,28 +99,34 @@ userId :<span id = "userId">${user.userId}</span>
           <tbody>
              <c:forEach var="com" items="${ComList}">
               <tr>
-                <td><a href="http://localhost:8181/HFProject/ComDetail?commentID=${com.commentID}">${com.commentID }</td>
+                <td><a href="/HFProject/ComDetail?commentID=${com.commentID}">${com.commentID }</td>
                  <td>${com.getCommentAuthor()}</td>
-                 <td>${com.getCommentContent()}<form action="http://localhost:8181/HFProject/ComDelete.do" method="post">
-				        <input type="hidden" name="commentID" value="${com.commentID}">
-				        <input type="hidden" name="postID" value="${com.postID}">
-				        <input type="submit" value="삭제" >
-				       </form>
-				       <form action="http://localhost:8181/HFProject/ComUpdateForm.do" method="post">
-					   <input type="hidden" name="commentID" value="${com.commentID }">
-					   <input type="hidden" name="commenContent" value="${com.commentContent }">
-                       <input type="hidden" name="commentAuthor" value="${com.commentAuthor }">
-					   <input type="submit" value="수정">
-					 </form>
+                 <td>${com.getCommentContent()}
+                 <c:if test="${sessionScope.s_id eq user.userId}">
+                 <form action="/HFProject/ComDelete.do" method="post">
+					<input type="hidden" name="commentID" value="${com.commentID}">
+					<input type="hidden" name="postID" value="${com.postID}">
+					<input type="submit" value="삭제" >
+				 </form>
+				 </c:if>
+				    <c:if test="${sessionScope.s_id eq user.userId}">
+				    <form action="/HFProject/ComUpdateForm.do" method="post">				    	
+						<input type="hidden" name="commentID" value="${com.commentID }">
+						<input type="hidden" name="commenContent" value="${com.commentContent }">
+	                    <input type="hidden" name="commentAuthor" value="${com.commentAuthor }">
+						<input type="submit" value="수정">
+					</form>
+					</c:if>
 				  </td>
               </tr>
               </c:forEach>
           </tbody>
      </table>
-     
-	 <form action="/HFProject/ComInsertForm.do" method="post">
-	     	<input type="hidden" name="postID" value="${board.postID}">
-			<input type="submit" value="댓글쓰기">
-	 </form>
+     <c:if test="${sessionScope.s_id eq user.userId}">
+		 <form action="/HFProject/ComInsertForm.do" method="post">
+		     	<input type="hidden" name="postID" value="${board.postID}">
+				<input type="submit" value="댓글쓰기">
+		 </form>
+	 </c:if>
 </body>
 </html>
