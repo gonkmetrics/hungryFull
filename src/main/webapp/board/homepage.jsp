@@ -83,60 +83,39 @@
                 <div class="col-10">
                     <a href="/HFProject/boardInsertForm.do" class="btn btn-light">Post Recipe</a>
                     <div class="recipePost">
-                        <!--  <h1 style="">recipePost</h1> -->
-                        <!-- #add forEach logic, 5 elements -->
-                        <!-- limit is defined in service -->
-                        <c:forEach var="board" items="${boardList}">
-                            <div class="row justify-content-center">
-                                <div class="col rounded" id="recipeDetail">
-                                    <div class="row">
-                                        <div class="col-md-2">
-                                            <img class="rounded" src="${board.imageLink}"
-                                                style="width: 200px; padding-top:10px;" />
-                                        </div>
-                                        <div class="col-md-8 offset-md-1">
-                                            <br>
-                                            <div class="row">
-                                                <div class="col-sm-4">
-                                                    <c:choose>
-                                                        <c:when test="${board.postType == 1}"><span
-                                                                class="badge bg-success">다이어트</span></c:when>
-                                                        <c:when test="${board.postType == 2}"><span
-                                                                class="badge bg-primary">간편식</span></c:when>
-                                                        <c:when test="${board.postType == 3}"><span
-                                                                class="badge bg-info">이유식</span></c:when>
-                                                        <c:when test="${board.postType == 4}"><span
-                                                                class="badge bg-warning">건강식</span></c:when>
-                                                        <c:when test="${board.postType == 5}"><span
-                                                                class="badge bg-danger">특별식</span></c:when>
-                                                    </c:choose>
-                                                    <span class="badge rounded-pill bg-secondary">Post#:
-                                                        ${board.postID}</span>
-                                                    <!-- ${board.postAuthor}  -->
-                                                </div>
-                                            </div>
-                                            <br>
-                                            <div class="row justify-content-center">
-                                                <a href="/HFProject/recipeDetail.do?postID=${board.postID}"
-                                                    class="btn btn-light"> ${board.postTitle}</a>
-                                            </div>
-                                            <br>
-                                            <div class="row" id="contentBox">
-                                                <span>${board.postContent} </span>
-                                            </div>
-                                            <div class="row align-items-end">
-                                                <div class="col-sm-10 align-self-end">
-                                                    <span>${board.postTime}<span> | </span>
-                                                        ${board.postLastModified}</span>
-                                                    <span class="badge bg-secondary"> Views: ${board.viewCount} </span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <hr>
-                                </div>
-                            </div>
-                        </c:forEach>
+						<c:forEach var="board" items="${boardList}">
+						    <div class="row justify-content-center">
+						        <div class="col rounded" id="recipeDetail">
+						            <div class="d-flex flex-row">
+						                <div class="p-1">
+						                    <img class="rounded" src="${board.imageLink}" style="width: 200px; padding-top:10px;" />
+						                </div>
+						                <div class="p-1">
+						                    <c:choose>
+						                        <c:when test="${board.postType == 1}"><span class="badge bg-success">다이어트</span></c:when>
+						                        <c:when test="${board.postType == 2}"><span class="badge bg-primary">간편식</span></c:when>
+						                        <c:when test="${board.postType == 3}"><span class="badge bg-info">이유식</span></c:when>
+						                        <c:when test="${board.postType == 4}"><span class="badge bg-warning">건강식</span></c:when>
+						                        <c:when test="${board.postType == 5}"><span class="badge bg-danger">특별식</span></c:when>
+						                    </c:choose>
+						                    <span class="badge rounded-pill bg-secondary">Post#: ${board.postID}</span>
+						                </div>
+						                <div class="p-1">
+						                    <a href="/HFProject/recipeDetail.do?postID=${board.postID}" class="btn btn-light">${board.postTitle}</a>
+						                </div>
+						                <div class="p-1">
+						                    <span>${board.postContent} </span>
+						                </div>
+						                <div class="p-1">
+						                    <span>${board.postTime}<span> | </span>
+						                    ${board.postLastModified}</span>
+						                    <span class="badge bg-secondary"> Views: ${board.viewCount} </span>
+						                </div>
+						            </div>
+						            <hr>
+						        </div>
+						    </div>
+						</c:forEach>
                         <!-- #end of logic -->
                         <!-- #temporary elements -->
                         <!-- #end of temporary elements -->
@@ -154,17 +133,17 @@
                         <ul class="pagination justify-content-center">
                             <c:if test="${buttons.startPage ne 1}">
                                 <li class="page-item"><a class="page-link"
-                                        href="/HFProject/board/homepage.do?pageNum=${buttons.startPage - 1}">&laquo;</a>
+                                        href="/HFProject/homepage.do?pageNum=${buttons.startPage - 1}">&laquo;</a>
                                 </li>
                             </c:if>
                             <c:forEach var="pageNum" begin="${buttons.startPage }" end="${buttons.endPage }">
                                 <li class="page-item ${buttons.currentPage eq pageNum ? 'active' : ''}"><a
                                         class="page-link"
-                                        href="/HFProject/board/homepage.do?pageNum=${pageNum}">${pageNum}</a></li>
+                                        href="/HFProject/homepage.do?pageNum=${pageNum}">${pageNum}</a></li>
                             </c:forEach>
                             <c:if test="${buttons.endPage ne buttons.totalPages}">
                                 <li class="page-item"><a class="page-link"
-                                        href="/HFProject/board/homepage.do?pageNum=${buttons.endPage + 1}">&raquo;</a>
+                                        href="/HFProject/homepage.do?pageNum=${buttons.endPage + 1}">&raquo;</a>
                                 </li>
                             </c:if>
                         </ul>
