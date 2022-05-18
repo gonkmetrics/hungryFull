@@ -42,5 +42,14 @@
 					</c:forEach>
 		</tbody>
 	</table>
+	<c:if test = "${buttons.startPage ne 1}">
+	 <a href = "http://localhost:8181/HFprj/AllUser.do?pageNum=${buttons.startPage - 1 }">[prev]</a>
+	</c:if>
+	<c:forEach var = "pageNum" begin="${buttons.getStartPage() }" end="${buttons.getEndPage() }">
+	<a href = "http://localhost:8181/HFprj/AllUser.do?pageNum=${pageNum }">[${pageNum }]</a> 
+	</c:forEach>
+	<c:if test = "${buttons.endPage ne buttons.totalPages}">
+	 <a href = "http://localhost:8181/HFprj/AllUser.do?pageNum=${buttons.endPage + 1 }">[next]</a>
+	</c:if>
 </body>
 </html>

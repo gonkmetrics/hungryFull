@@ -11,8 +11,7 @@
 <title>잘 들어가나 안 들어가나 확인용 </title>
 </head>
 <body>
-${user}
-	<h1>${user.userName}님 환영합니다.</h1><br/>
+	<h1>${s_id}님 환영합니다.</h1><br/>
 	<a href="userLogout.do">로그아웃</a>
 	<a href="userDelete.do">회원탈퇴</a>
 	<form action = "userUpdateForm.do" method = "post">

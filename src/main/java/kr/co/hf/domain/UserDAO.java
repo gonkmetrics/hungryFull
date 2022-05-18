@@ -34,7 +34,7 @@ public class UserDAO {
 		return dao;
 	}
 	
-	public List<UserVO> getAllUserList(){
+	public List<UserVO> getAllUserList(int pageNum){
 	
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -43,10 +43,11 @@ public class UserDAO {
 		
 		try {
 			con = ds.getConnection();
-			String sql = "SELECT * FROM user";
+			int num = (pageNum - 1) *10;
+			String sql = "SELECT * FROM user ORDER BY userNum DESC limit ?, 10;";
 
 			pstmt = con.prepareStatement(sql);
-			
+			pstmt.setInt(1, num);
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
@@ -239,8 +240,38 @@ public class UserDAO {
 		} 	
 		
 	}
+	
+public int getUserCount() {
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;//ResultSet은 실행쿼리문이 SELECT 구문인 경우 결과값을 받기 위해 필요합니다.
+		int userCount = 0;
+		
+		try {
+			con = ds.getConnection();
+			String sql = "SELECT COUNT(*) FROM user";
+			
+			pstmt = con.prepareStatement(sql);
 
-
-
-
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				userCount = rs.getInt(1);
+			}else {
+				System.out.println("계정이 없습니다.");
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				con.close();
+				pstmt.close();
+				rs.close();
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return userCount;
+	}
 }
