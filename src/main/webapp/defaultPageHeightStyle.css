@@ -1,0 +1,22 @@
+@charset "UTF-8";
+.container{
+	height: 100vh;
+}
+
+#content{
+	padding-top:130px;
+	background-color:rgba(255, 255, 255, 0.8);
+	height:100vh;
+}
+
+#footerPrimary{
+	padding-bottom:80px;
+}
+
+#bodyBackground{
+    width: 100%;
+    height: 100%;
+    background-size: 100%;
+    background-image: linear-gradient(transparent, white 75%), url("background2.png");
+}
+

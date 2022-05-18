@@ -17,8 +17,6 @@
 	} */
 	
 	$(document).ready(function(){
-		
-	var likeTypeVal;
 	
 	function createLike() {
 		var postid = $("#postid").text();
@@ -90,6 +88,13 @@
 	/* $("#lc").click(createLike);
 	$("#ld").click(deleteLike);
 	$("#lr").click(reportLike); */
+	
+	    $('.content').click(function(){
+          $('.content').toggleClass("heart-active")
+          $('.text').toggleClass("heart-active")
+          $('.numb').toggleClass("heart-active")
+          $('.heart').toggleClass("heart-active")
+        });
 	
 	$("#toggleLike").click(reportLike);
 
