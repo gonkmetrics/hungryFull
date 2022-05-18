@@ -4,20 +4,14 @@
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
-
-<style>
-    body{
-    font:15px/1.5 "굴림",Gulim;
-    margin:10px;
-    padding:50px;
-    }
-</style>
-
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="ajaxLike.js"></script>
+<script src="ajaxLike.js"></script>  <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+<script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+<link rel="stylesheet" href="recipePage.css">
 </head>
 <body>
 제목 : ${board.postTitle}
@@ -77,6 +71,14 @@ postAuthor : <span id="usernum">${board.postAuthor}</span>
 
 		<button type="button" class="btn btn-primary" id="toggleLike">like</button>
 		<span id="message"></span>
+		<hr>
+	    <div class="heart-btn">
+	      <div class="content">
+	        <span class="heart"></span>
+	        <span class="text">Like</span>
+	        <span class="numb"></span>
+	      </div>
+	    </div>
 	</div>
 </div>
 
