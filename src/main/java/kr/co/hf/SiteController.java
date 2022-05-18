@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import kr.co.hf.service.AllUserService;
 import kr.co.hf.service.BoardDeleteService;
 import kr.co.hf.service.BoardDetailService;
+import kr.co.hf.service.BoardInsertFormService;
 import kr.co.hf.service.BoardInsertService;
 import kr.co.hf.service.BoardListService;
 import kr.co.hf.service.BoardUpdateFormService;
@@ -107,6 +108,10 @@ protected void doRequest(HttpServletRequest request, HttpServletResponse respons
 		}
 		
 		if (uri.equals("boardInsertForm")) {
+			
+			sv = new BoardInsertFormService();
+			
+			sv.execute(request, response);
 			
 			ui = "/board/boardInsertForm.jsp";
 			

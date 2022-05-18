@@ -53,7 +53,8 @@
 					</div><!-- grid끝 -->
 					<div class="author">
 		  				<label for="author" class="form-label" style="margin : 10px;">글쓴이</label>
-		  				<input type="text" name="postAuthor" value="${board.postAuthor}" readonly style="margin : 10px;">
+		  				<input type="text" name="userID" value="${user.userId}" readonly style="margin : 10px;">
+		  				<input type="hidden" name="postAuthor" value="${user.userNum}"/>
 						<br/>
 					</div>
 				<div class="wrtier">

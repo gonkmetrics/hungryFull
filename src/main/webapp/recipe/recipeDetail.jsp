@@ -31,6 +31,8 @@ postID : <span id="postid">${board.postID}</span>
 <br/>
 postAuthor : <span id="usernum">${board.postAuthor}</span>
 <br/>
+userId :<span id = "userId">${user.userId}</span> 
+<br/>
 조회수 : ${board.viewCount}
 <br/>
 작성시간 : ${board.postTime}

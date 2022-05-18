@@ -239,6 +239,47 @@ public class UserDAO {
 		} 	
 		
 	}
+	
+	public UserVO getUserInfoNum(int userNum) {
+		
+		Connection con = null;
+		ResultSet rs = null;
+		PreparedStatement pstmt = null;
+		
+		UserVO user = new UserVO();
+		try {
+			con = ds.getConnection();
+			String sql = "SELECT * FROM user WHERE userNum = ?";
+			pstmt = con.prepareStatement(sql);
+
+			pstmt.setInt(1, userNum);
+			rs = pstmt.executeQuery();
+	
+			if(rs.next()) {
+				user.setUserNum(rs.getInt(1));
+				user.setUserId(rs.getString(2));
+				user.setUserPw(rs.getString(3));
+				user.setUserName(rs.getString(4));
+				user.setUserEmail(rs.getString(5));
+				user.setUage(rs.getInt(6));
+				user.setIsAdmin(rs.getInt(7));
+			}
+
+		} catch(Exception e){
+			e.printStackTrace();
+		} finally {
+			try {
+				con.close();
+				rs.close();
+				pstmt.close();
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return user;
+		
+		
+	}
 
 
 

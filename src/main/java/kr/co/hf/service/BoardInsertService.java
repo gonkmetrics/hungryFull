@@ -31,11 +31,7 @@ public class BoardInsertService implements ForumService{
 		int postType = Integer.parseInt(strPostType);
 		
 		BoardDAO dao = BoardDAO.getInstance();
-		UserDAO udao = UserDAO.getInstance();
 
-        List<UserVO> UserList = udao.getAllUserList();
-        request.setAttribute("UserList", UserList);
-		
 		dao.boardInsert(postAuthor, postTitle, postContent, postType, imageLink);
 		
 		
