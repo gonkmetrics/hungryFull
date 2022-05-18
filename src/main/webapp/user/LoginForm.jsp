@@ -9,20 +9,29 @@
 <link rel="stylesheet" href="defaultPageHeightStyle.css">
 </head>
 <body>
-	
 	<div class="container">
 	<c:import url="../templateHeader.html"/>
 		<div id="bodyBackground">
 				<div class="row justify-content-center">
 					<div class="col-md-6" id="content">
 						<br>
-						${user}
+						<!-- Hello: ${user}  -->
 						<form action="/HFProject/userLoginCheck.do" method="post">
-							아이디 : <input type="text" name="formId" /><br/>
-							비밀번호 : <input type="password" name="formPw" /><br/>
-							<input type="submit" value="로그인" />
+							<label for="fi" class="form-label">아이디</label>
+							<input type="text" class="form-control" id="fi" name="formId" /><br>
+							<label for="pw" class="form-label">비밀번호</label>
+							<input type="password" class="form-control" id="pw" name="formPw" /><br>
+							<div class="d-flex">
+								<div class="p-1">
+									<input class="btn btn-primary" type="submit" value="로그인" />
+								</div>
+								<div class="p-1 ms-auto">
+									<a class="btn btn-warning" href="/HFProject/userJoinForm.do">회원가입하기</a>
+								</div>
+							</div>
+							
 						</form>
-						<a href="/HFProject/userJoinForm.do">회원가입하기.</a>
+						
 					</div>
 				</div>
 		</div>
@@ -30,6 +39,5 @@
 	<c:import url="../templateFooter.html"/>
 	</footer>
 	</div>
-	
 </body>
 </html>
