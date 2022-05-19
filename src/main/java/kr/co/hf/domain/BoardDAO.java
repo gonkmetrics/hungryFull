@@ -307,6 +307,64 @@ public class BoardDAO {
 		return boardCount;
 	} // getBoardCount END;
 
+	public List<BoardVO> getUserPostList(int userNum){
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		List<BoardVO> boardList = new ArrayList<>();
+		
+		try {
+			
+			
+			con = ds.getConnection();
+			
+			String sql = "SELECT * FROM board WHERE postAuthor = ? ORDER BY postID DESC;";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, userNum);
+			
+			
+			rs = pstmt.executeQuery();
+			
+			
+				while(rs.next()) {
+					BoardVO board = new BoardVO();
+					
+					board.setPostID(rs.getInt(1));
+					board.setPostAuthor(rs.getInt(2));
+					board.setPostTitle(rs.getString(3));
+					board.setPostContent(rs.getString(4));
+					board.setPostTime(rs.getDate(5));
+					board.setPostLastModified(rs.getDate(6));
+					board.setViewCount(rs.getInt(7));
+					board.setPostType(rs.getInt(8));
+					board.setImageLink(rs.getString(9));
+					
+					
+					System.out.println("board 값 데이터 디버깅 : " + board);
+					boardList.add(board);
+					
+				}
+			
+			
+			System.out.println("boardList 값 데이터 디버깅 : " + boardList);
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				con.close();
+				pstmt.close();
+				rs.close();
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return boardList;
+	
+	} // getUserPostList END;
+	
 	
 } // BoardDAO END;
 
