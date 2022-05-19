@@ -319,7 +319,7 @@ public class BoardDAO {
 			
 			con = ds.getConnection();
 			
-			String sql = "SELECT * FROM board WHERE postAuthor = ? ORDER BY postID DESC;";
+			String sql = "SELECT * FROM board WHERE postAuthor = ? ORDER BY postID DESC limit 10;";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, userNum);
 			

@@ -29,6 +29,7 @@ import kr.co.hf.service.UserDeleteService;
 import kr.co.hf.service.UserJoinFormService;
 import kr.co.hf.service.UserLoginService;
 import kr.co.hf.service.UserLogoutService;
+import kr.co.hf.service.UserPostListService;
 import kr.co.hf.service.UserUpdateFormService;
 import kr.co.hf.service.UserUpdateService;
 
@@ -295,6 +296,14 @@ protected void doRequest(HttpServletRequest request, HttpServletResponse respons
 			sv.execute(request,response);
 			ui = "/user/getAllUserInfo.jsp";
 		
+		}
+		
+		if(uri.equals("userPostList")) {
+			
+			sv = new UserPostListService();
+			sv.execute(request, response);
+			ui = "/board/userPostList.jsp";
+			
 		}
 		
 		RequestDispatcher dp = request.getRequestDispatcher(ui);
