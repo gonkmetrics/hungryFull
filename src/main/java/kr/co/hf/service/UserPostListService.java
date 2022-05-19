@@ -19,17 +19,21 @@ public class UserPostListService implements ForumService {
 		BoardDAO dao = BoardDAO.getInstance();
 		
 		String strUserNum = request.getParameter("userNum");
-		
-		int userNum = Integer.parseInt(strUserNum);
+		String strpageNum = request.getParameter("pageNum");
 		
 		int pageNum = 1;
 		
+		if(strpageNum != null) {
+			 pageNum = Integer.parseInt(strpageNum);
+		}
+		
 		int boardCount = dao.getBoardCount();
+		int userNum = Integer.parseInt(strUserNum);
 		
 		BoardButtonDTO buttons = new BoardButtonDTO(boardCount, pageNum);
+		List<BoardVO> boardList = dao.getUserPostList(userNum, pageNum);
 		
-		List<BoardVO> boardList = dao.getUserPostList(userNum);
-		
+		request.setAttribute("userNum", userNum);
 		request.setAttribute("boardList", boardList);
 		request.setAttribute("buttons", buttons);
 		

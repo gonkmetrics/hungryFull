@@ -307,7 +307,7 @@ public class BoardDAO {
 		return boardCount;
 	} // getBoardCount END;
 
-	public List<BoardVO> getUserPostList(int userNum){
+	public List<BoardVO> getUserPostList(int userNum, int pageNum){
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -316,13 +316,13 @@ public class BoardDAO {
 		
 		try {
 			
-			
+			int num = (pageNum - 1) * 10;
 			con = ds.getConnection();
 			
-			String sql = "SELECT * FROM board WHERE postAuthor = ? ORDER BY postID DESC limit 10;";
+			String sql = "SELECT * FROM board WHERE postAuthor = ? ORDER BY postID DESC limit ?, 10;";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, userNum);
-			
+			pstmt.setInt(2, num);
 			
 			rs = pstmt.executeQuery();
 			
