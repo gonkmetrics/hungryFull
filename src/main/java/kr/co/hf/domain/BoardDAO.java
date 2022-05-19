@@ -365,6 +365,64 @@ public class BoardDAO {
 	
 	} // getUserPostList END;
 	
+	public List<BoardVO> getPostTypeList(int postType, int pageNum){
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		List<BoardVO> boardList = new ArrayList<>();
+		
+		try {
+			
+			int num = (pageNum - 1) * 10;
+			con = ds.getConnection();
+			
+			String sql = "SELECT * FROM board WHERE postType = ? ORDER BY postID DESC limit ?, 10;";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, postType);
+			pstmt.setInt(2, num);
+			
+			rs = pstmt.executeQuery();
+			
+			
+				while(rs.next()) {
+					BoardVO board = new BoardVO();
+					
+					board.setPostID(rs.getInt(1));
+					board.setPostAuthor(rs.getInt(2));
+					board.setPostTitle(rs.getString(3));
+					board.setPostContent(rs.getString(4));
+					board.setPostTime(rs.getDate(5));
+					board.setPostLastModified(rs.getDate(6));
+					board.setViewCount(rs.getInt(7));
+					board.setPostType(rs.getInt(8));
+					board.setImageLink(rs.getString(9));
+					
+					
+					System.out.println("board 값 데이터 디버깅 : " + board);
+					boardList.add(board);
+					
+				}
+			
+			
+			System.out.println("boardList 값 데이터 디버깅 : " + boardList);
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				con.close();
+				pstmt.close();
+				rs.close();
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return boardList;
+	
+	} // getPostTypeList END;
+	
 	
 } // BoardDAO END;
 

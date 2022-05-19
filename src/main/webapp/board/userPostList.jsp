@@ -5,54 +5,97 @@
 
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+    <!-- Applied Stylesheets -->
+    <link rel="stylesheet" href="stylesheet.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <!-- Applied Scripts -->
+    <script src='defaultScript.js'></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+
 </head>
+
 <body>
-<table class = "table table-primary">
-	<thead>
-		<tr>
-			<th>postID</th>
-			<th>postAuthor</th>
-			<th>postTitle</th>
-			<th>postContent</th>
-			<th>postTime</th>
-			<th>postLastModified</th>
-			<th>viewCount</th>
-			<th>postType</th>
-		</tr>
-	</thead>
-	<tbody>
-		<c:forEach var="board" items="${boardList}">
-			<tr>
-				<td>${board.postID}</td>
-				<td>${board.postAuthor}</td>
-				<td><a href="/HFProject/recipeDetail.do?postID=${board.postID}"/>${board.postTitle}</td>
-				<td>${board.postContent}</td>
-				<td>${board.postTime}</td>
-				<td>${board.postLastModified}</td>
-				<td>${board.viewCount}</td>
-				<td>${board.postType}</td>
-			</tr>
-		</c:forEach>
-		</tbody>
-</table>
+	<div>
+		<c:import url="../templateHeader.html"/>
+        <div class="container" id="boardBox">
+            <div class="row justify-content-center">
+                <div class="col-10">
+                    <a href="/HFProject/boardInsertForm.do" class="btn btn-light">Post Recipe</a>
+                    <div class="recipePost">
+						<c:forEach var="board" items="${boardList}">
+						    <div class="row justify-content-center">
+						        <div class="col rounded" id="recipeDetail">
+						            <div class="d-flex flex-row">
+						                <div class="postImage">
+						                    <img class="rounded" src="${board.imageLink}" style="width: 200px; padding-top:10px;" />
+						                </div>
+						                <div class="p-1">
+						                    <c:choose>
+						                        <c:when test="${board.postType == 1}"><span class="badge bg-success">다이어트</span></c:when>
+						                        <c:when test="${board.postType == 2}"><span class="badge bg-primary">간편식</span></c:when>
+						                        <c:when test="${board.postType == 3}"><span class="badge bg-info">이유식</span></c:when>
+						                        <c:when test="${board.postType == 4}"><span class="badge bg-warning">건강식</span></c:when>
+						                        <c:when test="${board.postType == 5}"><span class="badge bg-danger">특별식</span></c:when>
+						                    </c:choose>
+						                    <span class="badge rounded-pill bg-secondary">Post#: ${board.postID}</span>
+						                </div>
+						               	<div class="p-3">
+						                    <a href="/HFProject/recipeDetail.do?postID=${board.postID}" class="btn btn-light">${board.postTitle}</a>
+						                </div>
+						                <div class="p-1">
+						                    <span>${board.postContent} </span>
+						                </div>
+						                <div class="p-1">
+						                    <span>${board.postTime}<span> | </span>
+						                    ${board.postLastModified}</span>
+						                    <span class="badge bg-secondary"> Views: ${board.viewCount} </span>
+						                </div>
+						            </div>
+						            <hr>
+						        </div>
+						    </div>
+						</c:forEach>
+                        <!-- #end of logic -->
+                        <!-- #temporary elements -->
+                        <!-- #end of temporary elements -->
+                    </div>
+                </div>
+            </div>
+        </div>
 		<nav aria-label="Page navigation example">
 		  <ul class="pagination justify-content-center">
 		  	<c:if test="${buttons.startPage ne 1}">
-				<li class="page-item"><a class="page-link" href="/HFProject/userPostList.do?userNum=${param.userNum}&pageNum=${buttons.startPage - 1}">Previous</a></li>
+				<li class="page-item"><a class="page-link" href="/HFProject/userPostList.do?userNum=${param.userNum}&pageNum=${buttons.startPage - 1}">&laquo;</a></li>
 			</c:if>
 			<c:forEach var="pageNum" begin="${buttons.startPage }" end="${buttons.endPage }">
 				<li class="page-item ${buttons.currentPage eq pageNum ? 'active' : ''}"><a class="page-link" href="/HFProject/userPostList.do?userNum=${param.userNum}&pageNum=${pageNum}">${pageNum}</a></li>
 			</c:forEach>
 			<c:if test="${buttons.endPage ne buttons.totalPages}">
-		    	<li class="page-item"><a class="page-link" href="/HFProject/userPostList.do?userNum=${param.userNum}&pageNum=${buttons.endPage + 1}">Next</a></li>
+		    	<li class="page-item"><a class="page-link" href="/HFProject/userPostList.do?userNum=${param.userNum}&pageNum=${buttons.endPage + 1}">&raquo;</a></li>
 		    </c:if>
 		  </ul>
 		</nav>
 
-<a href="/HFProject/boardInsertForm.do">글쓰기</a>
-<a href="/HFProject/userLogout.do">로그아웃</a>
+		<a href="/HFProject/boardInsertForm.do">글쓰기</a>
+		<a href="/HFProject/userLogout.do">로그아웃</a>
+	</div>
 </body>
+
+<c:import url="../templateFooter.html"/>
+
 </html>
