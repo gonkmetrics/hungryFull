@@ -199,4 +199,52 @@ public class ComDAO {
 	         }
 	   }// ComUpdate 마무리
 	
+	public List<ComVO> getUserComList(String userId, int pageNum){
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		List<ComVO> ComList = new ArrayList<>();
+		
+		try {
+			
+			int num = (pageNum - 1) * 10;
+			con = ds.getConnection();
+			
+			String sql = "SELECT * FROM comment WHERE commentAuthor = ? ORDER BY postID DESC limit ?, 10;";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, userId);
+			pstmt.setInt(2, num);
+			
+			rs = pstmt.executeQuery();
+			
+			
+				while(rs.next()) {
+					ComVO com = new ComVO();
+		
+					com.setCommentID(rs.getInt("commentID")); // 앞에 시작할때 꼭 대문자써야 함
+					com.setPostID(rs.getInt("postID"));
+					com.setCommentAuthor(rs.getString("commentAuthor"));
+					com.setCommentContent(rs.getString("commentContent"));
+					
+					ComList.add(com);
+					
+				}
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				con.close();
+				pstmt.close();
+				rs.close();
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return ComList;
+	
+	} // getUserComList END;
+	
 }

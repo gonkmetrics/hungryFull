@@ -120,3 +120,8 @@ button:focus { outline: none; }
 	height: 10vh;
 }
 
+#boardbox {
+	margin-top: 30px;
+}
+
+

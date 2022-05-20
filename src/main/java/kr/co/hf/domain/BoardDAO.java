@@ -423,6 +423,8 @@ public class BoardDAO {
 	
 	} // getPostTypeList END;
 	
+
+	
 	
 } // BoardDAO END;
 
