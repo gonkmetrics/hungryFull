@@ -11,6 +11,8 @@ import kr.co.hf.domain.BoardDAO;
 import kr.co.hf.domain.BoardVO;
 import kr.co.hf.domain.ComDAO;
 import kr.co.hf.domain.ComVO;
+import kr.co.hf.domain.UserDAO;
+import kr.co.hf.domain.UserVO;
 
 public class RecipeDetailService implements ForumService{
 
@@ -18,18 +20,26 @@ public class RecipeDetailService implements ForumService{
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		String strPostID = request.getParameter("postID");
-		
+
 		int postID = Integer.parseInt(strPostID);
 		
 		BoardDAO bdao = BoardDAO.getInstance();
+
+		UserDAO udao = UserDAO.getInstance();
 		
 		BoardVO board = bdao.getBoardDetail(postID);
+		bdao.upViewCnt(postID);
+		
+		int userNum = board.getPostAuthor();
 		
 		ComDAO cdao = ComDAO.getInstance();
+		
+		UserVO user = udao.getUserInfoNum(userNum);
 
         List<ComVO> ComList = cdao.getComList(postID);
+        
+        request.setAttribute("user", user);
         request.setAttribute("ComList", ComList);
-		
 		request.setAttribute("board", board);
 		
 	}

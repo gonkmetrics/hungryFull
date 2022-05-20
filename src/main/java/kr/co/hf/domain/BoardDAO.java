@@ -75,13 +75,13 @@ public class BoardDAO {
 					board.setImageLink(rs.getString(9));
 					
 					
-					System.out.println("board 값 데이터 디버깅 : " + board);
+					//System.out.println("board 값 데이터 디버깅 : " + board);
 					boardList.add(board);
 					
 				}
 			
 			
-			System.out.println("boardList 값 데이터 디버깅 : " + boardList);
+			//System.out.println("boardList 값 데이터 디버깅 : " + boardList);
 			
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -126,9 +126,9 @@ public class BoardDAO {
 				board.setPostType(rs.getInt(8));
 				board.setImageLink(rs.getString(9));
 				
-				System.out.println("BoardVO 체크 : " + board);
+				//System.out.println("BoardVO 체크 : " + board);
 			} else {
-				System.out.println("일치하는 데이터 (postID)가 없음");
+				//System.out.println("일치하는 데이터 (postID)가 없음");
 			}
 			
 			
@@ -158,7 +158,7 @@ public class BoardDAO {
 		try {
 			con = ds.getConnection();
 			
-			String sql = "INSERT INTO board (postAuthor, postTitle, postContent, postType, imageLink) VALUES (?, ?, ?, ?, ?)";
+			String sql = "INSERT INTO board (postAuthor, postTitle, postContent, postType, imageLink, viewCount) VALUES (?, ?, ?, ?, ?, 0)";
 			
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, postAuthor);
@@ -245,7 +245,7 @@ public class BoardDAO {
 		}
 	} //  boardUpdate END.
 	
-	public void updateViewCnt(int postID) {
+	public void upViewCnt(int postID) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		
@@ -253,7 +253,7 @@ public class BoardDAO {
 			
 			con = ds.getConnection();
 
-			String sql = "UPDATE board SET viewcount = viewcount + 1 where postID=?";
+			String sql = "UPDATE board SET viewCount = viewCount + 1 WHERE postID=?";
 			pstmt =  con.prepareStatement(sql);
 			
 			pstmt.setInt(1, postID);
@@ -271,13 +271,13 @@ public class BoardDAO {
 			}
 			
 		}
-	} // updateViewCnt END;
+	} // upViewCnt END;
 	
 	public int getBoardCount() {
 		
 		Connection con = null;
 		PreparedStatement pstmt = null;
-		ResultSet rs = null;//ResultSet은 실행쿼리문이 SELECT 구문인 경우 결과값을 받기 위해 필요합니다.
+		ResultSet rs = null;
 		int boardCount = 0;
 		
 		try {
@@ -305,7 +305,187 @@ public class BoardDAO {
 			}
 		}
 		return boardCount;
-	}
+	} // getBoardCount END;
+
+	public List<BoardVO> getUserPostList(int userNum, int pageNum){
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		List<BoardVO> boardList = new ArrayList<>();
+		
+		try {
+			
+			int num = (pageNum - 1) * 10;
+			con = ds.getConnection();
+			
+			String sql = "SELECT * FROM board WHERE postAuthor = ? ORDER BY postID DESC limit ?, 10;";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, userNum);
+			pstmt.setInt(2, num);
+			
+			rs = pstmt.executeQuery();
+			
+			
+				while(rs.next()) {
+					BoardVO board = new BoardVO();
+					
+					board.setPostID(rs.getInt(1));
+					board.setPostAuthor(rs.getInt(2));
+					board.setPostTitle(rs.getString(3));
+					board.setPostContent(rs.getString(4));
+					board.setPostTime(rs.getDate(5));
+					board.setPostLastModified(rs.getDate(6));
+					board.setViewCount(rs.getInt(7));
+					board.setPostType(rs.getInt(8));
+					board.setImageLink(rs.getString(9));
+					
+					
+					//System.out.println("board 값 데이터 디버깅 : " + board);
+					boardList.add(board);
+					
+				}
+			
+			
+			//System.out.println("boardList 값 데이터 디버깅 : " + boardList);
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				con.close();
+				pstmt.close();
+				rs.close();
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return boardList;
+	
+	} // getUserPostList END;
+	
+	public List<BoardVO> getPostTypeList(int postType, int pageNum){
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		List<BoardVO> boardList = new ArrayList<>();
+		
+		try {
+			
+			int num = (pageNum - 1) * 10;
+			con = ds.getConnection();
+			
+			String sql = "SELECT * FROM board WHERE postType = ? ORDER BY postID DESC limit ?, 10;";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, postType);
+			pstmt.setInt(2, num);
+			
+			rs = pstmt.executeQuery();
+			
+			
+				while(rs.next()) {
+					BoardVO board = new BoardVO();
+					
+					board.setPostID(rs.getInt(1));
+					board.setPostAuthor(rs.getInt(2));
+					board.setPostTitle(rs.getString(3));
+					board.setPostContent(rs.getString(4));
+					board.setPostTime(rs.getDate(5));
+					board.setPostLastModified(rs.getDate(6));
+					board.setViewCount(rs.getInt(7));
+					board.setPostType(rs.getInt(8));
+					board.setImageLink(rs.getString(9));
+					
+					
+					//System.out.println("board 값 데이터 디버깅 : " + board);
+					boardList.add(board);
+					
+				}
+			
+			
+			//System.out.println("boardList 값 데이터 디버깅 : " + boardList);
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				con.close();
+				pstmt.close();
+				rs.close();
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return boardList;
+	
+	} // getPostTypeList END;
+	
+	public List<BoardVO> getBoardListSearch(int pageNum, String query){
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		List<BoardVO> boardList = new ArrayList<>();
+		String substring = "%"+query+"%";
+		
+		try {
+			
+			
+			con = ds.getConnection();
+			
+			int num = (pageNum - 1) * 10;
+			
+			String sql = "SELECT * FROM board WHERE postContent LIKE ? ORDER BY postTime DESC limit ?, 10";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, substring);
+			pstmt.setInt(2, num);
+			
+			
+			rs = pstmt.executeQuery();
+			
+			
+				while(rs.next()) {
+					BoardVO board = new BoardVO();
+					
+					board.setPostID(rs.getInt(1));
+					board.setPostAuthor(rs.getInt(2));
+					board.setPostTitle(rs.getString(3));
+					board.setPostContent(rs.getString(4));
+					board.setPostTime(rs.getDate(5));
+					board.setPostLastModified(rs.getDate(6));
+					board.setViewCount(rs.getInt(7));
+					board.setPostType(rs.getInt(8));
+					board.setImageLink(rs.getString(9));
+					
+					
+					//System.out.println("board 값 데이터 디버깅 : " + board);
+					boardList.add(board);
+					
+				}
+			
+			
+			//System.out.println("boardList 값 데이터 디버깅 : " + boardList);
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				con.close();
+				pstmt.close();
+				rs.close();
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return boardList;
+	
+	} // getBoardList END;
+	
+
 	
 	
 } // BoardDAO END;

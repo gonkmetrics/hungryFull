@@ -13,11 +13,13 @@ import javax.servlet.http.HttpServletResponse;
 import kr.co.hf.service.AllUserService;
 import kr.co.hf.service.BoardDeleteService;
 import kr.co.hf.service.BoardDetailService;
+import kr.co.hf.service.BoardInsertFormService;
 import kr.co.hf.service.BoardInsertService;
 import kr.co.hf.service.BoardListService;
 import kr.co.hf.service.BoardUpdateFormService;
 import kr.co.hf.service.BoardUpdateService;
 import kr.co.hf.service.ComDeleteService;
+import kr.co.hf.service.ComInsertFormService;
 import kr.co.hf.service.ComInsertService;
 import kr.co.hf.service.ComUpdateFormService;
 import kr.co.hf.service.ComUpdateService;
@@ -27,6 +29,7 @@ import kr.co.hf.service.UserDeleteService;
 import kr.co.hf.service.UserJoinFormService;
 import kr.co.hf.service.UserLoginService;
 import kr.co.hf.service.UserLogoutService;
+import kr.co.hf.service.UserPostListService;
 import kr.co.hf.service.UserUpdateFormService;
 import kr.co.hf.service.UserUpdateService;
 
@@ -107,6 +110,10 @@ protected void doRequest(HttpServletRequest request, HttpServletResponse respons
 		}
 		
 		if (uri.equals("boardInsertForm")) {
+			
+			sv = new BoardInsertFormService();
+			
+			sv.execute(request, response);
 			
 			ui = "/board/boardInsertForm.jsp";
 			
@@ -194,6 +201,10 @@ protected void doRequest(HttpServletRequest request, HttpServletResponse respons
 		
 		if(uri.equals("ComInsertForm")) {
 			
+			sv = new ComInsertFormService();
+			
+			sv.execute(request, response);
+			
 			ui = "/Com/ComInsertForm.jsp";
 		
 		}
@@ -251,7 +262,7 @@ protected void doRequest(HttpServletRequest request, HttpServletResponse respons
 			
 			sv = new UserLogoutService();
 			sv.execute(request,response);
-			ui = "/homepage.do";
+			ui = "/userLogin.do";
 			
 		}
 		
@@ -285,6 +296,14 @@ protected void doRequest(HttpServletRequest request, HttpServletResponse respons
 			sv.execute(request,response);
 			ui = "/user/getAllUserInfo.jsp";
 		
+		}
+		
+		if(uri.equals("userPostList")) {
+			
+			sv = new UserPostListService();
+			sv.execute(request, response);
+			ui = "/board/userPostList.jsp";
+			
 		}
 		
 		RequestDispatcher dp = request.getRequestDispatcher(ui);

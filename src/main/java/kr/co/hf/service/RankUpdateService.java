@@ -124,4 +124,3 @@ public class RankUpdateService implements Callable<HashMap<Integer, Integer>>{
 }
 	
 
-

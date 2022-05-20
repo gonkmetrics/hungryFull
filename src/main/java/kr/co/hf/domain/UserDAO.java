@@ -239,8 +239,126 @@ public class UserDAO {
 		} 	
 		
 	}
+	
+	public UserVO getUserInfoNum(int userNum) {
+		
+		Connection con = null;
+		ResultSet rs = null;
+		PreparedStatement pstmt = null;
+		
+		UserVO user = new UserVO();
+		try {
+			con = ds.getConnection();
+			String sql = "SELECT * FROM user WHERE userNum = ?";
+			pstmt = con.prepareStatement(sql);
 
+			pstmt.setInt(1, userNum);
+			rs = pstmt.executeQuery();
+	
+			if(rs.next()) {
+				user.setUserNum(rs.getInt(1));
+				user.setUserId(rs.getString(2));
+				user.setUserPw(rs.getString(3));
+				user.setUserName(rs.getString(4));
+				user.setUserEmail(rs.getString(5));
+				user.setUage(rs.getInt(6));
+				user.setIsAdmin(rs.getInt(7));
+			}
 
+		} catch(Exception e){
+			e.printStackTrace();
+		} finally {
+			try {
+				con.close();
+				rs.close();
+				pstmt.close();
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return user;
+		
+		
+	}
+
+	public int getUserCount() {
+			
+			Connection con = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;//ResultSet은 실행쿼리문이 SELECT 구문인 경우 결과값을 받기 위해 필요합니다.
+			int userCount = 0;
+			
+			try {
+				con = ds.getConnection();
+				String sql = "SELECT COUNT(*) FROM user";
+				
+				pstmt = con.prepareStatement(sql);
+	
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()) {
+					userCount = rs.getInt(1);
+				}else {
+					System.out.println("계정이 없습니다.");
+				}
+			} catch(Exception e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					con.close();
+					pstmt.close();
+					rs.close();
+				} catch(Exception e) {
+					e.printStackTrace();
+				}
+			}
+			return userCount;
+		}
+
+		public List<UserVO> getAllUserList(int pageNum){
+			
+			Connection con = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			List<UserVO> userList = new ArrayList<>();
+			
+			try {
+				con = ds.getConnection();
+				int num = (pageNum - 1) *10;
+				String sql = "SELECT * FROM user ORDER BY userNum DESC limit ?, 10;";
+	
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, num);
+				rs = pstmt.executeQuery();
+				
+				while(rs.next()) {
+	
+					UserVO user = new UserVO();
+	
+					user.setUserNum(rs.getInt(1));
+					user.setUserId(rs.getString(2));
+					user.setUserPw(rs.getString(3));
+					user.setUserName(rs.getString(4));
+					user.setUserEmail(rs.getString(5));
+					user.setUage(rs.getInt(6));
+					user.setIsAdmin(rs.getInt(7));
+	
+					userList.add(user);
+				}
+	
+			} catch(Exception e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					con.close();
+					pstmt.close();
+					rs.close();
+				} catch(Exception e) {
+					e.printStackTrace();
+				}
+			}
+			return userList;
+		}// getAllUserList() 끝나는 지점.
 
 
 }
