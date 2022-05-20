@@ -28,35 +28,13 @@
 
 <body>
     <div>
-		<c:import url="../templateHeader.html"/>
+		<c:import url="../templateHeader.jsp"/>
         <div class="container-fluid">
             <!-- #body -->
             <div id="bodyPrimary">
                 <p>
                 </p>
             </div>
-            <div id="searchPrimary">
-                <div class="row justify-content-center">
-                    <div class="col-6 align-self-center rounded-pill" id="searchBar">
-                        <form>
-                            <!-- #submit is kb-enter -->
-                            <div class="form-group">
-                                <div class="row">
-                                    <div class="col-md-11">
-                                        <input type="text" class="form-control border-0" />
-                                    </div>
-                                    <div class="col-md-1">
-                                        <img src="search.svg" style="width: 99%; padding-top:5px; padding-right:5px;" />
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-
-                    </div>
-                </div>
-            </div>
-
-
 
             <div id="rankBox" class="row justify-content-center">
                 <div id="rankContents" class="col-8 rounded-3">
@@ -65,6 +43,11 @@
                     </div>
                     <div id="rankPost" class="row">
                         <!-- <h1>rankPost</h1> -->
+                        ${sessionScope.s_id}
+                        ${user.userName}
+                        <span>ranklist: ${applicationScope['rank1']}</span>
+                        <span>ranklist: ${applicationScope['rank2']}</span>
+                        <span>ranklist: ${applicationScope['rank3']}</span>
                         <c:forEach var="i" begin="1" end="3">
 	                        <div class="col-md-4" id="rankDisplayBlock">
 	                            <!--  from listener -->
@@ -84,37 +67,30 @@
                     <a href="/HFProject/boardInsertForm.do" class="btn btn-light">Post Recipe</a>
                     <div class="recipePost">
 						<c:forEach var="board" items="${boardList}">
-						    <div class="row justify-content-center">
-						        <div class="col rounded" id="recipeDetail">
-						            <div class="d-flex flex-row">
-						                <div class="p-1">
-						                    <img class="rounded" src="${board.imageLink}" style="width: 200px; padding-top:10px;" />
-						                </div>
-						                <div class="p-1">
-						                    <c:choose>
-						                        <c:when test="${board.postType == 1}"><span class="badge bg-success">다이어트</span></c:when>
-						                        <c:when test="${board.postType == 2}"><span class="badge bg-primary">간편식</span></c:when>
-						                        <c:when test="${board.postType == 3}"><span class="badge bg-info">이유식</span></c:when>
-						                        <c:when test="${board.postType == 4}"><span class="badge bg-warning">건강식</span></c:when>
-						                        <c:when test="${board.postType == 5}"><span class="badge bg-danger">특별식</span></c:when>
-						                    </c:choose>
-						                    <span class="badge rounded-pill bg-secondary">Post#: ${board.postID}</span>
-						                </div>
-						                <div class="p-1">
-						                    <a href="/HFProject/recipeDetail.do?postID=${board.postID}" class="btn btn-light">${board.postTitle}</a>
-						                </div>
-						                <div class="p-1">
-						                    <span>${board.postContent} </span>
-						                </div>
-						                <div class="p-1">
-						                    <span>${board.postTime}<span> | </span>
-						                    ${board.postLastModified}</span>
-						                    <span class="badge bg-secondary"> Views: ${board.viewCount} </span>
-						                </div>
-						            </div>
-						            <hr>
-						        </div>
-						    </div>
+						    <div class="col rounded" id="recipeDetail">
+							<div class="d-flex position-relative p-3">
+							    <img src="${board.imageLink}" class="w-25">
+							    <div class="ps-4">
+							      <h3 class="mt-0">${board.postTitle}</h3>
+							      	<c:choose>
+							        <c:when test="${board.postType == 1}"><span class="badge bg-success">다이어트</span></c:when>
+							        <c:when test="${board.postType == 2}"><span class="badge bg-primary">간편식</span></c:when>
+							        <c:when test="${board.postType == 3}"><span class="badge bg-info">이유식</span></c:when>
+							        <c:when test="${board.postType == 4}"><span class="badge bg-warning">건강식</span></c:when>
+							        <c:when test="${board.postType == 5}"><span class="badge bg-danger">특별식</span></c:when>
+							        </c:choose>
+							        <span class="badge rounded-pill bg-secondary">Post#: ${board.postID}</span>
+							        <br><br>
+							      <p>${board.postContent}</p>
+							      <a href="/HFProject/recipeDetail.do?postID=${board.postID}" class="stretched-link"></a>
+							        <div class="pt-3">
+								        <span>${board.postTime}<span> | </span>
+								        ${board.postLastModified}</span>
+								        <span class="badge bg-secondary"> Views: ${board.viewCount} </span>								        
+							        </div>
+							    </div>
+							</div>
+							</div>
 						</c:forEach>
                         <!-- #end of logic -->
                         <!-- #temporary elements -->

@@ -9,8 +9,8 @@
 <link rel="stylesheet" href="defaultPageHeightStyle.css">
 </head>
 <body>
-	<div class="container">
 	<c:import url="../templateHeader.html"/>
+	<div class="container">
 		<div id="bodyBackground">
 				<div class="row justify-content-center">
 					<div class="col-md-6" id="content">
