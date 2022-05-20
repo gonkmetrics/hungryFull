@@ -251,7 +251,7 @@ protected void doRequest(HttpServletRequest request, HttpServletResponse respons
 			
 			sv = new UserLogoutService();
 			sv.execute(request,response);
-			ui = "/userLogin.do";
+			ui = "/homepage.do";
 			
 		}
 		
