@@ -17,17 +17,13 @@ public class ComUpdateService implements ForumService{
 		ComDAO dao = ComDAO.getInstance();
 		
 		String commentid = request.getParameter("commentID");
+		String postid = request.getParameter("postID");
 		
 		int commentID = Integer.parseInt(commentid);
 		
 		String content = request.getParameter("commentContent");
 		String author = request.getParameter("commentAuthor");
-		
-		System.out.println("댓글 수정 디버깅 :");
-		System.out.println("commentID");
-		System.out.println("content");
-		System.out.println("anuthor");
-	
+		request.setAttribute("postID", postid);
 		dao.ComUpdate(content, author, commentID);
 	}
 

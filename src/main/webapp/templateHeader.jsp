@@ -4,28 +4,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Page Title</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-
-    <!-- Applied Stylesheets -->
-    <link rel="stylesheet" href="stylesheet.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-
-    <!-- Applied Scripts -->
-    <script src='defaultScript.js'></script>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-        crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
 </head>
 <body>
-		<nav class="navbar navbar-expand-lg navbar-light bg-light py-3">
+		<nav class="navbar navbar-expand-lg navbar-light bg-light py-3" id="navbar-primary">
 		    <div class="container-fluid">
 		        <a class="navbar-brand" href="homepage.do">
 		        	<img id="logo" src="logosvgblack.svg"/>
@@ -35,9 +16,10 @@
 		            <span class="navbar-toggler-icon"></span>
 		        </button>
 		        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+		        	<br>
 		            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-		                <li class="nav-item">
-		                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+		                <li class="nav-item p-1">
+		                    <a class="nav-link active" aria-current="page" href="homepage.do">Home</a>
 		                </li>
 		                <!--<li class="nav-item dropdown">
 		                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -53,37 +35,44 @@
 		                        <li><a class="dropdown-item" href="#">Something else here</a></li>
 		                    </ul>
 		                </li> -->
-		                <li class="nav-item">
-		                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">User Dashboard</a>
+		                <li class="nav-item p-1">
+		                    <a class="nav-link ${sessionScope.s_id eq null ? 'disabled' : ''}" href="userDashboard.do" tabindex="-1" aria-disabled="true">User Dashboard</a>
 		                </li>
-		                <li class="nav-item">
+		                <li class="nav-item p-1">
 		                    <a class="nav-link" href="#">About</a>
 		                </li>
+		                <c:if test="${sessionScope.s_id ne null}">
+		                <li class="nav-item p-1 ps-3">
+		                    <a class="btn btn-outline-success" href="/HFProject/boardInsertForm.do">Post Recipe</a>
+		                </li>
+		                </c:if>		                
 		            </ul>
 		            <div>
 		            	<c:if test="${sessionScope.s_id eq null}">
-			            	<a class="nav-link" data-bs-toggle="modal" data-bs-target="#exampleModal">
+			            	<a class="btn btn-outline-dark me-4" data-bs-toggle="modal" data-bs-target="#exampleModal">
 							  Login
 							</a>
 		            	</c:if>
 		            	<c:if test="${sessionScope.s_id ne null}">
-		            		<a class="nav-link" href="userLogout.do">logout</a>
+		            		<a class="btn btn-outline-dark me-4" href="userLogout.do">Logout</a>
 		            	</c:if>
 		            </div>
-		            <div class="col-2 align-self-center rounded-pill" id="searchBar">
-			            <form class="d-flex">	            	
+		            <div >
+			            <form class="d-flex" method="get" action="searchPage.do">	            	
 	                            <!-- #submit is kb-enter -->
 		                            <div class="form-group">
-		                                <div class="d-flex">
-		                                    <div class="p-1 flex-grow-1">
-		                                        <input type="text" class="form-control border-0" />
-		                                        <input type="submit" hidden />
-		                                    </div>
-		                                    <div class="p-1">
-		                                        <img src="search.svg" style="width: 50px;" />
+		                                <div class="rounded-pill" id="searchBar">
+		                                    <div class="d-flex">
+		                                    	<div class="p-1 flex-grow-1 ps-3">
+		                                    		<input type="text" class="form-control border-0 bg-transparent" name="query"/>
+		                                    	</div>
+		                                    	<div class="p-2">
+		                                    		<img src="search.svg" id="search" />
+		                                    	</div>     
 		                                    </div>
 		                                </div>
 		                            </div>
+		                            	<input type="submit" hidden/>
 		                            </form>
 	                    </div>
 		                <!--  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
@@ -111,21 +100,21 @@
 		  <div class="modal-dialog">
 		    <div class="modal-content">
 		      <div class="modal-header">
-		        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+		        <h5 class="modal-title" id="exampleModalLabel">Login</h5>
 		        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 		      </div>
 		      <div class="modal-body">
 		        		<form action="/HFProject/userLoginCheck.do" method="post">
-							<label for="fi" class="form-label">id</label>
+							<label for="fi" class="form-label">Username or ID</label>
 							<input type="text" class="form-control" id="fi" name="formId" /><br>
-							<label for="pw" class="form-label">pw</label>
+							<label for="pw" class="form-label">Password</label>
 							<input type="password" class="form-control" id="pw" name="formPw" /><br>
 							<div class="d-flex">
 								<div class="p-1">
-									<input class="btn btn-primary" type="submit" value="login" />
+									<input class="btn btn-primary" type="submit" value="Login" />
 								</div>
 								<div class="p-1 ms-auto">
-									<a class="btn btn-warning" href="/HFProject/userJoinForm.do">register</a>
+									<a class="btn btn-warning" href="/HFProject/userJoinForm.do">Register</a>
 								</div>
 							</div>
 							

@@ -7,15 +7,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+	<c:import url="../templateHead.html"/>
 </head>
 <body>
+	<c:import url="../templateHeader.jsp"/>
+	<div id="backgroundPrimary">
+				<!-- only displays background. do not modify -gonk -->
+    </div>
 	<div class="container">
-	<c:import url="../templateHeader.html"/>
 		<div id="bodyBackground">
 			<div class="row justify-content-center">
-				<div class="col-md-8" id="content">
+				<div class="col-md-8 pt-3" id="contentPrimary">
 				<br>
 					<form action="/HFProject/userUpdate.do" method="post">
 					<input type ="hidden" name="userNum">
@@ -36,8 +38,8 @@
 			</div>
 		
 		</div>
-	<c:import url="../templateFooter.html"/>
 	</div>	
+	<c:import url="../templateFooter.html"/>
 </body>
 </html>
 

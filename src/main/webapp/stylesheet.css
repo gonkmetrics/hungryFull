@@ -1,66 +1,41 @@
-
-
-#rankDisplayBlock{
-	background-color: grey;
-}
-
-#sidebar{
-  position: absolute;
-  top: 0;
-  display: inline-block;
-  width: 20%;
-  z-index: 2;
-}
-
-#sidebarToggle{
-  margin-left: 700px;
-}
-
-#sidebarElement{
-  padding-left: 20px;
-}
-
 button:focus { outline: none; }
 
-#headBarPrimary{
+#navbar-primary{
     width:100%;
-    height: 110px;
+    height: 130px;
     background-color: white;
     box-shadow: 0 10px 4px -2px rgba(0,0,0,0.6);
-
-    position: absolute;
-    left: 0px;
-    right: 0px;
-    top: 0px;
-
-    z-index: 1;
  }
  
 #logo {
 	height: 90px;
 }
 
-#headPrimary{
+#search {
+	width: 25px;
+}
+
+#backgroundPrimary{
+	position:absolute;
     width:100%;
-    margin-top: 20px;
-    height: 100px;
-
-    position: relative;
-
-    z-index: 2;
- }
-
-#bodyPrimary{
-    width:100%;
-    height: 400px;
+    height: 1000px;
     background-size: 100%;
-    background-image: linear-gradient(transparent, white 75%), url("background2.png");
+    background-image: linear-gradient(transparent, white 90%), url("background2.png");
+    z-index: -1;
 
 }
 
-#searchPrimary{
-    margin-top: -400px;
-    z-index: 2;
+#backgroundSpacer{
+    width:100%;
+    height: 250px;
+    z-index: -1;
+
+}
+
+#contentPrimary{
+	padding-top:30px;
+	background-color:rgba(255, 255, 255, 0.8);
+	height:100vh;
 }
 
 #searchBar{
@@ -69,22 +44,12 @@ button:focus { outline: none; }
 }
 
 #rankContents{
-  margin-top: 160px;
   background-color: white;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
-#rankTitle{
-
-}
-
-#rankPost{
-  padding-top: 100px;
-}
-
 #recipeBody{
   margin-top: 75px;
-
 }
 
 #recipeDetail{
@@ -94,27 +59,48 @@ button:focus { outline: none; }
 }
 
 #footerPrimary{
-  margin-top: 60px;
-  background-color: #2C2C2C;
-  position: absolute;
-  left: 0px;
-  right: 0px;
+	background-color: rgb(50, 128, 72);
 }
 
-#logoWhite{
-  padding-top: 20px;
-  padding-left: 20px;
-  width: 10%;
-  height:auto;
-}
-
-#footerInfo{
-  padding-top: 20px;
-  text-align: center;
-  color: white;
+#spacer{
+	height:10vh;
 }
 
 #space{
-	height: 10vh;
+	height:10vh;
 }
+
+#fText{
+	color: white;
+}
+
+#fLogo{
+	height:15px;
+	filter: invert(99%) sepia(0%) saturate(3633%) hue-rotate(176deg) brightness(94%) contrast(108%);
+}
+
+#imgBoard{
+	max-height:100%;
+	max-width:100%;
+	object-fit: contain;
+}
+
+textarea {
+  background: transparent;
+  color: transparent;
+  resize: none;
+  border: 0 none;
+  width: 100%;
+  outline: none;
+  height: 100%;
+}
+
+#bigTitle{
+	font-size: 3em;
+}
+
+#dashboard{
+	width:100%;
+}
+
 

@@ -21,6 +21,7 @@ public class BoardDetailService implements ForumService{
 		BoardDAO dao = BoardDAO.getInstance();
 		
 		BoardVO board = dao.getBoardDetail(postID);
+		dao.upViewCnt(postID);
 		
 		request.setAttribute("board", board);
 		

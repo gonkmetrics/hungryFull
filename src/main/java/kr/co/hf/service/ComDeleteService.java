@@ -17,11 +17,9 @@ public class ComDeleteService implements ForumService{
 		String commentid = request.getParameter("commentID");
 		int commentID = Integer.parseInt(commentid);
 		String postID = request.getParameter("postID");
-		
-		System.out.println(commentID);
-		System.out.println(postID);
 		ComDAO dao = ComDAO.getInstance();
 		dao.ComDelete(commentID);
+		request.setAttribute("postID", postID);
 	}
 
 }

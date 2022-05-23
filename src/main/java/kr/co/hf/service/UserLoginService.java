@@ -25,6 +25,7 @@ public class UserLoginService implements ForumService{
 
 		userId = user.getUserId();
 		userPw = user.getUserPw();
+		int userNum = user.getUserNum();
 		
 		HttpSession session = request.getSession();
 		System.out.println();
@@ -33,6 +34,8 @@ public class UserLoginService implements ForumService{
 			if(formPw.equals(userPw)) {
 			request.setAttribute("s_id", userId);
 			session.setAttribute("s_id", userId);
+			request.setAttribute("s_num", userNum);
+			session.setAttribute("s_num", userNum);
 			url = "homepage.do";
 		} else {
 			url = "/user/PwFail.jsp";

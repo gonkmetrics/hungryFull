@@ -50,8 +50,6 @@ public class RankListener implements ServletContextListener {
         scheduler = Executors.newScheduledThreadPool(1);
         //ScheduledFuture<HashMap<Integer,Integer>> future = scheduler.schedule(
         //        new RankUpdateService(), 5, TimeUnit.SECONDS);
-        
-        System.out.println("waga123");
         	
         //scheduler.scheduleAtFixedRate(, 0, 2, TimeUnit.MINUTES);
     	//RankUpdateService rus = new RankUpdateService();

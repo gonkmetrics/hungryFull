@@ -5,6 +5,7 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import kr.co.hf.domain.UserDAO;
 
@@ -33,6 +34,9 @@ public class UserJoinFormService implements ForumService{
 			 isAdmin = Integer.parseInt(strisAdmin);
 		}
 		dao.JoinCheck(userNum, userId, userPw, userName, userEmail, uage, isAdmin);
-}
+		request.setAttribute("s_id", userId);
+		HttpSession session = request.getSession();
+		session.setAttribute("s_id", userId);
+	}
 
 }

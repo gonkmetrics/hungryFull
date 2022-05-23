@@ -24,6 +24,7 @@ public class ComUpdateFormService implements ForumService{
 		
 		ComVO com = dao.getComDetail(commentID);
 		
+		
 		request.setAttribute("com", com);
 	}
 

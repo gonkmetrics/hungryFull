@@ -4,18 +4,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet" href="defaultPageHeightStyle.css">
+	<c:import url="../templateHead.html"/>
 </head>
 <body>
+	<c:import url="../templateHeader.jsp"/>
+	<div id="backgroundPrimary">
+		<!-- only displays background. do not modify -gonk -->
+    </div>
 	<div class="container">
-	<c:import url="../templateHeader.html"/>
-		<div id="bodyBackground">
+		<div>
 			<div class="row justify-content-center">
-				<div class="col-md-8" id="content">
-				<br>
-					<form action="/HFProject/userJoinCheck.do" method="post">
+				<div class="col-md-8" id="contentPrimary">
+					<form action="userJoinCheck.do" method="post">
 					<input type ="hidden" name="userNum">
 					<label for="id" class="form-label">아이디</label>
 					<input class="form-control" id="id" type="text" name="userId"/><br/>
@@ -32,11 +32,9 @@
 					</form>
 				</div>
 			</div>
-		
 		</div>
-	<c:import url="../templateFooter.html"/>
 	</div>
-
+	<c:import url="../templateFooter.html"/>
 </body>
 </html>
 

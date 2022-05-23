@@ -1,113 +1,215 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="ajaxLike.js"></script>  <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
-<script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
-<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
-<link rel="stylesheet" href="stylesheet.css">
+    <c:import url="../templateHead.html"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://cdn.tiny.cloud/1/z9bmvgme3buxgw19nqhokowjd4x0b9mxwo8nspf31c2zbvmd/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tinymce/tinymce-jquery@1/dist/tinymce-jquery.min.js"></script>
+    <script>
+	    function fillModal(sCom, sAut, sCid) { 
+	    	const a1 = sCid;
+	    	console.log(a1)
+	    	const a2 = sAut;
+	    	console.log(a2)
+	    	const a3 = sCom;
+	    	console.log(a3)
+	    	$('#comUpCID').val(a1);
+	    	$('#comUpAUN').val(a2);
+	    	$('#tinyComUpCON').val(a3);
+	    	}
+	    
+	    $( document ).ready(function() {
+	    	$('textarea#tinyComUpCON').tinymce({ height: 500, });
+	    	$('textarea#tiny').tinymce({ height: 500, });
+	    });
+    </script>
 </head>
 <body>
-제목 : ${board.postTitle}
-<br/>
-postID : <span id="postid">${board.postID}</span>
-<br/>
-타입 :
-<c:choose>
-	  <c:when test="${board.postType == 1}"><span class="badge bg-secondary">다이어트</span></c:when>
-	  <c:when test="${board.postType == 2}"><span class="badge bg-secondary">간편식</span></c:when>
-	  <c:when test="${board.postType == 3}"><span class="badge bg-secondary">이유식</span></c:when>
-	  <c:when test="${board.postType == 4}"><span class="badge bg-secondary">건강식</span></c:when>
-      <c:when test="${board.postType == 5}"><span class="badge bg-secondary">특별식</span></c:when>
-</c:choose>
-<br/>
-내용 : ${board.postContent}
-<br/>
-postAuthor : <span id="usernum">${board.postAuthor}</span>
-<br/>
-조회수 : ${board.viewCount}
-<br/>
-작성시간 : ${board.postTime}
-<br/>
-최근 수정 : ${board.postLastModified}
-<br/>
-<br/>imageLink : <img src="${board.imageLink}"/>
-<hr>
-<div class="mb-12">
-		
-		<br/>
-		<label for="textarea1" class="form-label"> 본 문 </label>
-		<textarea class="form-control" name="postContent" id="textarea1" cols="40" rows="20" readonly>${board.postContent}</textarea>
-		<br/>
-		<br/>
-		<a href="/HFProject/boardList.do" class="btn btn-success btn-mb-3">목록으로</a>
-	<div>
-		<form action= "/HFProject/boardDelete.do" method="post">
-			<input type="hidden" name="postID" value="${board.postID}">
-			<input type="submit" class="btn btn-danger btn-mb-3" value="삭제하기">
-		</form>
-	</div>
-	<div>
-		<form action= "/HFProject/boardUpdateForm.do" method="post">
-			<input type="hidden" name="postID" value="${board.postID}">
-			<input type="submit" class="btn btn-primary btn-mb-3" value="수정하기">
-		</form>
-	</div>
-	<div>
-			<form action= "/HFProject/tamplateSample.do" method="post">
-			<input type="submit" class="btn btn-primary btn-mb-3" value="홈으로">
-		</form>
-	</div>
-</div>
-
-<div>
-	<div>
-
-		<button type="button" class="btn btn-primary" id="toggleLike">like</button>
-		<span id="message"></span>
-		<hr>
-	</div>
-</div>
-
- <table class="table table-bordered table-hover table-dark">
-         <thead>
-             <tr>
-                <td>댓글번호</td>
-                <td>글쓴이</td>
-                <td>내용</td>
-             </tr>
-         </thead>
-          <tbody>
-             <c:forEach var="com" items="${ComList}">
-              <tr>
-                <td><a href="http://localhost:8181/HFProject/ComDetail?commentID=${com.commentID}">${com.commentID }</td>
-                 <td>${com.getCommentAuthor()}</td>
-                 <td>${com.getCommentContent()}<form action="http://localhost:8181/HFProject/ComDelete.do" method="post">
-				        <input type="hidden" name="commentID" value="${com.commentID}">
-				        <input type="hidden" name="postID" value="${com.postID}">
-				        <input type="submit" value="삭제" >
-				       </form>
-				       <form action="http://localhost:8181/HFProject/ComUpdateForm.do" method="post">
-					   <input type="hidden" name="commentID" value="${com.commentID }">
-					   <input type="hidden" name="commenContent" value="${com.commentContent }">
-                       <input type="hidden" name="commentAuthor" value="${com.commentAuthor }">
-					   <input type="submit" value="수정">
-					 </form>
-				  </td>
-              </tr>
-              </c:forEach>
-          </tbody>
-     </table>
-     
-	 <form action="/HFProject/ComInsertForm.do" method="post">
-	     	<input type="hidden" name="postID" value="${board.postID}">
-			<input type="submit" value="댓글쓰기">
-	 </form>
+    <c:import url="../templateHeader.jsp" />
+    <div class="container">
+            <div id="backgroundPrimary">
+				<!-- only displays background. do not modify -gonk -->
+            </div>
+    	
+        <div>
+            <div class="row justify-content-center">
+                <div class="col-md-11 m-1" id="contentPrimary">
+                	<br>
+                	<div class="d-flex">
+                		<h1 id="bigTitle">${board.postTitle}</h1>
+	                	<div class="card ms-auto" style="width: 7rem;">
+						  <!--  <div class="card-header">
+						    Post Information
+						  </div>-->
+						  <ul class="list-group list-group-flush">
+						    <li class="list-group-item">Author: ${board.postAuthor}</li>
+						    <li class="list-group-item">조회수 : ${board.viewCount}</li>
+						    <c:choose>
+		                        <c:when test="${board.postType == 1}"><li class="list-group-item bg-primary">다이어트</li></c:when>
+		                        <c:when test="${board.postType == 2}"><li class="list-group-item bg-success">간편식</li></c:when>
+		                        <c:when test="${board.postType == 3}"><li class="list-group-item bg-danger">이유식</li></c:when>
+		                        <c:when test="${board.postType == 4}"><li class="list-group-item bg-warning">건강식</li></c:when>
+		                        <c:when test="${board.postType == 5}"><li class="list-group-item bg-info">특별식</li></c:when>
+	                    	</c:choose>
+	                    	<!-- <li class="list-group-item">Post ID: ${board.postID}</li>-->
+						  </ul>
+						</div>
+                	</div>
+                    <hr>
+                    <div class="d-flex">
+                    	<div class="p-1 me-auto">
+                    		<c:if test="${sessionScope.s_id ne null }">
+	                    	<button type="button" class="btn btn-primary" id="toggleLike">Like</button>
+							<span id="message"></span>
+							</c:if>
+	                    </div>
+	                    <div class="p-1">
+		                    <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="top" title="최근 수정 : ${board.postLastModified}">
+							  작성시간 | ${board.postTime}
+							</button>
+	                    </div>
+	                    <c:if test="${sessionScope.s_num eq board.postAuthor || sessionScope.s_isAdmin eq 1}">
+	                    <div class="dropdown-center p-1">
+						  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownCenterBtn" data-bs-toggle="dropdown" aria-expanded="false">
+						    Post Options
+						  </button>
+						  <ul class="dropdown-menu" aria-labelledby="dropdownCenterBtn">
+						    <li>
+						    	<form action="/HFProject/boardDelete.do" method="post">
+	                                <input type="hidden" name="postID" value="${board.postID}">
+	                                <input type="submit" class="dropdown-item" value="삭제하기">
+	                            </form>
+						    </li>
+						    <li>
+						    	<form action="/HFProject/boardUpdateForm.do" method="post">
+	                                <input type="hidden" name="postID" value="${board.postID}">
+	                                <input type="submit" class="dropdown-item" value="수정하기">
+	                            </form>
+						    </li>
+						  </ul>
+						</div>
+						</c:if>
+                    </div>
+                    <br>
+					<div class="row">
+						<img id="imgBoard" src="${board.imageLink}" />
+					</div>
+                    <hr>
+                    <div class="mb-12">
+                        <h4>본문 </h4>
+                        <p class="p-2">${board.postContent}</p>
+                    </div>
+                    <hr>
+                    <div class="d-flex">
+                    	<div class="me-auto">
+                    		<h4>Comments</h4>
+                    	</div>
+	                    <div>
+	                    	<c:if test="${sessionScope.s_id ne null }">
+	                    	<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#comModal">
+							  Write Comment
+							</button>
+							</c:if>
+	                    </div>
+                    </div>
+                    <br>
+                    <table class="table table-bordered table-hover table-dark">
+                        <thead>
+                            <tr>
+                                <td class="col-md-1">댓글번호</td>
+                                <td class="col-md-1">글쓴이</td>
+                                <td class="col-md-7">내용</td>
+                                <td class="col-md-3"></td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <c:forEach var="com" items="${ComList}">
+                                <tr>
+                                    <td>${com.commentID}</td>
+                                    <td>${com.getCommentAuthor()}</td>
+                                    <td>${com.getCommentContent()}</td>
+                                    <td>
+	                                    <c:if test="${com.getCommentAuthor() eq sessionScope.s_num || sessionScope.s_isAdmin eq 1}">
+		                                    <div class="d-flex">
+		                                    	<form action="ComDelete.do" method="post">
+		                                            <input type="hidden" name="commentID" value="${com.commentID}">
+		                                            <input type="hidden" name="postID" value="${board.postID}">
+		                                            <input type="submit" class="btn btn-outline-danger" value="삭제">
+		                                        </form>
+		                                        <div class="ms-auto">
+			                                        <!-- CommentUpdate Modal -->
+			                                        <button type="button" class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#comUpModal" onclick="fillModal('${com.commentContent}', '${com.commentAuthor}', '${com.commentID}')">
+													  Update Comment
+													</button>
+			                                        <!-- CommentUpdate Modal -->
+		                                        </div>
+		                                    </div>
+                                        </c:if>
+                                    </td>
+                                </tr>
+                            </c:forEach>
+                        </tbody>
+                    </table>
+                    <br>
+        			<hr>
+                    <!-- Comment Modal (unable to import) -->
+                    <div>
+						<div class="modal fade" id="comModal" tabindex="-1" aria-labelledby="comModalLabel" aria-hidden="true">
+						  <div class="modal-dialog">
+						    <div class="modal-content">
+						    <form action="ComInsert.do" method="post">
+						      <div class="modal-header">
+						        <h5 class="modal-title" id="exampleModalLabel">Comment</h5>
+						        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+						      </div>
+						      <div class="modal-body">
+								<input type="hidden" name="commentAuthor" value="${sessionScope.s_num}"><br>
+								<textarea id="tiny" name="commentContent"></textarea><br>
+								<input type="hidden" name = "postID" value="${board.postID}">
+						      </div>
+						      <div class="modal-footer">
+						      	<input type="submit" value="Post" class="btn btn-primary">
+						   		<input type="reset" value="Cancel" data-bs-dismiss="modal" class="btn btn-secondary">
+						      </div>
+						    </form>
+						    </div>
+						  </div>
+						</div>
+					</div>
+					<!-- Comment Modal (unable to import) -->
+					<!-- CommentUpdate Modal -->			
+					<div class="modal fade" id="comUpModal" tabindex="-1" aria-labelledby="comUpModalLabel" aria-hidden="true">
+					  <div class="modal-dialog">
+					    <div class="modal-content">
+					    <form action="ComUpdate.do" method="post">
+					      <div class="modal-header">
+					        <h5 class="modal-title" id="exampleModalLabel">Comment</h5>
+					        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					      </div>
+					      <div class="modal-body">
+					      	<input type="hidden" name="postID" value="${board.postID}">
+					      	<input type="hidden" id="comUpCID" name="commentID">
+							<input type="hidden" id="comUpAUN" name="commentAuthor"><br>
+							<textarea id="tinyComUpCON" name="commentContent" id="comUpCON"></textarea><br>
+					      </div>
+					      <div class="modal-footer">
+					      	<input type="submit" value="Post" class="btn btn-primary">
+					   		<input type="reset" value="Cancel" data-bs-dismiss="modal" class="btn btn-secondary">
+					      </div>
+					    </form>
+					    </div>
+					  </div>
+					</div>
+                 	<!-- CommentUpdate Modal -->
+                </div>
+            </div>
+        </div>
+        
+        <c:import url="../templateFooter.html" />
+    </div>
 </body>
+
 </html>

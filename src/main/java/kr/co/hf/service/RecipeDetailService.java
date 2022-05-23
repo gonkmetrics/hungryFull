@@ -35,6 +35,7 @@ public class RecipeDetailService implements ForumService{
 		ComDAO cdao = ComDAO.getInstance();
 		
 		UserVO user = udao.getUserInfoNum(userNum);
+		bdao.upViewCnt(postID);
 
         List<ComVO> ComList = cdao.getComList(postID);
         

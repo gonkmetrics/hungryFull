@@ -3,73 +3,13 @@
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
+
 <head>
 	<c:import url="../templateHead.html"/>
 </head>
 <body>
     <div>
 		<c:import url="../templateHeader.jsp"/>
-        <div class="container-fluid">
-            <div id="backgroundPrimary">
-				<!-- only displays background. do not modify -gonk -->
-            </div>
-            <div id="backgroundSpacer">
-            </div>
-
-            <div class="row justify-content-center" id="rankBody">
-                <div id="rankContents" class="col-8 rounded-3 py-4">
-                    <div id="rankPost" class="row justify-content-center">
-                        <!-- <h1>rankPost</h1> -->
-                        <div class="d-flex align-items-center">
-	                        <p class="me-auto p-1 fs-1">Hello ${sessionScope.s_id}!</p>
-	                        <p class="p-1 fs-5">Check out our most popular recipes:</p>
-                        </div>
-                        <div class="row row-cols-1 row-cols-md-3 g-4">
-						  <div class="col">
-						    <div class="card h-100">
-						      <img src="${bo1.imageLink}" class="card-img-top" alt="...">
-						      <div class="card-body">
-						        <h5 class="card-title">${bo1.postTitle}</h5>
-						        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-						      </div>
-						      <div class="card-footer">
-						        <small class="text-muted">${bl1}</small>
-						      </div>
-						      <a href="/HFProject/recipeDetail.do?postID=${bo1.postID}" class="stretched-link"></a>
-						    </div>
-						  </div>
-						  <div class="col">
-						    <div class="card h-100">
-						      <img src="${bo2.imageLink}" class="card-img-top" alt="...">
-						      <div class="card-body">
-						        <h5 class="card-title">${bo2.postTitle}</h5>
-						        <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-						      </div>
-						      <div class="card-footer">
-						        <small class="text-muted">${bl2}</small>
-						      </div>
-						      <a href="/HFProject/recipeDetail.do?postID=${bo2.postID}" class="stretched-link"></a>
-						    </div>
-						  </div>
-						  <div class="col">
-						    <div class="card h-100">
-						      <img src="${bo3.imageLink}" class="card-img-top" alt="...">
-						      <div class="card-body">
-						        <h5 class="card-title">${bo3.postTitle}</h5>
-						        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-						      </div>
-						      <div class="card-footer">
-						        <small class="text-muted">${bl3}</small>
-						      </div>
-						      <a href="/HFProject/recipeDetail.do?postID=${bo3.postID}" class="stretched-link"></a>
-						    </div>
-						  </div>
-						</div>
-                        <!-- <span>ranklist: ${applicationScope['rank1']}</span> -->
-                    </div>
-                </div>
-            </div>
-        </div>
 
         <div class="container" id="recipeBody">
             <div class="row justify-content-center">
@@ -112,24 +52,24 @@
         <div class="container" id="pagination">
             <div class="row justify-content-center">
                 <div class="col-6">
-                	<br>
+                    <br>
                     <hr>
                     <br>
                     <nav aria-label="Page navigation example">
                         <ul class="pagination justify-content-center">
                             <c:if test="${buttons.startPage ne 1}">
                                 <li class="page-item"><a class="page-link"
-                                        href="/HFProject/homepage.do?pageNum=${buttons.startPage - 1}">&laquo;</a>
+                                        href="/HFProject/searchPage.do?pageNum=${buttons.startPage - 1}">&laquo;</a>
                                 </li>
                             </c:if>
                             <c:forEach var="pageNum" begin="${buttons.startPage }" end="${buttons.endPage }">
                                 <li class="page-item ${buttons.currentPage eq pageNum ? 'active' : ''}"><a
                                         class="page-link"
-                                        href="/HFProject/homepage.do?pageNum=${pageNum}">${pageNum}</a></li>
+                                        href="/HFProject/searchPage.do?pageNum=${pageNum}">${pageNum}</a></li>
                             </c:forEach>
                             <c:if test="${buttons.endPage ne buttons.totalPages}">
                                 <li class="page-item"><a class="page-link"
-                                        href="/HFProject/homepage.do?pageNum=${buttons.endPage + 1}">&raquo;</a>
+                                        href="/HFProject/searchPage.do?pageNum=${buttons.endPage + 1}">&raquo;</a>
                                 </li>
                             </c:if>
                         </ul>
@@ -137,6 +77,7 @@
                 </div>
             </div>
         </div>
+        <div id="space"></div>
         <c:import url="../templateFooter.html"/>
     </div>
 </body>

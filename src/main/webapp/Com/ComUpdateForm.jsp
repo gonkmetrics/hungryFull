@@ -3,13 +3,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+	<c:import url="../templateHead.html"/>
 </head>
 <body>
 <form action="http://localhost:8181/HFProject/ComUpdate.do" method="post">
-  <input type="hidden" name="commentID" value="${com.commentID }">
-  <input type="hidden" name="postID" value="${com.postID }">
+  
    작성자 : <input type="text" name="commentAuthor" value="${com.commentAuthor}" readonly><br>
    내용 : <textarea cols="30" rows="10" name="commentContent">${com.commentContent}</textarea><br>
       <!-- textarea는 value값이 안들어감 괄호 사이에 넣어주기 -->

@@ -25,7 +25,9 @@ import kr.co.hf.service.ComUpdateFormService;
 import kr.co.hf.service.ComUpdateService;
 import kr.co.hf.service.ForumService;
 import kr.co.hf.service.RecipeDetailService;
+import kr.co.hf.service.SearchService;
 import kr.co.hf.service.UserDeleteService;
+import kr.co.hf.service.UserInfoService;
 import kr.co.hf.service.UserJoinFormService;
 import kr.co.hf.service.UserLoginService;
 import kr.co.hf.service.UserLogoutService;
@@ -77,7 +79,7 @@ public class SiteController extends HttpServlet {
 		doRequest(request, response);
 	}
 	
-protected void doRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		request.setCharacterEncoding("UTF-8");
 		
@@ -229,11 +231,11 @@ protected void doRequest(HttpServletRequest request, HttpServletResponse respons
 			
 		}
 		
-		if (uri.equals("userLogin")) {
+		/*if (uri.equals("userLogin")) {
 			
 			ui = "/user/LoginForm.jsp";
 		
-		}		
+		}		*/
 		
 		if(uri.equals("userLoginCheck")) {
 			
@@ -254,7 +256,7 @@ protected void doRequest(HttpServletRequest request, HttpServletResponse respons
 			
 			sv = new UserJoinFormService();
 			sv.execute(request,response);
-			ui = "/userLogin.do";
+			ui = "userDashboard.do";
 			
 		}
 		
@@ -262,7 +264,7 @@ protected void doRequest(HttpServletRequest request, HttpServletResponse respons
 			
 			sv = new UserLogoutService();
 			sv.execute(request,response);
-			ui = "/userLogin.do";
+			ui = "homepage.do";
 			
 		}
 		
@@ -303,6 +305,22 @@ protected void doRequest(HttpServletRequest request, HttpServletResponse respons
 			sv = new UserPostListService();
 			sv.execute(request, response);
 			ui = "/board/userPostList.jsp";
+			
+		}
+		
+		if(uri.equals("userDashboard")) {
+			
+			sv = new UserInfoService();
+			sv.execute(request, response);
+			ui = "/user/userDashboard.jsp";
+			
+		}
+		
+		if(uri.equals("searchPage")) {
+			
+			sv = new SearchService();
+			sv.execute(request, response);
+			ui = "/board/searchPage.jsp";
 			
 		}
 		

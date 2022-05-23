@@ -4,13 +4,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+	<c:import url="../templateHead.html"/>
 </head>
 <body>
 <h1>${com.commentID }번 댓글 조회중입니다.</h1><br>
-내용 : <textarea cols="30" rows="10">${com.commentContent }</textarea><br>
-작성자 : <input type="text" value="${com.commentAuthor }"><br>
+내용 : <textarea cols="30" rows="10"></textarea><br>
+작성자 : <input type="text" value=""><br>
 <hr>
 <a href="http://localhost:8181/HFProject/ComList"><button>목록</button></a>
 <!-- 삭제번호를 서블릿 ComDelete로 보내야함 -->

@@ -1,20 +1,57 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
 <!DOCTYPE html>
 <html>
-<head>
-	<c:import url="../templateHead.html"/>
-</head>
-<body>
-		<c:import url="../templateHeader.jsp"/>
-        <div class="container" id="recipeBody">
+  <head>
+    <c:import url="../templateHead.html" />
+  </head>
+  <body>
+  	<c:import url="../templateHeader.jsp" />
+  	<br>
+    <div class="container" id="dashboard">
+      <div class="row">
+        <div class="col-md-2">
+            <span>Hello, ${sessionScope.s_id} </span>
+            <div class="card">
+                <div class="card-header">
+                    User Administration
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">
+                    <form action = "userUpdateForm.do" method = "post">
+						<input type="hidden" name="s_id" value="${sessionScope.s_id}"/>
+						<input type="submit" class="nav-link" value = "정보수정" />
+					</form>
+                  </li>
+                  <li class="list-group-item">
+                    <a class="nav-link" href="userDelete.do">회원탈퇴</a>
+                  </li>
+                  <li class="list-group-item">
+                    <a class="nav-link" href="userPostList.do">My Posts</a>
+                  </li>
+                </ul>
+              </div>
+        </div>
+        <div class="col-md-2">
+            <span>My Info</span>
+            <div class="card">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Username | ${sessionScope.s_id}</li>
+                    <li class="list-group-item">Name | ${user.userName}</li>
+                    <li class="list-group-item">Age | ${user.uage}</li>
+                    <li class="list-group-item">Email | ${user.userEmail}</li>
+                  </ul>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <span>My Liked Posts</span>
+            <div class="card">
+            	        <div class="container" id="recipeBody">
             <div class="row justify-content-center">
                 <div class="col-11">
                     <div class="recipePost">
-						<c:forEach var="board" items="${boardList}">
+						<c:forEach var="board" items="${boardLike}">
 						    <div class="col rounded" id="recipeDetail">
 							<div class="d-flex position-relative p-3">
 							    <img src="${board.imageLink}" class="w-25">
@@ -58,17 +95,17 @@
                         <ul class="pagination justify-content-center">
                             <c:if test="${buttons.startPage ne 1}">
                                 <li class="page-item"><a class="page-link"
-                                        href="/HFProject/userPostList.do?pageNum=${buttons.startPage - 1}">&laquo;</a>
+                                        href="/HFProject/userDashboard.do?pageNum=${buttons.startPage - 1}">&laquo;</a>
                                 </li>
                             </c:if>
                             <c:forEach var="pageNum" begin="${buttons.startPage }" end="${buttons.endPage }">
                                 <li class="page-item ${buttons.currentPage eq pageNum ? 'active' : ''}"><a
                                         class="page-link"
-                                        href="/HFProject/userPostList.do?pageNum=${pageNum}">${pageNum}</a></li>
+                                        href="/HFProject/userDashboard.do?pageNum=${pageNum}">${pageNum}</a></li>
                             </c:forEach>
                             <c:if test="${buttons.endPage ne buttons.totalPages}">
                                 <li class="page-item"><a class="page-link"
-                                        href="/HFProject/userPostList.do?pageNum=${buttons.endPage + 1}">&raquo;</a>
+                                        href="/HFProject/userDashboard.do?pageNum=${buttons.endPage + 1}">&raquo;</a>
                                 </li>
                             </c:if>
                         </ul>
@@ -76,6 +113,10 @@
                 </div>
             </div>
         </div>
-        <c:import url="../templateFooter.html"/>
-
+            </div>
+        </div>
+      </div>
+    </div>
+    <c:import url="../templateFooter.html" />
+  </body>
 </html>
