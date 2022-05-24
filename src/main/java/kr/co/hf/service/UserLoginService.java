@@ -26,7 +26,7 @@ public class UserLoginService implements ForumService{
 		userId = user.getUserId();
 		userPw = user.getUserPw();
 		int userNum = user.getUserNum();
-		
+		int loginState = 0;
 		HttpSession session = request.getSession();
 		System.out.println();
 		String url = null;
@@ -36,12 +36,16 @@ public class UserLoginService implements ForumService{
 			session.setAttribute("s_id", userId);
 			request.setAttribute("s_num", userNum);
 			session.setAttribute("s_num", userNum);
+			loginState = 0;
 			url = "homepage.do";
 		} else {
 			url = "/user/PwFail.jsp";
-		} } else {
-			url = "/user/IdFail.jsp";
-		} 
+			loginState = 1;
+		}
+			} else {
+			url = "/user/PwFail.jsp";
+			loginState = 1;
+		}
 		
 		 if(user.getIsAdmin() == 0) {
 			request.setAttribute("s_isAdmin", 0);
@@ -49,9 +53,11 @@ public class UserLoginService implements ForumService{
 		}else if(user.getIsAdmin() == 1) {
 			request.setAttribute("s_isAdmin", 1);
 			session.setAttribute("s_isAdmin", 1);
-		} 
-		request.setAttribute("url", url); 
 		}
+		session.setAttribute("loginState", loginState); 
+		request.setAttribute("url", url); 
 		
-	} 
+		}
+	}
+		
 

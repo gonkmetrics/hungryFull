@@ -5,6 +5,16 @@
 <html>
 <head>
 	<c:import url="../templateHead.html"/>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script>
+	$( document ).ready(function() {
+		var loginState = '${sessionScope.loginState}';
+		console.log("Login Status: "+loginState);
+		if(loginState == 1){
+			return alert("Login Failed");
+		}
+	});
+	</script>
 </head>
 <body>
     <div>
@@ -25,46 +35,19 @@
 	                        <p class="p-1 fs-5">Check out our most popular recipes:</p>
                         </div>
                         <div class="row row-cols-1 row-cols-md-3 g-4">
+                        <c:forEach items="${bo}" var="board">
 						  <div class="col">
 						    <div class="card h-100">
-						      <img src="${bo1.imageLink}" class="card-img-top" alt="...">
+						      <img src="${board.imageLink}" class="card-img-top" alt="...">
 						      <div class="card-body">
-						        <h5 class="card-title">${bo1.postTitle}</h5>
-						        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+						        <h5 class="card-title">${board.postTitle}</h5>
+						        <p class="card-text" id="rankContentsTruncated">${board.postContent}</p>
 						      </div>
-						      <div class="card-footer">
-						        <small class="text-muted">${bl1}</small>
-						      </div>
-						      <a href="/HFProject/recipeDetail.do?postID=${bo1.postID}" class="stretched-link"></a>
+						      <a href="/HFProject/recipeDetail.do?postID=${board.postID}" class="stretched-link"></a>
 						    </div>
 						  </div>
-						  <div class="col">
-						    <div class="card h-100">
-						      <img src="${bo2.imageLink}" class="card-img-top" alt="...">
-						      <div class="card-body">
-						        <h5 class="card-title">${bo2.postTitle}</h5>
-						        <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-						      </div>
-						      <div class="card-footer">
-						        <small class="text-muted">${bl2}</small>
-						      </div>
-						      <a href="/HFProject/recipeDetail.do?postID=${bo2.postID}" class="stretched-link"></a>
-						    </div>
+						  </c:forEach>
 						  </div>
-						  <div class="col">
-						    <div class="card h-100">
-						      <img src="${bo3.imageLink}" class="card-img-top" alt="...">
-						      <div class="card-body">
-						        <h5 class="card-title">${bo3.postTitle}</h5>
-						        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-						      </div>
-						      <div class="card-footer">
-						        <small class="text-muted">${bl3}</small>
-						      </div>
-						      <a href="/HFProject/recipeDetail.do?postID=${bo3.postID}" class="stretched-link"></a>
-						    </div>
-						  </div>
-						</div>
                         <!-- <span>ranklist: ${applicationScope['rank1']}</span> -->
                     </div>
                 </div>

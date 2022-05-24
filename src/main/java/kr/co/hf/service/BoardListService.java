@@ -1,6 +1,7 @@
 package kr.co.hf.service;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletContext;
@@ -21,7 +22,7 @@ public class BoardListService implements ForumService{
 		request.setCharacterEncoding("UTF-8");
 		BoardDAO dao = BoardDAO.getInstance();
 		LikeDAO daoL = LikeDAO.getInstance();
-		
+		HttpSession session = request.getSession();
 		String strpageNum = request.getParameter("pageNum");
 		
 		int pageNum = 1;
@@ -30,32 +31,42 @@ public class BoardListService implements ForumService{
 			 pageNum = Integer.parseInt(strpageNum);
 		}
 		
+
 		int boardCount = dao.getBoardCount();
+
 		
 		BoardButtonDTO buttons = new BoardButtonDTO(boardCount, pageNum);
 		
 		
 		List<BoardVO> boardList = dao.getBoardList(pageNum);
-		HttpSession session = request.getSession();
+		
 		ServletContext context = session.getServletContext();
-		int r1 = (int) context.getAttribute("rank1");
-		int r2 = (int) context.getAttribute("rank2");
+		ArrayList<Integer> displayKeys = (ArrayList<Integer>) context.getAttribute("displayKeys");
+		Boolean listKeysTrue = (Boolean) context.getAttribute("listKeysTrue");
+		System.out.println(listKeysTrue);
 		//context.getAttribute("rank1");
 		
-		BoardVO bo1 = dao.getBoardDetail(r1);
-		BoardVO bo2 = dao.getBoardDetail(r2);
+		ArrayList<BoardVO> bo = new ArrayList<>();
+		ArrayList<Integer> bl = new ArrayList<>();
+		
+		if(listKeysTrue == true) {
+			for(int c=0; c<3; c++) {
+				bo.add(dao.getBoardDetail(displayKeys.get(c)));
+				bl.add(daoL.getLikeCount(c));
+			}
+		}
+		
+		System.out.println("Check BO:"+bo);
+		
 		//BoardVO bo2 = dao.getBoardDetail(r2);
 		
-		int bl1 = daoL.getLikeCount(r1);
-		int bl2 = daoL.getLikeCount(r2);
+		
 		//int bl1 = daoL.getLikeCount(r1);
 		
-		request.setAttribute("bo1", bo1);
-		request.setAttribute("bo2", bo2);
+		request.setAttribute("bo", bo);
 		//request.setAttribute("buttons", buttons);
 		
-		request.setAttribute("bl1", bl1);
-		request.setAttribute("bl2", bl2);
+		request.setAttribute("bl", bl);
 		//request.setAttribute("bo2", bo2);
 		
 		request.setAttribute("boardList", boardList);

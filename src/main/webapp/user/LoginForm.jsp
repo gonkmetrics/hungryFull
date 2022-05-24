@@ -18,9 +18,9 @@
 						<!-- Hello: ${user}  -->
 						<form action="/HFProject/userLoginCheck.do" method="post">
 							<label for="fi" class="form-label">아이디</label>
-							<input type="text" class="form-control" id="fi" name="formId" /><br>
+							<input type="text" class="form-control" id="fi" name="formId" required/><br>
 							<label for="pw" class="form-label">비밀번호</label>
-							<input type="password" class="form-control" id="pw" name="formPw" /><br>
+							<input type="password" class="form-control" id="pw" name="formPw" required/><br>
 							<div class="d-flex">
 								<div class="p-1">
 									<input class="btn btn-primary" type="submit" value="로그인" />

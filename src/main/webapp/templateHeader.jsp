@@ -104,11 +104,21 @@
 		        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 		      </div>
 		      <div class="modal-body">
-		        		<form action="/HFProject/userLoginCheck.do" method="post">
+		        		<form action="/HFProject/userLoginCheck.do" method="post" novalidate>
+		        		<div>
 							<label for="fi" class="form-label">Username or ID</label>
-							<input type="text" class="form-control" id="fi" name="formId" /><br>
+							<input type="text" class="form-control" id="fi" name="formId" required/><br>
+							<div class="invalid-feedback">
+						        Please enter your username.
+						    </div>
+							</div>
+							<div>
 							<label for="pw" class="form-label">Password</label>
-							<input type="password" class="form-control" id="pw" name="formPw" /><br>
+							<input type="password" class="form-control" id="pw" name="formPw" required/><br>
+							<div class="invalid-feedback">
+						        Please enter your password.
+						    </div>
+							</div>
 							<div class="d-flex">
 								<div class="p-1">
 									<input class="btn btn-primary" type="submit" value="Login" />

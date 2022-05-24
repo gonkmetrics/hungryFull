@@ -5,9 +5,9 @@
 <html>
 <head>
 	<c:import url="../templateHead.html"/>
+	<c:redirect url="homepage.do"/>
 </head>
 <body>
-	<h1>비밀번호가 틀렸습니다.</h1>
-	<a href="/HFProject/userLogin.do">로그인창으로 돌아가기</a>
+	<h1>This page should redirect. Enable your Javascript.</h1>
 </body>
 </html>

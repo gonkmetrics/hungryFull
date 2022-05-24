@@ -97,6 +97,21 @@
         });
 	
 	$("#toggleLike").click(reportLike);
+	
+	    function fillModal(sCom, sAut, sCid) { 
+	    	const a1 = sCid;
+	    	console.log(a1)
+	    	const a2 = sAut;
+	    	console.log(a2)
+	    	const a3 = sCom;
+	    	console.log(a3)
+	    	$('#comUpCID').val(a1);
+	    	$('#comUpAUN').val(a2);
+	    	$('#tinyComUpCON').val(a3);
+	    	}
+	    
+	    	$('textarea#tinyComUpCON').tinymce({ height: 500, });
+	    	$('textarea#tiny').tinymce({ height: 500, });
 
 	});
 	

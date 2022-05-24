@@ -5,14 +5,26 @@
 <html>
   <head>
     <c:import url="../templateHead.html" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+    $(function() {
+        $('#delete').click(function() {
+            return window.confirm("Are you sure?");
+        });
+    });
+    </script>
   </head>
   <body>
   	<c:import url="../templateHeader.jsp" />
-  	<br>
+  	<div id="backgroundPrimary">
+        <!-- only displays background. do not modify -gonk -->
+    </div>
     <div class="container" id="dashboard">
-      <div class="row">
-        <div class="col-md-2">
-            <span>Hello, ${sessionScope.s_id} </span>
+      <div class="row" id="contentPrimary">
+        <div class="col-md-4">
+        <div class="row">
+        <div class="col">
+        	<span>Hello, ${sessionScope.s_id} </span>
             <div class="card">
                 <div class="card-header">
                     User Administration
@@ -21,19 +33,27 @@
                   <li class="list-group-item">
                     <form action = "userUpdateForm.do" method = "post">
 						<input type="hidden" name="s_id" value="${sessionScope.s_id}"/>
-						<input type="submit" class="nav-link" value = "정보수정" />
+						<input type="submit" class="btn btn-link nav-link" value = "정보수정" />
 					</form>
                   </li>
                   <li class="list-group-item">
-                    <a class="nav-link" href="userDelete.do">회원탈퇴</a>
+                    <a class="nav-link" id="delete" href="userDelete.do">회원탈퇴</a>
                   </li>
                   <li class="list-group-item">
                     <a class="nav-link" href="userPostList.do">My Posts</a>
                   </li>
+                  <c:if test="${s_isAdmin eq 1}">
+                   <li class="list-group-item">
+                    <a class="nav-link" href="AllUser.do">Global User List</a>
+                  </li>
+                  </c:if>
                 </ul>
               </div>
+              </div>
         </div>
-        <div class="col-md-2">
+        <br>
+        <div class="row">
+        <div class="col">
             <span>My Info</span>
             <div class="card">
                 <ul class="list-group list-group-flush">
@@ -43,11 +63,15 @@
                     <li class="list-group-item">Email | ${user.userEmail}</li>
                   </ul>
             </div>
+            </div>
         </div>
+            
+        </div>
+        
         <div class="col-md-8">
             <span>My Liked Posts</span>
             <div class="card">
-            	        <div class="container" id="recipeBody">
+            	        <div class="container">
             <div class="row justify-content-center">
                 <div class="col-11">
                     <div class="recipePost">

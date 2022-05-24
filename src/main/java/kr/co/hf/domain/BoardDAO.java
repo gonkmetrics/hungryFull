@@ -306,6 +306,41 @@ public class BoardDAO {
 		}
 		return boardCount;
 	} // getBoardCount END;
+	
+	public int getBoardCountUser(int userNum) {
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int boardCount = 0;
+		
+		try {
+			con = ds.getConnection();
+			String sql = "SELECT COUNT(*) FROM board WHERE postAuthor=?";
+			
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, userNum);
+
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				boardCount = rs.getInt(1);
+			}else {
+				System.out.println("계정이 없습니다.");
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				con.close();
+				pstmt.close();
+				rs.close();
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return boardCount;
+	} // getBoardCount END;
 
 	public List<BoardVO> getUserPostList(int userNum, int pageNum){
 		Connection con = null;

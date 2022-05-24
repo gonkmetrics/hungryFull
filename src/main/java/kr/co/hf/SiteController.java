@@ -288,7 +288,7 @@ public class SiteController extends HttpServlet {
 			
 			sv = new UserDeleteService();
 			sv.execute(request,response);
-			ui = "/user/LoginForm.jsp";
+			ui = "homepage.do";
 			
 		}
 		

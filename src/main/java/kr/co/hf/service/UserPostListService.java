@@ -20,6 +20,7 @@ public class UserPostListService implements ForumService {
 		BoardDAO dao = BoardDAO.getInstance();
 		HttpSession session = request.getSession();
 		String strpageNum = request.getParameter("pageNum");
+		int usernum = (int) session.getAttribute("s_num");
 		
 		int pageNum = 1;
 		
@@ -27,7 +28,8 @@ public class UserPostListService implements ForumService {
 			 pageNum = Integer.parseInt(strpageNum);
 		}
 		
-		int boardCount = dao.getBoardCount();
+		int boardCount = dao.getBoardCountUser(usernum);
+		System.out.println(boardCount);
 		int userNum = (int) session.getAttribute("s_num");
 		
 		BoardButtonDTO buttons = new BoardButtonDTO(boardCount, pageNum);

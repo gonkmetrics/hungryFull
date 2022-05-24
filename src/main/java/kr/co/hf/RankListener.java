@@ -61,12 +61,18 @@ public class RankListener implements ServletContextListener {
 		Set<Integer> keySet = ranklist.keySet();
 		List<Integer> listKeys
 		= new ArrayList<Integer>(keySet);
-		int rank1 = listKeys.get(0);
-		int rank2 = listKeys.get(1);
-		//int rank3 = listKeys.get(2);
-		context.setAttribute("rank1", rank1);
-		context.setAttribute("rank2", rank2);
-		//context.setAttribute("rank3", rank3);
+		Boolean listKeysTrue = true;
+		if(listKeys.size()>4) {
+			listKeysTrue = true;
+			List<Integer> displayKeys = new ArrayList<>();
+			displayKeys.add(listKeys.get(0));
+			displayKeys.add(listKeys.get(1));
+			displayKeys.add(listKeys.get(2));
+			context.setAttribute("displayKeys", displayKeys);
+		}else {
+			listKeysTrue=false;
+		}
+		context.setAttribute("listKeysTrue", listKeysTrue);
 		//context.setAttribute("ranklist", future.get());
 
     	/*try {
