@@ -9,6 +9,19 @@
         <script src="https://cdn.tiny.cloud/1/z9bmvgme3buxgw19nqhokowjd4x0b9mxwo8nspf31c2zbvmd/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
     <script src="https://cdn.jsdelivr.net/npm/@tinymce/tinymce-jquery@1/dist/tinymce-jquery.min.js"></script>
     <script src="ajaxLike.js"></script>
+    <script>
+    function fillModal(sCom, sAut, sCid) { 
+    	const a1 = sCid;
+    	console.log(a1)
+    	const a2 = sAut;
+    	console.log(a2)
+    	const a3 = sCom;
+    	console.log(a3)
+    	$('#comUpCID').val(a1);
+    	$('#comUpAUN').val(a2);
+    	$('#tinyComUpCON').val(a3);
+    	}
+    </script>
 </head>
 <body>
     <c:import url="../templateHeader.jsp" />

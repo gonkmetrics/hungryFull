@@ -112,6 +112,31 @@
 	    
 	    	$('textarea#tinyComUpCON').tinymce({ height: 500, });
 	    	$('textarea#tiny').tinymce({ height: 500, });
+	    	
+	    	/* function validate(){
+				var val1 = $('').val();
+				var val2 = $('').val();
+				var val3 = $('').val();
+				var val4 = $('').val();
+				if(val1.length < x){
+					$('registerForm').reportValidity();
+					return false;
+				}
+				if(val2.length < x){
+					$('registerForm').reportValidity();
+					return false;
+				}
+				if(val3.length < x){
+					$('registerForm').reportValidity();
+					return false;
+				}
+				if(val4.length < x){
+					$('registerForm').reportValidity();
+					return false;
+				}
+				
+				return true;
+			} */
 
 	});
 	

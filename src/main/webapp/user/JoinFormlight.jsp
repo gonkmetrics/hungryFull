@@ -23,9 +23,9 @@
 					</div>
 					<div>
 					<label for="pw" class="form-label">비밀번호</label>
-					<input class="form-control" id="pw" type="password" name="userPw" required/><br/>
+					<input class="form-control" id="pw" type="password" name="userPw" required minlength="10"/><br/>
 					<div class="invalid-feedback">
-				        Please enter a password.
+				        Please enter a password with 10 or more characters.
 				    </div>
 					</div>
 					<div>

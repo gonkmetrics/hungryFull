@@ -14,6 +14,7 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
+import javax.servlet.http.HttpSession;
 
 import kr.co.hf.service.RankUpdateService;
 
@@ -40,7 +41,8 @@ public class RankListener implements ServletContextListener {
      */
     public void contextDestroyed(ServletContextEvent sce)  { 
          // TODO Auto-generated method stub
-    	scheduler.shutdown();
+    	scheduler.shutdown(); 
+    	//session.invalidate();
     }
 
 	/**
@@ -62,7 +64,7 @@ public class RankListener implements ServletContextListener {
 		List<Integer> listKeys
 		= new ArrayList<Integer>(keySet);
 		Boolean listKeysTrue = true;
-		if(listKeys.size()>4) {
+		if(listKeys.size()>3) {
 			listKeysTrue = true;
 			List<Integer> displayKeys = new ArrayList<>();
 			displayKeys.add(listKeys.get(0));
