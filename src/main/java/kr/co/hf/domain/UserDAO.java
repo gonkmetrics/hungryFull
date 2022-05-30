@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import javax.naming.Context;
@@ -124,6 +125,9 @@ public class UserDAO {
 		PreparedStatement pstmt = null;
 		try {
 			con = ds.getConnection();
+			Statement stmtSet = con.createStatement();
+			stmtSet.execute("SET FOREIGN_KEY_CHECKS=0");
+			stmtSet.close();
 			String sql = "DELETE FROM user WHERE userID = ?";
 			pstmt = con.prepareStatement(sql);
 			

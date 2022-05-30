@@ -10,6 +10,33 @@
     <script src="https://cdn.jsdelivr.net/npm/@tinymce/tinymce-jquery@1/dist/tinymce-jquery.min.js"></script>
     <script src="ajaxLike.js"></script>
     <script>
+	function loadReportLike() {
+		var postid = $("#postid").text();
+		var usernum = $("#usernum").text();
+		console.log("report function runs");
+		console.log(postid);
+		console.log(usernum);
+		$.ajax({
+			type : "POST",
+			url : "reportLike.action",
+			data : "postID=" + postid + "&userNum=" + usernum,
+			success : function(data) {
+				var ht = data.likeType;
+				console.log("liketype check: "+ht)
+				$("#message").html(ht);
+				if(ht === 0){
+					console.log("loadno");
+				}else if(ht === 1){
+					console.log("loadyes");
+					$("#heartA").text('Liked');
+				}
+			},
+			error : function(data) {
+				alert("Some error occured.");
+			}
+		});
+	}
+    $("#toggleLike").on("load", loadReportLike);
     function fillModal(sCom, sAut, sCid) { 
     	const a1 = sCid;
     	console.log(a1)
@@ -58,7 +85,7 @@
                     <div class="d-flex">
                     	<div class="p-1 me-auto">
                     		<c:if test="${sessionScope.s_id ne null }">
-	                    	<button type="button" class="btn btn-primary" id="toggleLike">Like</button>
+	                    	<button type="button" class="btn btn-outline-danger" id="toggleLike">&#129505; <span id="heartA">Like</span></button>
 							<span id="message"></span>
 							</c:if>
 	                    </div>

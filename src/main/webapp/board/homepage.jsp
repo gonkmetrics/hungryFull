@@ -31,7 +31,7 @@
                     <div id="rankPost" class="row justify-content-center">
                         <!-- <h1>rankPost</h1> -->
                         <div class="d-flex align-items-center">
-	                        <p class="me-auto p-1 fs-1">Hello ${sessionScope.s_id}!</p>
+	                        <p class="me-auto p-1 fs-1">${sessionScope.s_id ne null ? 'Hello ' : 'Hello'}${sessionScope.s_id}!</p>
 	                        <p class="p-1 fs-5">Check out our most popular recipes:</p>
                         </div>
                         <div class="row row-cols-1 row-cols-md-3 g-4">

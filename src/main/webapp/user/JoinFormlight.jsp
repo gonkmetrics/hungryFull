@@ -15,7 +15,7 @@
 		<div>
 			<div class="row justify-content-center">
 				<div class="col-md-8" id="contentPrimary">
-					<form action="userJoinCheck.do" method="post" novalidate>
+					<form action="userJoinCheck.do" method="post">
 					<div>
 					<input type ="hidden" name="userNum">
 					<label for="id" class="form-label">아이디</label>
@@ -23,7 +23,7 @@
 					</div>
 					<div>
 					<label for="pw" class="form-label">비밀번호</label>
-					<input class="form-control" id="pw" type="password" name="userPw" required minlength="10"/><br/>
+					<input class="form-control" id="pw" type="password" name="userPw" minlength="10" required/><br/>
 					<div class="invalid-feedback">
 				        Please enter a password with 10 or more characters.
 				    </div>

@@ -75,6 +75,7 @@
 				if(ht === 0){
 					console.log("create");
 					createLike();
+					$("#heartA").text('Liked');
 				}else if(ht === 1){
 					console.log("delete");
 					deleteLike();
@@ -85,17 +86,13 @@
 			}
 		});
 	}
+	
 	/* $("#lc").click(createLike);
 	$("#ld").click(deleteLike);
 	$("#lr").click(reportLike); */
 	
-	    $('.content').click(function(){
-          $('.content').toggleClass("heart-active")
-          $('.text').toggleClass("heart-active")
-          $('.numb').toggleClass("heart-active")
-          $('.heart').toggleClass("heart-active")
-        });
 	
+	$("#toggleLike").on("load", loadReportLike);
 	$("#toggleLike").click(reportLike);
 	
 	    function fillModal(sCom, sAut, sCid) { 

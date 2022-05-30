@@ -473,7 +473,7 @@ public class BoardDAO {
 			
 			int num = (pageNum - 1) * 10;
 			
-			String sql = "SELECT * FROM board WHERE postContent LIKE ? ORDER BY postTime DESC limit ?, 10";
+			String sql = "SELECT * FROM board WHERE postTitle LIKE ? ORDER BY postTime DESC limit ?, 10";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, substring);
 			pstmt.setInt(2, num);
@@ -530,7 +530,7 @@ public class BoardDAO {
 		
 		try {
 			con = ds.getConnection();
-			String sql = "SELECT COUNT(*) FROM board WHERE postContent LIKE ?";
+			String sql = "SELECT COUNT(*) FROM board WHERE postTitle LIKE ?";
 			
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, substring);

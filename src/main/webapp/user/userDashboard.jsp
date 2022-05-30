@@ -78,8 +78,8 @@
 						<c:forEach var="board" items="${boardLike}">
 						    <div class="col rounded" id="recipeDetail">
 							<div class="d-flex position-relative p-3">
-							    <img src="${board.imageLink}" class="w-25">
-							    <div class="ps-4">
+							    <img src="${board.imageLink}" class="w-50" id="imgBoard">
+							    <div class="ms-4">
 							      <h3 class="mt-0">${board.postTitle}</h3>
 							      	<c:choose>
 							        <c:when test="${board.postType == 1}"><span class="badge bg-success">다이어트</span></c:when>

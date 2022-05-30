@@ -280,7 +280,7 @@ public class SiteController extends HttpServlet {
 			
 			sv = new UserUpdateService();
 			sv.execute(request,response);
-			ui = "/user/LoginComplete.jsp";
+			ui = "homepage.do";
 			
 		}
 		
